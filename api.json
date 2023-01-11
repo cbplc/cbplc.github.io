@@ -51,7 +51,7 @@
         "operationId": "createStandingOrder",
         "parameters": [
           {
-            "name": "x-project-id",
+            "name": "x-app-id",
             "in": "header",
             "description": "pass the project id",
             "required": true,
@@ -111,7 +111,7 @@
         "operationId": "standingOrderLookup",
         "parameters": [
           {
-            "name": "x-project-id",
+            "name": "x-app-id",
             "in": "header",
             "description": "pass the project id",
             "required": true,
@@ -171,7 +171,7 @@
         "operationId": "ammendStandingOrder",
         "parameters": [
           {
-            "name": "x-project-id",
+            "name": "x-app-id",
             "in": "header",
             "description": "pass the project id",
             "required": true,
@@ -231,7 +231,7 @@
         "operationId": "cancelStandingOrder",
         "parameters": [
           {
-            "name": "x-project-id",
+            "name": "x-app-id",
             "in": "header",
             "description": "pass the project id",
             "required": true,
@@ -291,7 +291,7 @@
         "operationId": "pesalinkToBank",
         "parameters": [
           {
-            "name": "x-project-id",
+            "name": "x-app-id",
             "in": "header",
             "description": "pass the project id",
             "required": true,
@@ -351,7 +351,7 @@
         "operationId": "mpesaB2C",
         "parameters": [
           {
-            "name": "x-project-id",
+            "name": "x-app-id",
             "in": "header",
             "description": "pass the project id",
             "required": true,
@@ -411,7 +411,7 @@
         "operationId": "airtelB2C",
         "parameters": [
           {
-            "name": "x-project-id",
+            "name": "x-app-id",
             "in": "header",
             "description": "pass the project id",
             "required": true,
@@ -471,7 +471,7 @@
         "operationId": "internalFundsTransfer",
         "parameters": [
           {
-            "name": "x-project-id",
+            "name": "x-app-id",
             "in": "header",
             "description": "pass the project id",
             "required": true,
@@ -531,7 +531,7 @@
         "operationId": "walletFundsTransfer",
         "parameters": [
           {
-            "name": "x-project-id",
+            "name": "x-app-id",
             "in": "header",
             "description": "pass the project id",
             "required": true,
@@ -591,7 +591,7 @@
         "operationId": "safaricomAirtimeTopUp",
         "parameters": [
           {
-            "name": "x-project-id",
+            "name": "x-app-id",
             "in": "header",
             "description": "pass the project id",
             "required": true,
@@ -651,7 +651,7 @@
         "operationId": "telkomAirtimeTopUp",
         "parameters": [
           {
-            "name": "x-project-id",
+            "name": "x-app-id",
             "in": "header",
             "description": "pass the project id",
             "required": true,
@@ -711,7 +711,7 @@
         "operationId": "airtelAirtimeTopUp",
         "parameters": [
           {
-            "name": "x-project-id",
+            "name": "x-app-id",
             "in": "header",
             "description": "pass the project id",
             "required": true,
@@ -771,7 +771,7 @@
         "operationId": "iprs",
         "parameters": [
           {
-            "name": "x-project-id",
+            "name": "x-app-id",
             "in": "header",
             "description": "pass the project id",
             "required": true,
@@ -831,7 +831,7 @@
         "operationId": "crb",
         "parameters": [
           {
-            "name": "x-project-id",
+            "name": "x-app-id",
             "in": "header",
             "description": "pass the project id",
             "required": true,
@@ -891,7 +891,7 @@
         "operationId": "nairobiWater",
         "parameters": [
           {
-            "name": "x-project-id",
+            "name": "x-app-id",
             "in": "header",
             "description": "pass the project id",
             "required": true,
@@ -951,7 +951,7 @@
         "operationId": "zukuInternet",
         "parameters": [
           {
-            "name": "x-project-id",
+            "name": "x-app-id",
             "in": "header",
             "description": "pass the project id",
             "required": true,
@@ -1011,7 +1011,7 @@
         "operationId": "zukuTV",
         "parameters": [
           {
-            "name": "x-project-id",
+            "name": "x-app-id",
             "in": "header",
             "description": "pass the project id",
             "required": true,
@@ -1071,7 +1071,7 @@
         "operationId": "startimesTV",
         "parameters": [
           {
-            "name": "x-project-id",
+            "name": "x-app-id",
             "in": "header",
             "description": "pass the project id",
             "required": true,
@@ -1131,7 +1131,7 @@
         "operationId": "dstvPresentment",
         "parameters": [
           {
-            "name": "x-project-id",
+            "name": "x-app-id",
             "in": "header",
             "description": "pass the project id",
             "required": true,
@@ -1191,7 +1191,7 @@
         "operationId": "dstvPayment",
         "parameters": [
           {
-            "name": "x-project-id",
+            "name": "x-app-id",
             "in": "header",
             "description": "pass the project id",
             "required": true,
@@ -1251,7 +1251,7 @@
         "operationId": "gotvPresentment",
         "parameters": [
           {
-            "name": "x-project-id",
+            "name": "x-app-id",
             "in": "header",
             "description": "pass the project id",
             "required": true,
@@ -1311,7 +1311,7 @@
         "operationId": "gotvPayment",
         "parameters": [
           {
-            "name": "x-project-id",
+            "name": "x-app-id",
             "in": "header",
             "description": "pass the project id",
             "required": true,
