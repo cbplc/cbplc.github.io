@@ -1961,6 +1961,8 @@
       "walletToWalletTransferRequest": {
         "required": [
           "amount",
+          "api_key",
+          "clientId",
           "creditAccount",
           "currency",
           "debitAccount",
@@ -2002,6 +2004,14 @@
           "timestamp": {
             "type": "string",
             "example": "2021-01-29T00:54:08+03:00"
+          },
+          "clientId": {
+            "type": "string",
+            "example": "gapstack"
+          },
+          "api_key": {
+            "type": "string",
+            "example": "NSQTTY0-T2NMYG6-HMGP35A-2B0TYR"
           }
         }
       },
