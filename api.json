@@ -20,16 +20,20 @@
   ],
   "tags": [
     {
+      "name": "Send Money",
+      "description": "Send Money APIs"
+    },
+    {
+      "name": "Buy",
+      "description": "Buy Apis"
+    },
+    {
+      "name": "Other Services",
+      "description": "Other Service APIs"
+    },
+    {
       "name": "Standing Orders",
       "description": "Create, ammend and cancel standing orders"
-    },
-    {
-      "name": "Funds Transfer",
-      "description": "Transfer funds between accounts"
-    },
-    {
-      "name": "Airtime Top Up",
-      "description": "Top Up Airtime"
     },
     {
       "name": "Accounts",
@@ -284,7 +288,7 @@
     "/pesa-link-to-bank": {
       "post": {
         "tags": [
-          "Funds Transfer"
+          "Send Money"
         ],
         "summary": "Transfer funds from your CBL account through Pesalink to other banks",
         "description": "Transfer funds from your CBL account through Pesalink to other banks\n",
@@ -344,7 +348,7 @@
     "/mpesa-b2c": {
       "post": {
         "tags": [
-          "Funds Transfer"
+          "Send Money"
         ],
         "summary": "Transfer funds from your CBL account to MPESA",
         "description": "Transfer funds from your CBL account to MPESA\n",
@@ -404,7 +408,7 @@
     "/airtel-b2c": {
       "post": {
         "tags": [
-          "Funds Transfer"
+          "Send Money"
         ],
         "summary": "Transfer funds from your CBL account to Airtel",
         "description": "Transfer funds from your CBL account to Airtel\n",
@@ -464,7 +468,7 @@
     "/internal-funds-transfer": {
       "post": {
         "tags": [
-          "Funds Transfer"
+          "Send Money"
         ],
         "summary": "Transfer funds from your CBL account to other CBL accounts",
         "description": "Transfer funds from your CBL account to other CBL accounts\n",
@@ -524,7 +528,7 @@
     "/wallet-funds-transfer": {
       "post": {
         "tags": [
-          "Funds Transfer"
+          "Send Money"
         ],
         "summary": "Transfer funds from your CBL account to wallet accounts",
         "description": "Transfer funds from your CBL account to wallet accounts\n",
@@ -581,10 +585,70 @@
         }
       }
     },
+    "/wallet-to-wallet-transfer": {
+      "post": {
+        "tags": [
+          "Send Money"
+        ],
+        "summary": "Transfer funds from your CBL wallet to another CBL wallet accounts",
+        "description": "Transfer funds from your CBL wallet to another CBL wallet accounts\n",
+        "operationId": "walletToWalletTransfer",
+        "parameters": [
+          {
+            "name": "x-app-id",
+            "in": "header",
+            "description": "pass the project id",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "api-key",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Wallet to Wallet Transfer Request",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/walletToWalletTransferRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successfully transfered the funds",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/defaultResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      }
+    },
     "/safaricom-airtime-top-up": {
       "post": {
         "tags": [
-          "Airtime Top Up"
+          "Buy"
         ],
         "summary": "Safaricom Airtime Topup",
         "description": "Buy Safaricom pre-paid airtime from your CBL account\n",
@@ -644,7 +708,7 @@
     "/telkom-airtime-top-up": {
       "post": {
         "tags": [
-          "Airtime Top Up"
+          "Buy"
         ],
         "summary": "Telkom Airtime Topup",
         "description": "Buy Telkom pre-paid airtime from your CBL account\n",
@@ -704,7 +768,7 @@
     "/airtel-airtime-top-up": {
       "post": {
         "tags": [
-          "Airtime Top Up"
+          "Buy"
         ],
         "summary": "Airtel Airtime Topup",
         "description": "Buy Airtel pre-paid airtime from your CBL account\n",
@@ -764,7 +828,7 @@
     "/iprs": {
       "post": {
         "tags": [
-          "Accounts"
+          "Other Services"
         ],
         "summary": "Query IPRS for details of a kenyan citizen",
         "description": "Query IPRS for details of a kenyan citizen\n",
@@ -824,7 +888,7 @@
     "/crb": {
       "post": {
         "tags": [
-          "Accounts"
+          "Other Services"
         ],
         "summary": "Query CRB for details of a kenyan citizen",
         "description": "Query CRB for details of a kenyan citizen\n",
@@ -1677,7 +1741,6 @@
       "pesalinkToBankRequest": {
         "required": [
           "amount",
-          "client_id",
           "credit_account",
           "currency",
           "reference_number",
@@ -1724,10 +1787,6 @@
           "currency": {
             "type": "string",
             "example": "KES"
-          },
-          "client_id": {
-            "type": "string",
-            "example": "OA9876543"
           }
         }
       },
@@ -1896,6 +1955,53 @@
           "client_id": {
             "type": "string",
             "example": "OA9876543"
+          }
+        }
+      },
+      "walletToWalletTransferRequest": {
+        "required": [
+          "amount",
+          "creditAccount",
+          "currency",
+          "debitAccount",
+          "senderPhoneNumber",
+          "timestamp",
+          "transactionReference",
+          "transactionType"
+        ],
+        "type": "object",
+        "properties": {
+          "transactionType": {
+            "type": "string",
+            "example": "FTWALLET2WALLET"
+          },
+          "senderPhoneNumber": {
+            "type": "string",
+            "example": "254715748115"
+          },
+          "amount": {
+            "type": "string",
+            "example": "3000"
+          },
+          "creditAccount": {
+            "type": "string",
+            "example": "CA720547666"
+          },
+          "transactionReference": {
+            "type": "string",
+            "example": "DL0LBN6PK20"
+          },
+          "debitAccount": {
+            "type": "string",
+            "example": "CA715748115"
+          },
+          "currency": {
+            "type": "string",
+            "example": "KES"
+          },
+          "timestamp": {
+            "type": "string",
+            "example": "2021-01-29T00:54:08+03:00"
           }
         }
       },
@@ -2327,19 +2433,19 @@
       "defaultResponse": {
         "type": "object",
         "properties": {
-          "response_code": {
+          "responseCode": {
             "type": "string",
             "example": "00"
           },
-          "response_message": {
+          "responseMessage": {
             "type": "string",
             "example": "Request processed successfully"
           },
-          "transaction_reference": {
+          "transactionReference": {
             "type": "string",
             "example": "FT120GY1KKB2"
           },
-          "reference_number": {
+          "referenceNumber": {
             "type": "string",
             "example": "20GY1KKB2CSWL"
           },
@@ -2347,15 +2453,15 @@
             "type": "string",
             "example": "2021-01-29"
           },
-          "debit_account": {
+          "debitAccount": {
             "type": "string",
             "example": "9012311313212"
           },
-          "credit_account": {
+          "creditAccount": {
             "type": "string",
             "example": "25478120100"
           },
-          "transaction_date": {
+          "transactionDate": {
             "type": "string",
             "example": "2021-01-29"
           }
