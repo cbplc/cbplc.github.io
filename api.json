@@ -32,10 +32,6 @@
       "description": "Other Service APIs"
     },
     {
-      "name": "Standing Orders",
-      "description": "Create, ammend and cancel standing orders"
-    },
-    {
       "name": "Accounts",
       "description": "CBL Accounts"
     },
@@ -48,7 +44,7 @@
     "/create-standing-order": {
       "post": {
         "tags": [
-          "Standing Orders"
+          "Accounts"
         ],
         "summary": "Create a standing order on your CBL account",
         "description": "Create a standing order on your CBL account\n",
@@ -108,7 +104,7 @@
     "/standing-order-lookup": {
       "post": {
         "tags": [
-          "Standing Orders"
+          "Accounts"
         ],
         "summary": "Search for an existing standing order on your CBL account",
         "description": "Search for existing standing order on your CBL account\n",
@@ -168,7 +164,7 @@
     "/ammend-standing-order": {
       "post": {
         "tags": [
-          "Standing Orders"
+          "Accounts"
         ],
         "summary": "Ammend an existing standing order on your CBL account",
         "description": "Ammend an existing standing order on your CBL account\n",
@@ -228,7 +224,7 @@
     "/cancel-standing-order": {
       "post": {
         "tags": [
-          "Standing Orders"
+          "Accounts"
         ],
         "summary": "Cancel an existing standing order on your CBL account",
         "description": "Cancel an existing standing order on your CBL account\n",
@@ -1431,12 +1427,12 @@
       "safaricomAirtimeTopUpRequest": {
         "required": [
           "amount",
-          "client_id",
-          "credit_account",
+          "creditAccount",
           "currency",
-          "reference_number",
+          "senderPhoneNumber",
           "timestamp",
-          "transaction_type"
+          "transactionReference",
+          "transactionType"
         ],
         "type": "object",
         "properties": {
@@ -1444,17 +1440,13 @@
             "type": "string",
             "example": "300"
           },
-          "credit_account": {
+          "creditAccount": {
             "type": "string",
             "example": "254700123151"
           },
-          "transaction_type": {
+          "transactionType": {
             "type": "string",
-            "example": "SAFACRICOM"
-          },
-          "reference_number": {
-            "type": "string",
-            "example": "20GY1KKB2CSWL"
+            "example": "SAFARICOM"
           },
           "timestamp": {
             "type": "string",
@@ -1464,21 +1456,21 @@
             "type": "string",
             "example": "KES"
           },
-          "client_id": {
+          "transactionReference": {
             "type": "string",
-            "example": "OA9876543"
+            "example": "DKDFHST67DJD"
           }
         }
       },
       "telkomAirtimeTopUpRequest": {
         "required": [
           "amount",
-          "client_id",
-          "credit_account",
+          "creditAccount",
           "currency",
-          "reference_number",
+          "senderPhoneNumber",
           "timestamp",
-          "transaction_type"
+          "transactionReference",
+          "transactionType"
         ],
         "type": "object",
         "properties": {
@@ -1486,17 +1478,13 @@
             "type": "string",
             "example": "300"
           },
-          "credit_account": {
+          "creditAccount": {
             "type": "string",
             "example": "254700123151"
           },
-          "transaction_type": {
+          "transactionType": {
             "type": "string",
             "example": "TELKOM"
-          },
-          "reference_number": {
-            "type": "string",
-            "example": "20GY1KKB2CSWL"
           },
           "timestamp": {
             "type": "string",
@@ -1506,21 +1494,21 @@
             "type": "string",
             "example": "KES"
           },
-          "client_id": {
+          "transactionReference": {
             "type": "string",
-            "example": "OA9876543"
+            "example": "DKDFHST67DJD"
           }
         }
       },
       "airtelAirtimeTopUpRequest": {
         "required": [
           "amount",
-          "client_id",
-          "credit_account",
+          "creditAccount",
           "currency",
-          "reference_number",
+          "senderPhoneNumber",
           "timestamp",
-          "transaction_type"
+          "transactionReference",
+          "transactionType"
         ],
         "type": "object",
         "properties": {
@@ -1528,17 +1516,13 @@
             "type": "string",
             "example": "300"
           },
-          "credit_account": {
+          "creditAccount": {
             "type": "string",
             "example": "254700123151"
           },
-          "transaction_type": {
+          "transactionType": {
             "type": "string",
             "example": "AIRTEL"
-          },
-          "reference_number": {
-            "type": "string",
-            "example": "20GY1KKB2CSWL"
           },
           "timestamp": {
             "type": "string",
@@ -1548,9 +1532,9 @@
             "type": "string",
             "example": "KES"
           },
-          "client_id": {
+          "transactionReference": {
             "type": "string",
-            "example": "OA9876543"
+            "example": "DKDFHST67DJD"
           }
         }
       },
@@ -1741,14 +1725,17 @@
       "pesalinkToBankRequest": {
         "required": [
           "amount",
-          "credit_account",
+          "bankCode",
+          "beneficiaryName",
+          "creditAccount",
           "currency",
-          "reference_number",
-          "sender_name",
-          "sort_code",
+          "direction",
+          "narration",
+          "receiverPhoneNumber",
+          "senderPhoneNumber",
           "timestamp",
-          "transaction_type",
-          "user_narration"
+          "transactionReference",
+          "transactionType"
         ],
         "type": "object",
         "properties": {
@@ -1756,23 +1743,35 @@
             "type": "string",
             "example": "3000"
           },
-          "sort_code": {
+          "bankCode": {
             "type": "string",
-            "example": "298783233"
+            "example": "0025"
           },
-          "user_narration": {
+          "direction": {
+            "type": "string",
+            "example": "A2A"
+          },
+          "narration": {
             "type": "string",
             "example": "pesalink to John Doe"
           },
-          "sender_name": {
+          "senderPhoneNumber": {
             "type": "string",
-            "example": "Jane Doe"
+            "example": "254714315045"
           },
-          "credit_account": {
+          "receiverPhoneNumber": {
+            "type": "string",
+            "example": "254714315045"
+          },
+          "beneficiaryName": {
+            "type": "string",
+            "example": "John Doe"
+          },
+          "creditAccount": {
             "type": "string",
             "example": "1789231313111"
           },
-          "transaction_type": {
+          "transactionType": {
             "type": "string",
             "example": "PESALINK"
           },
@@ -1793,12 +1792,12 @@
       "mpesaB2CRequest": {
         "required": [
           "amount",
-          "client_id",
-          "credit_account",
+          "creditAccount",
           "currency",
-          "reference_number",
+          "senderPhoneNumber",
           "timestamp",
-          "transaction_type"
+          "transactionReference",
+          "transactionType"
         ],
         "type": "object",
         "properties": {
@@ -1806,15 +1805,15 @@
             "type": "string",
             "example": "3000"
           },
-          "credit_account": {
+          "creditAccount": {
             "type": "string",
             "example": "+254711123123"
           },
-          "transaction_type": {
+          "transactionType": {
             "type": "string",
             "example": "MPESAB2C"
           },
-          "reference_number": {
+          "transactionReference": {
             "type": "string",
             "example": "20GY1KKB2CSWL"
           },
@@ -1825,22 +1824,18 @@
           "currency": {
             "type": "string",
             "example": "KES"
-          },
-          "client_id": {
-            "type": "string",
-            "example": "OA9876543"
           }
         }
       },
       "airtelB2CRequest": {
         "required": [
           "amount",
-          "client_id",
-          "credit_account",
+          "creditAccount",
           "currency",
-          "reference_number",
+          "senderPhoneNumber",
           "timestamp",
-          "transaction_type"
+          "transactionReference",
+          "transactionType"
         ],
         "type": "object",
         "properties": {
@@ -1848,15 +1843,15 @@
             "type": "string",
             "example": "3000"
           },
-          "credit_account": {
+          "creditAccount": {
             "type": "string",
             "example": "+254711123123"
           },
-          "transaction_type": {
+          "transactionType": {
             "type": "string",
-            "example": "AIRTELB2C"
+            "example": "MPESAB2C"
           },
-          "reference_number": {
+          "transactionReference": {
             "type": "string",
             "example": "20GY1KKB2CSWL"
           },
@@ -1867,22 +1862,18 @@
           "currency": {
             "type": "string",
             "example": "KES"
-          },
-          "client_id": {
-            "type": "string",
-            "example": "OA9876543"
           }
         }
       },
       "internalFundsTransferRequest": {
         "required": [
           "amount",
-          "client_id",
-          "credit_account",
+          "creditAccount",
           "currency",
-          "reference_number",
+          "senderPhoneNumber",
           "timestamp",
-          "transaction_type"
+          "transactionReference",
+          "transactionType"
         ],
         "type": "object",
         "properties": {
@@ -1890,15 +1881,19 @@
             "type": "string",
             "example": "3000"
           },
-          "credit_account": {
+          "creditAccount": {
             "type": "string",
             "example": "1829732019321"
           },
-          "transaction_type": {
+          "senderPhoneNumber": {
             "type": "string",
-            "example": "FTCORE2CORE"
+            "example": "254715748115"
           },
-          "reference_number": {
+          "transactionType": {
+            "type": "string",
+            "example": "FT"
+          },
+          "transactionReference": {
             "type": "string",
             "example": "20GY1KKB2CSWL"
           },
@@ -1909,22 +1904,18 @@
           "currency": {
             "type": "string",
             "example": "KES"
-          },
-          "client_id": {
-            "type": "string",
-            "example": "OA9876543"
           }
         }
       },
       "walletFundsTransferRequest": {
         "required": [
           "amount",
-          "client_id",
-          "credit_account",
+          "creditAccount",
           "currency",
-          "reference_number",
+          "senderPhoneNumber",
           "timestamp",
-          "transaction_type"
+          "transactionReference",
+          "transactionType"
         ],
         "type": "object",
         "properties": {
@@ -1932,15 +1923,15 @@
             "type": "string",
             "example": "3000"
           },
-          "credit_account": {
+          "creditAccount": {
             "type": "string",
             "example": "1829732019321"
           },
-          "transaction_type": {
+          "transactionType": {
             "type": "string",
             "example": "FTCORE2WALLET"
           },
-          "reference_number": {
+          "transactionReference": {
             "type": "string",
             "example": "20GY1KKB2CSWL"
           },
@@ -1952,17 +1943,15 @@
             "type": "string",
             "example": "KES"
           },
-          "client_id": {
+          "senderPhoneNumber": {
             "type": "string",
-            "example": "OA9876543"
+            "example": "254714315046"
           }
         }
       },
       "walletToWalletTransferRequest": {
         "required": [
           "amount",
-          "api_key",
-          "clientId",
           "creditAccount",
           "currency",
           "debitAccount",
@@ -2004,95 +1993,54 @@
           "timestamp": {
             "type": "string",
             "example": "2021-01-29T00:54:08+03:00"
-          },
-          "clientId": {
-            "type": "string",
-            "example": "gapstack"
-          },
-          "api_key": {
-            "type": "string",
-            "example": "NSQTTY0-T2NMYG6-HMGP35A-2B0TYR"
           }
         }
       },
       "iprsRequest": {
         "required": [
-          "Id_number",
-          "amount",
-          "client_id",
-          "currency",
-          "reference_number",
+          "idNumber",
           "timestamp",
-          "transaction_type"
+          "transactionType"
         ],
         "type": "object",
         "properties": {
-          "amount": {
-            "type": "string",
-            "example": "0"
-          },
-          "Id_number": {
+          "idNumber": {
             "type": "string",
             "example": "1829732019321"
           },
-          "transaction_type": {
+          "transactionType": {
             "type": "string",
             "example": "IPRS"
-          },
-          "reference_number": {
-            "type": "string",
-            "example": "20GY1KKB2CSWL"
           },
           "timestamp": {
             "type": "string",
             "example": "2021-01-29T00:54:08+03:00"
-          },
-          "currency": {
-            "type": "string",
-            "example": "KES"
-          },
-          "client_id": {
-            "type": "string",
-            "example": "OA9876543"
           }
         }
       },
       "crbRequest": {
         "required": [
-          "Id_number",
-          "amount",
-          "client_id",
-          "currency",
-          "first_name",
-          "passport_number",
-          "reference_number",
-          "second_name",
+          "firstName",
+          "idNumber",
+          "secondName",
           "timestamp",
-          "transaction_type"
+          "transactionType"
         ],
         "type": "object",
         "properties": {
-          "amount": {
-            "type": "string",
-            "example": "0"
-          },
-          "Id_number": {
+          "idNumber": {
             "type": "string",
             "example": "1829732019321"
           },
-          "passport_number": {
-            "type": "string",
-            "example": "1829732019321"
-          },
-          "first_name": {
+          "firstName": {
             "type": "string",
             "example": "John"
           },
-          "second_name": {
+          "secondName": {
             "type": "string",
             "example": "Doe"
           },
-          "transaction_type": {
+          "transactionType": {
             "type": "string",
             "example": "CRB"
           },
@@ -2103,14 +2051,6 @@
           "timestamp": {
             "type": "string",
             "example": "2021-01-29T00:54:08+03:00"
-          },
-          "currency": {
-            "type": "string",
-            "example": "KES"
-          },
-          "client_id": {
-            "type": "string",
-            "example": "OA9876543"
           }
         }
       },
@@ -2480,70 +2420,143 @@
       "iprsResponse": {
         "type": "object",
         "properties": {
-          "response_code": {
+          "responseCode": {
             "type": "string",
             "example": "00"
           },
-          "response_message": {
+          "responseMessage": {
             "type": "string",
             "example": "Request processed successfully"
           },
-          "transaction_reference": {
+          "transactionReference": {
             "type": "string",
             "example": "FT120GY1KKB2"
           },
-          "reference_number": {
+          "referenceNumber": {
             "type": "string",
             "example": "20GY1KKB2CSWL"
           },
-          "transaction_value_date": {
+          "transactionValueDate": {
             "type": "string",
             "example": "2021-01-29"
           },
-          "debit_account": {
-            "type": "string",
-            "example": "9012311313212"
-          },
-          "iprs_details": {
-            "type": "object"
-          },
-          "transaction_date": {
+          "transactionDate": {
             "type": "string",
             "example": "2021-01-29"
+          },
+          "dateOfBirth": {
+            "type": "string",
+            "example": "00"
+          },
+          "dateOfDeath": {
+            "type": "string",
+            "example": "00"
+          },
+          "dateOfIssue": {
+            "type": "string",
+            "example": "00"
+          },
+          "ethnicGroup": {
+            "type": "string",
+            "example": "00"
+          },
+          "family": {
+            "type": "string",
+            "example": "00"
+          },
+          "fingerprint": {
+            "type": "string",
+            "example": "00"
+          },
+          "firstName": {
+            "type": "string",
+            "example": "00"
+          },
+          "gender": {
+            "type": "string",
+            "example": "00"
+          },
+          "iDNumber": {
+            "type": "string",
+            "example": "00"
+          },
+          "occupation": {
+            "type": "string",
+            "example": "00"
+          },
+          "otherName": {
+            "type": "string",
+            "example": "00"
+          },
+          "photo": {
+            "type": "string",
+            "example": "00"
+          },
+          "pin": {
+            "type": "string",
+            "example": "00"
+          },
+          "placeOfBirth": {
+            "type": "string",
+            "example": "00"
+          },
+          "placeOfDeath": {
+            "type": "string",
+            "example": "00"
+          },
+          "placeOfLive": {
+            "type": "string",
+            "example": "00"
+          },
+          "regOffice": {
+            "type": "string",
+            "example": "00"
+          },
+          "serialNumber": {
+            "type": "string",
+            "example": "00"
+          },
+          "signature": {
+            "type": "string",
+            "example": "00"
+          },
+          "surname": {
+            "type": "string",
+            "example": "00"
           }
         }
       },
       "crbResponse": {
         "type": "object",
         "properties": {
-          "response_code": {
+          "responseCode": {
             "type": "string",
             "example": "00"
           },
-          "response_message": {
+          "responseMessage": {
             "type": "string",
             "example": "Request processed successfully"
           },
-          "transaction_reference": {
+          "transactionReference": {
             "type": "string",
             "example": "FT120GY1KKB2"
           },
-          "reference_number": {
+          "referenceNumber": {
             "type": "string",
             "example": "20GY1KKB2CSWL"
           },
-          "transaction_value_date": {
+          "transactionValueDate": {
             "type": "string",
             "example": "2021-01-29"
           },
-          "debit_account": {
-            "type": "string",
-            "example": "9012311313212"
+          "CRBData": {
+            "type": "object",
+            "example": {
+              "Score": "728",
+              "Grade": "DD"
+            }
           },
-          "crb_details": {
-            "type": "object"
-          },
-          "transaction_date": {
+          "transactionDate": {
             "type": "string",
             "example": "2021-01-29"
           }
