@@ -14,7 +14,7 @@
   },
   "servers": [
     {
-      "url": "http://192.168.19.79:8000",
+      "url": "http://192.168.19.83:8000",
       "description": "CBL Dev API Gateway"
     }
   ],
