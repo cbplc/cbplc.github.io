@@ -101,6 +101,66 @@
         }
       }
     },
+    "/create-external-standing-order": {
+      "post": {
+        "tags": [
+          "Accounts"
+        ],
+        "summary": "Create a standing order from your CBL account to an account within another bank",
+        "description": "Create a standing order from your CBL account to an account within another bank\n",
+        "operationId": "createExternalStandingOrder",
+        "parameters": [
+          {
+            "name": "x-app-id",
+            "in": "header",
+            "description": "pass the project id",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "api-key",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Create a standing order Request",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/createExternalStandingOrderRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successfully created standing order",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/defaultResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      }
+    },
     "/standing-order-lookup": {
       "post": {
         "tags": [
@@ -271,6 +331,186 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/defaultResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      }
+    },
+    "/balance-inquiry": {
+      "post": {
+        "tags": [
+          "Accounts"
+        ],
+        "summary": "Get account balance",
+        "description": "Get account balance\n",
+        "operationId": "balanceInquiry",
+        "parameters": [
+          {
+            "name": "x-app-id",
+            "in": "header",
+            "description": "pass the project id",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "api-key",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Create a balance inquiry Request",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/balanceInquiryRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successfully created standing order",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/balanceInquiryResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      }
+    },
+    "/forex": {
+      "post": {
+        "tags": [
+          "Accounts"
+        ],
+        "summary": "Get Forex Rates",
+        "description": "Get Forex Rates\n",
+        "operationId": "forex",
+        "parameters": [
+          {
+            "name": "x-app-id",
+            "in": "header",
+            "description": "pass the project id",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "api-key",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Create a forex rate Request",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/forexRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successfully fetched forex rates",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/forexResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      }
+    },
+    "/rtgs": {
+      "post": {
+        "tags": [
+          "Accounts"
+        ],
+        "summary": "Send money via RTGS",
+        "description": "Send money via RTGS\n",
+        "operationId": "rtgs",
+        "parameters": [
+          {
+            "name": "x-app-id",
+            "in": "header",
+            "description": "pass the project id",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "api-key",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Create a RTGS Request",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/rtgsRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successfully fetched forex rates",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/rtgsResponse"
                 }
               }
             }
@@ -1540,18 +1780,12 @@
       },
       "createStandingOrderRequest": {
         "required": [
+          "accountFrom",
+          "accountTo",
           "amount",
-          "client_id",
-          "credit_account",
-          "currency",
-          "end_date",
-          "frequency",
-          "reference_number",
-          "sender_name",
-          "start_date",
-          "timestamp",
-          "transaction_type",
-          "user_narration"
+          "dateSettlement",
+          "endDate",
+          "frequency"
         ],
         "type": "object",
         "properties": {
@@ -1559,49 +1793,133 @@
             "type": "string",
             "example": "3000"
           },
-          "start_date": {
+          "accountFrom": {
             "type": "string",
-            "example": "2021-01-29"
+            "example": "0076003000023"
           },
-          "end_date": {
+          "accountTo": {
             "type": "string",
-            "example": "2021-05-01"
+            "example": "0026001001094"
           },
           "frequency": {
             "type": "string",
             "example": "M"
           },
-          "user_narration": {
+          "endDate": {
             "type": "string",
-            "example": "standing order to savings account"
+            "example": "20240831"
           },
-          "sender_name": {
+          "dateSettlement": {
+            "type": "string",
+            "example": "1120"
+          }
+        }
+      },
+      "createExternalStandingOrderRequest": {
+        "required": [
+          "accountFrom",
+          "accountTo",
+          "amount",
+          "beneficiaryName",
+          "dateSettlement",
+          "endDate",
+          "frequency",
+          "sortCode"
+        ],
+        "type": "object",
+        "properties": {
+          "amount": {
+            "type": "string",
+            "example": "3000"
+          },
+          "accountFrom": {
+            "type": "string",
+            "example": "0076003000023"
+          },
+          "accountTo": {
+            "type": "string",
+            "example": "0026001001094"
+          },
+          "frequency": {
+            "type": "string",
+            "example": "M"
+          },
+          "endDate": {
+            "type": "string",
+            "example": "20240831"
+          },
+          "dateSettlement": {
+            "type": "string",
+            "example": "1120"
+          },
+          "sortCode": {
+            "type": "string",
+            "example": "17000"
+          },
+          "beneficiaryName": {
             "type": "string",
             "example": "John Doe"
-          },
-          "credit_account": {
+          }
+        }
+      },
+      "balanceInquiryRequest": {
+        "required": [
+          "account"
+        ],
+        "type": "object",
+        "properties": {
+          "account": {
             "type": "string",
-            "example": "1789231313111"
-          },
-          "transaction_type": {
+            "example": "0076003000023"
+          }
+        }
+      },
+      "forexRequest": {
+        "required": [
+          "account"
+        ],
+        "type": "object",
+        "properties": {
+          "account": {
             "type": "string",
-            "example": "STO_START"
-          },
-          "reference_number": {
+            "example": "0076003000023"
+          }
+        }
+      },
+      "rtgsRequest": {
+        "required": [
+          "accountFrom",
+          "accountTo",
+          "amount",
+          "beneficiaryName",
+          "paymentNarrative",
+          "swiftCode"
+        ],
+        "type": "object",
+        "properties": {
+          "amount": {
             "type": "string",
-            "example": "20GY1KKB2CSWL"
+            "example": "50000"
           },
-          "timestamp": {
+          "accountFrom": {
             "type": "string",
-            "example": "2021-01-29T00:54:08+03:00"
+            "example": "0076003000023"
           },
-          "currency": {
+          "accountTo": {
             "type": "string",
-            "example": "KES"
+            "example": "0020276343557"
           },
-          "client_id": {
+          "beneficiaryName": {
             "type": "string",
-            "example": "OA9876543"
+            "example": "POWER GROUP TECHNOLOGIES LTD"
+          },
+          "paymentNarrative": {
+            "type": "string",
+            "example": "Payment for invoice #132189"
+          },
+          "swiftCode": {
+            "type": "string",
+            "example": "EQBLKENA"
           }
         }
       },
@@ -1687,38 +2005,18 @@
       },
       "cancelStandingOrderRequest": {
         "required": [
-          "client_id",
-          "currency",
-          "reference_number",
-          "so_id",
-          "timestamp",
-          "transaction_type"
+          "date",
+          "stoId"
         ],
         "type": "object",
         "properties": {
-          "so_id": {
+          "stoId": {
             "type": "string",
             "example": "0076003000023.10"
           },
-          "transaction_type": {
+          "date": {
             "type": "string",
-            "example": "STO_START"
-          },
-          "reference_number": {
-            "type": "string",
-            "example": "20GY1KKB2CSWL"
-          },
-          "timestamp": {
-            "type": "string",
-            "example": "2021-01-29T00:54:08+03:00"
-          },
-          "currency": {
-            "type": "string",
-            "example": "KES"
-          },
-          "client_id": {
-            "type": "string",
-            "example": "OA9876543"
+            "example": "20221117"
           }
         }
       },
@@ -2414,6 +2712,83 @@
           "transactionDate": {
             "type": "string",
             "example": "2021-01-29"
+          }
+        }
+      },
+      "balanceInquiryResponse": {
+        "type": "object",
+        "properties": {
+          "responseCode": {
+            "type": "string",
+            "example": "00"
+          },
+          "dateAndTimeTransmission": {
+            "type": "string",
+            "example": "0306150321"
+          },
+          "currencyCode": {
+            "type": "string",
+            "example": "404"
+          },
+          "actualBalance": {
+            "type": "string",
+            "example": "20000"
+          },
+          "availableBalance": {
+            "type": "string",
+            "example": "20000"
+          }
+        }
+      },
+      "forexResponse": {
+        "type": "object",
+        "properties": {
+          "responseCode": {
+            "type": "string",
+            "example": "00"
+          },
+          "dateAndTimeTransmission": {
+            "type": "string",
+            "example": "0306150321"
+          },
+          "currencyCode": {
+            "type": "string",
+            "example": "404"
+          },
+          "currencyRates": {
+            "type": "string",
+            "example": "CURRENCY|RATE.BUY|RATE.SELL~EUR|122.64|134.04~USD|118.55|129.65~TZS|0.0416|0.0623~GBP|140.69|152.09~UGX|.0281|.0363~ZAR|8.6|13.72~JPY|1.125|1.1816~INR|1.46|1.607~CAD|85.89|91.42~AUD|89.2|94.72"
+          }
+        }
+      },
+      "rtgsResponse": {
+        "type": "object",
+        "properties": {
+          "responseCode": {
+            "type": "string",
+            "example": "00"
+          },
+          "dateAndTimeTransmission": {
+            "type": "string",
+            "example": "0306150321"
+          },
+          "amount": {
+            "type": "integer",
+            "example": 5000
+          },
+          "currencyCode": {
+            "type": "string",
+            "example": "404"
+          },
+          "paymentNarrative": {
+            "type": "string",
+            "example": "Payment for invoice #132189"
+          },
+          "actualBalance": {
+            "type": "integer"
+          },
+          "availableBalance": {
+            "type": "integer"
           }
         }
       },
