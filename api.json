@@ -24,20 +24,20 @@
       "description": "Send Money APIs"
     },
     {
-      "name": "Buy",
-      "description": "Buy Apis"
-    },
-    {
-      "name": "Other Services",
-      "description": "Other Service APIs"
-    },
-    {
       "name": "Accounts",
       "description": "CBL Accounts"
     },
     {
+      "name": "Buy",
+      "description": "Buy Apis"
+    },
+    {
       "name": "Bill Payments",
       "description": "Pay your bills from your CBL account"
+    },
+    {
+      "name": "Other Services",
+      "description": "Other Service APIs"
     }
   ],
   "paths": {
@@ -404,7 +404,7 @@
     "/forex": {
       "post": {
         "tags": [
-          "Accounts"
+          "Send Money"
         ],
         "summary": "Get Forex Rates",
         "description": "Get Forex Rates\n",
@@ -464,7 +464,7 @@
     "/rtgs": {
       "post": {
         "tags": [
-          "Accounts"
+          "Send Money"
         ],
         "summary": "Send money via RTGS",
         "description": "Send money via RTGS\n",
