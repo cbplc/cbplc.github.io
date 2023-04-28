@@ -1669,7 +1669,6 @@
           "amount",
           "creditAccount",
           "currency",
-          "senderPhoneNumber",
           "timestamp",
           "transactionReference",
           "transactionType"
@@ -1707,7 +1706,6 @@
           "amount",
           "creditAccount",
           "currency",
-          "senderPhoneNumber",
           "timestamp",
           "transactionReference",
           "transactionType"
@@ -1745,7 +1743,6 @@
           "amount",
           "creditAccount",
           "currency",
-          "senderPhoneNumber",
           "timestamp",
           "transactionReference",
           "transactionType"
