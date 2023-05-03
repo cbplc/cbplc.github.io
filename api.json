@@ -2352,12 +2352,12 @@
       "nairobiWaterBillPaymentRequest": {
         "required": [
           "amount",
-          "client_id",
+          "creditAccount",
           "currency",
-          "meter_number",
-          "reference_number",
+          "serviceName",
+          "transactionReference",
           "timestamp",
-          "transaction_type"
+          "transactionType"
         ],
         "type": "object",
         "properties": {
@@ -2365,15 +2365,15 @@
             "type": "string",
             "example": "0"
           },
-          "meter_number": {
-            "type": "string",
-            "example": "1829732019321"
-          },
-          "transaction_type": {
+          "serviceName": {
             "type": "string",
             "example": "NAIROBIWATER"
           },
-          "reference_number": {
+          "transaction_type": {
+            "type": "string",
+            "example": "BILL_PAYMENT"
+          },
+          "transactionReference": {
             "type": "string",
             "example": "20GY1KKB2CSWL"
           },
@@ -2385,9 +2385,9 @@
             "type": "string",
             "example": "KES"
           },
-          "client_id": {
+          "creditAccount": {
             "type": "string",
-            "example": "OA9876543"
+            "example": "0161019000320"
           }
         }
       },
