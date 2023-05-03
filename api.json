@@ -2163,7 +2163,7 @@
           "amount",
           "accountFrom",
           "accountTo",
-          "paymentNarrative",
+          "paymentNarrative"
         ],
         "type": "object",
         "properties": {
