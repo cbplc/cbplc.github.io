@@ -2089,7 +2089,6 @@
           "amount",
           "creditAccount",
           "currency",
-          "senderPhoneNumber",
           "timestamp",
           "transactionReference",
           "transactionType"
