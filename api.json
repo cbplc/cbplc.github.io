@@ -2127,7 +2127,6 @@
           "amount",
           "creditAccount",
           "currency",
-          "senderPhoneNumber",
           "timestamp",
           "transactionReference",
           "transactionType"
@@ -2163,12 +2162,9 @@
       "internalFundsTransferRequest": {
         "required": [
           "amount",
-          "creditAccount",
-          "currency",
-          "senderPhoneNumber",
-          "timestamp",
-          "transactionReference",
-          "transactionType"
+          "accountFrom",
+          "accountTo",
+          "paymentNarrative",
         ],
         "type": "object",
         "properties": {
@@ -2176,29 +2172,17 @@
             "type": "string",
             "example": "3000"
           },
-          "creditAccount": {
+          "accountFrom": {
             "type": "string",
-            "example": "1829732019321"
+            "example": "0021007000823"
           },
-          "senderPhoneNumber": {
+          "accountTo": {
             "type": "string",
-            "example": "254715748115"
+            "example": "0141007000038"
           },
-          "transactionType": {
+          "paymentNarrative": {
             "type": "string",
-            "example": "FT"
-          },
-          "transactionReference": {
-            "type": "string",
-            "example": "20GY1KKB2CSWL"
-          },
-          "timestamp": {
-            "type": "string",
-            "example": "2021-01-29T00:54:08+03:00"
-          },
-          "currency": {
-            "type": "string",
-            "example": "KES"
+            "example": "Transfer funds from your CBL account to other CBL accounts"
           }
         }
       },
@@ -2220,7 +2204,7 @@
           },
           "creditAccount": {
             "type": "string",
-            "example": "1829732019321"
+            "example": "CA715748115"
           },
           "transactionType": {
             "type": "string",
@@ -2228,7 +2212,7 @@
           },
           "transactionReference": {
             "type": "string",
-            "example": "20GY1KKB2CSWL"
+            "example": "DL1LBN6HB89JR"
           },
           "timestamp": {
             "type": "string",
