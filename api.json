@@ -2382,7 +2382,7 @@
           "currency",
           "serviceName",
           "timestamp",
-          "transaction_type"
+          "transactionType"
         ],
         "type": "object",
         "properties": {
