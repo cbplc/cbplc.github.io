@@ -2070,7 +2070,7 @@
             "type": "string",
             "example": "PESALINK"
           },
-          "reference_number": {
+          "transactionReference": {
             "type": "string",
             "example": "20GY1KKB2CSWL"
           },
