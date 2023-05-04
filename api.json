@@ -2352,7 +2352,7 @@
             "type": "string",
             "example": "NAIROBIWATER"
           },
-          "transaction_type": {
+          "transactionType": {
             "type": "string",
             "example": "BILL_PAYMENT"
           },
