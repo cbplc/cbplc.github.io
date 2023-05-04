@@ -2463,12 +2463,12 @@
       "starTimesBillPaymentRequest": {
         "required": [
           "amount",
-          "client_id",
-          "credit_account",
+          "serviceName",
+          "creditAccount",
           "currency",
-          "reference_number",
+          "transactionReference",
           "timestamp",
-          "transaction_type"
+          "transactionType"
         ],
         "type": "object",
         "properties": {
@@ -2476,15 +2476,15 @@
             "type": "string",
             "example": "0"
           },
-          "credit_account": {
+          "creditAccount": {
             "type": "string",
             "example": "9876445667"
           },
-          "transaction_type": {
+          "transactionType": {
             "type": "string",
             "example": "STARTIMES"
           },
-          "reference_number": {
+          "transactionReference": {
             "type": "string",
             "example": "20GY1KKB2CSWL"
           },
@@ -2496,9 +2496,9 @@
             "type": "string",
             "example": "KES"
           },
-          "client_id": {
+          "serviceName": {
             "type": "string",
-            "example": "OA9876543"
+            "example": "STARTIMES"
           }
         }
       },
