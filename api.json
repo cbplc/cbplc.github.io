@@ -1817,11 +1817,11 @@
           "accountFrom",
           "accountTo",
           "amount",
-          "beneficiaryName",
           "dateSettlement",
           "endDate",
           "frequency",
-          "sortCode"
+          "sortCode",
+          "name"
         ],
         "type": "object",
         "properties": {
@@ -1853,7 +1853,7 @@
             "type": "string",
             "example": "17000"
           },
-          "beneficiaryName": {
+          "name": {
             "type": "string",
             "example": "John Doe"
           }
