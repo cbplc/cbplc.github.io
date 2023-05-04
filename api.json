@@ -1787,7 +1787,7 @@
         "type": "object",
         "properties": {
           "amount": {
-            "type": "string",
+            "type": "int",
             "example": "3000"
           },
           "accountFrom": {
