@@ -401,6 +401,66 @@
         }
       }
     },
+    "/account-statement": {
+      "post": {
+        "tags": [
+          "Accounts"
+        ],
+        "summary": "Get account statement",
+        "description": "Get account statement\n",
+        "operationId": "accountStatement",
+        "parameters": [
+          {
+            "name": "x-app-id",
+            "in": "header",
+            "description": "pass the project id",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "api-key",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Create a account statement inquiry Request",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/accountStatementRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successfully created standing order",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/balanceInquiryResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      }
+    },
     "/forex": {
       "post": {
         "tags": [
@@ -1787,8 +1847,8 @@
         "type": "object",
         "properties": {
           "amount": {
-            "type": "int",
-            "example": "3000"
+            "type": "number",
+            "example": 3000
           },
           "accountFrom": {
             "type": "string",
@@ -1868,6 +1928,23 @@
           "account": {
             "type": "string",
             "example": "0076003000023"
+          }
+        }
+      },
+      "accountStatementRequest": {
+        "required": [
+          "startDate",
+          "endDate"
+        ],
+        "type": "object",
+        "properties": {
+          "startDate": {
+            "type": "string",
+            "example": "20210628"
+          },
+          "endDate": {
+            "type": "string",
+            "example": "20210629"
           }
         }
       },
