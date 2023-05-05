@@ -2640,7 +2640,7 @@
             "type": "string",
             "example": "BILL_PAYMENT"
           },
-          "reference_number": {
+          "transactionReference": {
             "type": "string",
             "example": "20GY1KKB2CSWL"
           },
@@ -2661,11 +2661,11 @@
       "gotvPresentmentRequest": {
         "required": [
           "client_id",
-          "credit_account",
+          "creditAccount",
           "currency",
-          "reference_number",
+          "transactionReference",
           "timestamp",
-          "transaction_type"
+          "transactionType"
         ],
         "type": "object",
         "properties": {
@@ -2673,7 +2673,7 @@
             "type": "string",
             "example": "9876445667"
           },
-          "transaction_type": {
+          "transactionType": {
             "type": "string",
             "example": "GOTVPRESENTMENT"
           },
