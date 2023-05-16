@@ -2329,6 +2329,10 @@
             "type": "string",
             "example": "KES"
           },
+            "transactionReference": {
+            "type": "string",
+            "example": "DDGDJJFFIKDD"
+          },
           "timestamp": {
             "type": "string",
             "example": "2021-01-29T00:54:08+03:00"
