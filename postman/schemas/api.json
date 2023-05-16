@@ -14,7 +14,7 @@
   },
   "servers": [
     {
-      "url": "http://127.0.0.1:8000",
+      "url": "http://192.168.19.79:8000",
       "description": "CBL Dev API Gateway"
     }
   ],
@@ -2104,7 +2104,7 @@
           "direction",
           "narration",
           "receiverPhoneNumber",
-          "senderPhoneNumber",
+         
           "timestamp",
           "transactionReference",
           "transactionType"
@@ -2127,13 +2127,10 @@
             "type": "string",
             "example": "pesalink to John Doe"
           },
-          "senderPhoneNumber": {
-            "type": "string",
-            "example": "254714315045"
-          },
+         
           "receiverPhoneNumber": {
             "type": "string",
-            "example": "254714315045"
+            "example": "254714315046"
           },
           "beneficiaryName": {
             "type": "string",
@@ -2267,7 +2264,6 @@
           "amount",
           "creditAccount",
           "currency",
-          "senderPhoneNumber",
           "timestamp",
           "transactionReference",
           "transactionType"
@@ -2297,10 +2293,6 @@
           "currency": {
             "type": "string",
             "example": "KES"
-          },
-          "senderPhoneNumber": {
-            "type": "string",
-            "example": "254714315046"
           }
         }
       },
@@ -2310,7 +2302,6 @@
           "creditAccount",
           "currency",
           "debitAccount",
-          "senderPhoneNumber",
           "timestamp",
           "transactionReference",
           "transactionType"
@@ -2321,10 +2312,7 @@
             "type": "string",
             "example": "FTWALLET2WALLET"
           },
-          "senderPhoneNumber": {
-            "type": "string",
-            "example": "254715748115"
-          },
+          
           "amount": {
             "type": "string",
             "example": "3000"
@@ -2332,10 +2320,6 @@
           "creditAccount": {
             "type": "string",
             "example": "CA720547666"
-          },
-          "transactionReference": {
-            "type": "string",
-            "example": "DL0LBN6PK20"
           },
           "debitAccount": {
             "type": "string",
@@ -2640,7 +2624,7 @@
             "type": "string",
             "example": "BILL_PAYMENT"
           },
-          "reference_number": {
+          "transactionReference": {
             "type": "string",
             "example": "20GY1KKB2CSWL"
           },
@@ -2661,11 +2645,11 @@
       "gotvPresentmentRequest": {
         "required": [
           "client_id",
-          "credit_account",
+          "creditAccount",
           "currency",
-          "reference_number",
+          "transactionReference",
           "timestamp",
-          "transaction_type"
+          "transactionType"
         ],
         "type": "object",
         "properties": {
@@ -2673,7 +2657,7 @@
             "type": "string",
             "example": "9876445667"
           },
-          "transaction_type": {
+          "transactionType": {
             "type": "string",
             "example": "GOTVPRESENTMENT"
           },
