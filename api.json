@@ -4,7 +4,7 @@
     "title": "CBL APIs",
     "description": "This is test on CBL APIs",
     "contact": {
-      "email": "william.kamuyu@gapstack.com"
+      "email": "it@creditbank.co.ke"
     },
     "license": {
       "name": "Apache 2.0",
@@ -14,7 +14,7 @@
   },
   "servers": [
     {
-      "url": "http://192.168.19.79:8000",
+      "url": "https://konnectapigateway.creditbank.co.ke",
       "description": "CBL Dev API Gateway"
     }
   ],
@@ -1722,8 +1722,222 @@
       }
     }
   },
+  "/pesalink-verification": {
+      "post": {
+        "tags": [
+          "Send Money"
+        ],
+        "summary": "Verify account number Pesalink",
+        "description": "Verify account number Pesalink\n",
+        "operationId": "pesalinkVerification",
+        "parameters": [
+          {
+            "name": "x-app-id",
+            "in": "header",
+            "description": "pass the project id",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "api-key",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Verify account number on Pesalink",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/pesalinkVerificationRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Request successfully processed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/defaultResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      }
+  },
+  "/wallet-registration": {
+      "post": {
+        "tags": [
+          "Send Money"
+        ],
+        "summary": "create a wallet account CBL",
+        "description": "create a wallet account CBL\n",
+        "operationId": "walletRegistration",
+        "parameters": [
+          {
+            "name": "x-app-id",
+            "in": "header",
+            "description": "pass the project id",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "api-key",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "create a wallet account CBL",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/walletRegistrationRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Request successfully processed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/defaultResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      }
+  },
   "components": {
     "schemas": {
+      "walletRegistrationRequest": {
+        "required": [
+          "currency",
+          "timestamp",
+          "transactionType",
+          "surname",
+          "firstName",
+          "lastName",
+          "idNumber",
+          "email",
+          "deviceId",
+          "imsi",
+          "dateOfBirth",
+          "phoneNumber",
+          "gender"
+        ],
+        "type": "object",
+        "properties": {
+          "currency": {
+            "type": "string",
+            "example": "KES"
+          },
+          "timestamp": {
+            "type": "string",
+            "example": "2021-01-29T00:54:08+03:00"
+          },
+          "transactionType": {
+            "type": "string",
+            "example": "WALLET_REGISTRATION"
+          },
+          "surname": {
+            "type": "string",
+            "example": "EKUWOM"
+          },
+          "firstName": {
+            "type": "string",
+            "example": "AGNES"
+          },
+          "lastName": {
+            "type": "string",
+            "example": "AMONI"
+          },
+          "idNumber": {
+            "type": "string",
+            "example": "20098160"
+          },
+          "email": {
+            "type": "string",
+            "example": "test@gmail.com"
+          },
+          "deviceId": {
+            "type": "string",
+            "example": "124359837755"
+          },
+          "imsi": {
+            "type": "string",
+            "example": "0893523736236"
+          },
+          "dateOfBirth": {
+            "type": "string",
+            "example": "09-12-2000"
+          },
+          "phoneNumber": {
+            "type": "string",
+            "example": "254"
+          },
+          "gender": {
+            "type": "string",
+            "example": "M"
+          },
+        }
+      },
+      "pesalinkVerificationRequest": {
+        "required": [
+          "bankCode",
+          "timestamp",
+          "transactionType"
+        ],
+        "type": "object",
+        "properties": {
+          "bankCode": {
+            "type": "string",
+            "example": "0025"
+          },
+          "transactionType": {
+            "type": "string",
+            "example": "SAFARICOM"
+          },
+          "timestamp": {
+            "type": "string",
+            "example": "2021-01-29T00:54:08+03:00"
+          }
+        }
+      },
       "safaricomAirtimeTopUpRequest": {
         "required": [
           "amount",
