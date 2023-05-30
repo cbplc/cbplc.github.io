@@ -1723,124 +1723,124 @@
     }
   },
   "/pesalink-verification": {
-    "post": {
-      "tags": [
-        "Send Money"
-      ],
-      "summary": "Verify account number Pesalink",
-      "description": "Verify account number Pesalink\n",
-      "operationId": "pesalinkVerification",
-      "parameters": [
-        {
-          "name": "x-app-id",
-          "in": "header",
-          "description": "pass the project id",
-          "required": true,
-          "style": "simple",
-          "explode": false,
-          "schema": {
-            "type": "string"
-          }
-        },
-        {
-          "name": "x-api-key",
-          "in": "header",
-          "description": "api-key",
-          "required": true,
-          "style": "simple",
-          "explode": false,
-          "schema": {
-            "type": "string"
-          }
-        }
-      ],
-      "requestBody": {
-        "description": "Verify account number on Pesalink",
-        "content": {
-          "application/json": {
+      "post": {
+        "tags": [
+          "Send Money"
+        ],
+        "summary": "Verify account number Pesalink",
+        "description": "Verify account number Pesalink\n",
+        "operationId": "pesalinkVerification",
+        "parameters": [
+          {
+            "name": "x-app-id",
+            "in": "header",
+            "description": "pass the project id",
+            "required": true,
+            "style": "simple",
+            "explode": false,
             "schema": {
-              "$ref": "#/components/schemas/pesalinkVerificationRequest"
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "api-key",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
             }
           }
-        },
-        "required": true
-      },
-      "responses": {
-        "200": {
-          "description": "Request successfully processed",
+        ],
+        "requestBody": {
+          "description": "Verify account number on Pesalink",
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/defaultResponse"
+                "$ref": "#/components/schemas/pesalinkVerificationRequest"
               }
             }
-          }
+          },
+          "required": true
         },
-        "400": {
-          "description": "bad input parameter"
+        "responses": {
+          "200": {
+            "description": "Request successfully processed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/defaultResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
         }
       }
-    }
   },
   "/wallet-registration": {
-    "post": {
-      "tags": [
-        "Send Money"
-      ],
-      "summary": "create a wallet account CBL",
-      "description": "create a wallet account CBL\n",
-      "operationId": "walletRegistration",
-      "parameters": [
-        {
-          "name": "x-app-id",
-          "in": "header",
-          "description": "pass the project id",
-          "required": true,
-          "style": "simple",
-          "explode": false,
-          "schema": {
-            "type": "string"
-          }
-        },
-        {
-          "name": "x-api-key",
-          "in": "header",
-          "description": "api-key",
-          "required": true,
-          "style": "simple",
-          "explode": false,
-          "schema": {
-            "type": "string"
-          }
-        }
-      ],
-      "requestBody": {
-        "description": "create a wallet account CBL",
-        "content": {
-          "application/json": {
+      "post": {
+        "tags": [
+          "Send Money"
+        ],
+        "summary": "create a wallet account CBL",
+        "description": "create a wallet account CBL\n",
+        "operationId": "walletRegistration",
+        "parameters": [
+          {
+            "name": "x-app-id",
+            "in": "header",
+            "description": "pass the project id",
+            "required": true,
+            "style": "simple",
+            "explode": false,
             "schema": {
-              "$ref": "#/components/schemas/walletRegistrationRequest"
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "api-key",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
             }
           }
-        },
-        "required": true
-      },
-      "responses": {
-        "200": {
-          "description": "Request successfully processed",
+        ],
+        "requestBody": {
+          "description": "create a wallet account CBL",
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/defaultResponse"
+                "$ref": "#/components/schemas/walletRegistrationRequest"
               }
             }
-          }
+          },
+          "required": true
         },
-        "400": {
-          "description": "bad input parameter"
+        "responses": {
+          "200": {
+            "description": "Request successfully processed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/defaultResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
         }
       }
-    }
   },
   "components": {
     "schemas": {
@@ -1913,7 +1913,7 @@
           "gender": {
             "type": "string",
             "example": "M"
-          }
+          },
         }
       },
       "pesalinkVerificationRequest": {
@@ -2340,6 +2340,7 @@
             "type": "string",
             "example": "pesalink to John Doe"
           },
+         
           "receiverPhoneNumber": {
             "type": "string",
             "example": "254714315046"
@@ -2350,7 +2351,7 @@
           },
           "creditAccount": {
             "type": "string",
-            "example": "1789231313111"
+            "example": "0021024000038"
           },
           "transactionType": {
             "type": "string",
@@ -2524,6 +2525,7 @@
             "type": "string",
             "example": "FTWALLET2WALLET"
           },
+          
           "amount": {
             "type": "string",
             "example": "3000"
@@ -2642,7 +2644,7 @@
           },
           "creditAccount": {
             "type": "string",
-            "example": "0161019000320"
+            "example": "0021024000038"
           }
         }
       },
@@ -2664,7 +2666,7 @@
           },
           "creditAccount": {
             "type": "string",
-            "example": "0141007000038"
+            "example": "0021024000038"
           },
           "transactionType": {
             "type": "string",
@@ -2706,7 +2708,7 @@
           },
           "creditAccount": {
             "type": "string",
-            "example": "9876445667"
+            "example": "0021024000038"
           },
           "transactionType": {
             "type": "string",
@@ -2724,10 +2726,12 @@
             "type": "string",
             "example": "KES"
           },
+          
           "serviceName": {
             "type": "string",
             "example": "ZUKU_TV"
           }
+          
         }
       },
       "starTimesBillPaymentRequest": {
@@ -2748,7 +2752,7 @@
           },
           "creditAccount": {
             "type": "string",
-            "example": "9876445667"
+            "example": "0021024000038"
           },
           "transactionType": {
             "type": "string",
@@ -2827,7 +2831,7 @@
           },
           "creditAccount": {
             "type": "string",
-            "example": "9876445667"
+            "example": "0021024000038"
           },
           "transactionType": {
             "type": "string",
@@ -2906,7 +2910,7 @@
           },
           "creditAccount": {
             "type": "string",
-            "example": "9876445667"
+            "example": "0021024000038"
           },
           "transactionType": {
             "type": "string",
