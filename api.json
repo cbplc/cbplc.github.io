@@ -1,3255 +1,3284 @@
 {
-	"openapi": "3.0.0",
-	"info": {
-		"title": "CBL APIs",
-		"description": "This is test on CBL APIs",
-		"contact": {
-			"email": "it@creditbank.co.ke"
-		},
-		"license": {
-			"name": "Apache 2.0",
-			"url": "http://www.apache.org/licenses/LICENSE-2.0.html"
-		},
-		"version": "1.0.0"
-	},
-	"servers": [{
-		"url": "https://konnectapigateway.creditbank.co.ke",
-		"description": "CBL Dev API Gateway"
-	}],
-	"tags": [{
-			"name": "Send Money",
-			"description": "Send Money APIs"
-		},
-		{
-			"name": "Accounts",
-			"description": "CBL Accounts"
-		},
-		{
-			"name": "Buy",
-			"description": "Buy Apis"
-		},
-		{
-			"name": "Bill Payments",
-			"description": "Pay your bills from your CBL account"
-		},
-		{
-			"name": "Other Services",
-			"description": "Other Service APIs"
-		}
-	],
-	"paths": {
-		"/create-standing-order": {
-			"post": {
-				"tags": [
-					"Accounts"
-				],
-				"summary": "Create a standing order on your CBL account",
-				"description": "Create a standing order on your CBL account\n",
-				"operationId": "createStandingOrder",
-				"parameters": [{
-						"name": "x-app-id",
-						"in": "header",
-						"description": "pass the project id",
-						"required": true,
-						"style": "simple",
-						"explode": false,
-						"schema": {
-							"type": "string"
-						}
-					},
-					{
-						"name": "x-api-key",
-						"in": "header",
-						"description": "api-key",
-						"required": true,
-						"style": "simple",
-						"explode": false,
-						"schema": {
-							"type": "string"
-						}
-					}
-				],
-				"requestBody": {
-					"description": "Create a standing order Request",
-					"content": {
-						"application/json": {
-							"schema": {
-								"$ref": "#/components/schemas/createStandingOrderRequest"
-							}
-						}
-					},
-					"required": true
-				},
-				"responses": {
-					"200": {
-						"description": "Successfully created standing order",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/defaultResponse"
-								}
-							}
-						}
-					},
-					"400": {
-						"description": "bad input parameter"
-					}
-				}
-			}
-		},
-		"/create-external-standing-order": {
-			"post": {
-				"tags": [
-					"Accounts"
-				],
-				"summary": "Create a standing order from your CBL account to an account within another bank",
-				"description": "Create a standing order from your CBL account to an account within another bank\n",
-				"operationId": "createExternalStandingOrder",
-				"parameters": [{
-						"name": "x-app-id",
-						"in": "header",
-						"description": "pass the project id",
-						"required": true,
-						"style": "simple",
-						"explode": false,
-						"schema": {
-							"type": "string"
-						}
-					},
-					{
-						"name": "x-api-key",
-						"in": "header",
-						"description": "api-key",
-						"required": true,
-						"style": "simple",
-						"explode": false,
-						"schema": {
-							"type": "string"
-						}
-					}
-				],
-				"requestBody": {
-					"description": "Create a standing order Request",
-					"content": {
-						"application/json": {
-							"schema": {
-								"$ref": "#/components/schemas/createExternalStandingOrderRequest"
-							}
-						}
-					},
-					"required": true
-				},
-				"responses": {
-					"200": {
-						"description": "Successfully created standing order",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/defaultResponse"
-								}
-							}
-						}
-					},
-					"400": {
-						"description": "bad input parameter"
-					}
-				}
-			}
-		},
-		"/standing-order-lookup": {
-			"post": {
-				"tags": [
-					"Accounts"
-				],
-				"summary": "Search for an existing standing order on your CBL account",
-				"description": "Search for existing standing order on your CBL account\n",
-				"operationId": "standingOrderLookup",
-				"parameters": [{
-						"name": "x-app-id",
-						"in": "header",
-						"description": "pass the project id",
-						"required": true,
-						"style": "simple",
-						"explode": false,
-						"schema": {
-							"type": "string"
-						}
-					},
-					{
-						"name": "x-api-key",
-						"in": "header",
-						"description": "api-key",
-						"required": true,
-						"style": "simple",
-						"explode": false,
-						"schema": {
-							"type": "string"
-						}
-					}
-				],
-				"requestBody": {
-					"description": "Results for Search on an existing standing order Request",
-					"content": {
-						"application/json": {
-							"schema": {
-								"$ref": "#/components/schemas/standingOrderLookupRequest"
-							}
-						}
-					},
-					"required": true
-				},
-				"responses": {
-					"200": {
-						"description": "Found the following details",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/defaultResponse"
-								}
-							}
-						}
-					},
-					"400": {
-						"description": "bad input parameter"
-					}
-				}
-			}
-		},
-		"/ammend-standing-order": {
-			"post": {
-				"tags": [
-					"Accounts"
-				],
-				"summary": "Ammend an existing standing order on your CBL account",
-				"description": "Ammend an existing standing order on your CBL account\n",
-				"operationId": "ammendStandingOrder",
-				"parameters": [{
-						"name": "x-app-id",
-						"in": "header",
-						"description": "pass the project id",
-						"required": true,
-						"style": "simple",
-						"explode": false,
-						"schema": {
-							"type": "string"
-						}
-					},
-					{
-						"name": "x-api-key",
-						"in": "header",
-						"description": "api-key",
-						"required": true,
-						"style": "simple",
-						"explode": false,
-						"schema": {
-							"type": "string"
-						}
-					}
-				],
-				"requestBody": {
-					"description": "Ammend an existing standing order Request",
-					"content": {
-						"application/json": {
-							"schema": {
-								"$ref": "#/components/schemas/ammendStandingOrderRequest"
-							}
-						}
-					},
-					"required": true
-				},
-				"responses": {
-					"200": {
-						"description": "Successfully ammended standing order",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/defaultResponse"
-								}
-							}
-						}
-					},
-					"400": {
-						"description": "bad input parameter"
-					}
-				}
-			}
-		},
-		"/cancel-standing-order": {
-			"post": {
-				"tags": [
-					"Accounts"
-				],
-				"summary": "Cancel an existing standing order on your CBL account",
-				"description": "Cancel an existing standing order on your CBL account\n",
-				"operationId": "cancelStandingOrder",
-				"parameters": [{
-						"name": "x-app-id",
-						"in": "header",
-						"description": "pass the project id",
-						"required": true,
-						"style": "simple",
-						"explode": false,
-						"schema": {
-							"type": "string"
-						}
-					},
-					{
-						"name": "x-api-key",
-						"in": "header",
-						"description": "api-key",
-						"required": true,
-						"style": "simple",
-						"explode": false,
-						"schema": {
-							"type": "string"
-						}
-					}
-				],
-				"requestBody": {
-					"description": "Cancel a standing order Request",
-					"content": {
-						"application/json": {
-							"schema": {
-								"$ref": "#/components/schemas/cancelStandingOrderRequest"
-							}
-						}
-					},
-					"required": true
-				},
-				"responses": {
-					"200": {
-						"description": "Successfully cancelled the standing order",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/defaultResponse"
-								}
-							}
-						}
-					},
-					"400": {
-						"description": "bad input parameter"
-					}
-				}
-			}
-		},
-		"/balance-inquiry": {
-			"post": {
-				"tags": [
-					"Accounts"
-				],
-				"summary": "Get account balance",
-				"description": "Get account balance\n",
-				"operationId": "balanceInquiry",
-				"parameters": [{
-						"name": "x-app-id",
-						"in": "header",
-						"description": "pass the project id",
-						"required": true,
-						"style": "simple",
-						"explode": false,
-						"schema": {
-							"type": "string"
-						}
-					},
-					{
-						"name": "x-api-key",
-						"in": "header",
-						"description": "api-key",
-						"required": true,
-						"style": "simple",
-						"explode": false,
-						"schema": {
-							"type": "string"
-						}
-					}
-				],
-				"requestBody": {
-					"description": "Create a balance inquiry Request",
-					"content": {
-						"application/json": {
-							"schema": {
-								"$ref": "#/components/schemas/balanceInquiryRequest"
-							}
-						}
-					},
-					"required": true
-				},
-				"responses": {
-					"200": {
-						"description": "Successfully created standing order",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/balanceInquiryResponse"
-								}
-							}
-						}
-					},
-					"400": {
-						"description": "bad input parameter"
-					}
-				}
-			}
-		},
-		"/account-statement": {
-			"post": {
-				"tags": [
-					"Accounts"
-				],
-				"summary": "Get account statement",
-				"description": "Get account statement\n",
-				"operationId": "accountStatement",
-				"parameters": [{
-						"name": "x-app-id",
-						"in": "header",
-						"description": "pass the project id",
-						"required": true,
-						"style": "simple",
-						"explode": false,
-						"schema": {
-							"type": "string"
-						}
-					},
-					{
-						"name": "x-api-key",
-						"in": "header",
-						"description": "api-key",
-						"required": true,
-						"style": "simple",
-						"explode": false,
-						"schema": {
-							"type": "string"
-						}
-					}
-				],
-				"requestBody": {
-					"description": "Create a account statement inquiry Request",
-					"content": {
-						"application/json": {
-							"schema": {
-								"$ref": "#/components/schemas/accountStatementRequest"
-							}
-						}
-					},
-					"required": true
-				},
-				"responses": {
-					"200": {
-						"description": "Successfully created standing order",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/balanceInquiryResponse"
-								}
-							}
-						}
-					},
-					"400": {
-						"description": "bad input parameter"
-					}
-				}
-			}
-		},
-		"/forex": {
-			"post": {
-				"tags": [
-					"Send Money"
-				],
-				"summary": "Get Forex Rates",
-				"description": "Get Forex Rates\n",
-				"operationId": "forex",
-				"parameters": [{
-						"name": "x-app-id",
-						"in": "header",
-						"description": "pass the project id",
-						"required": true,
-						"style": "simple",
-						"explode": false,
-						"schema": {
-							"type": "string"
-						}
-					},
-					{
-						"name": "x-api-key",
-						"in": "header",
-						"description": "api-key",
-						"required": true,
-						"style": "simple",
-						"explode": false,
-						"schema": {
-							"type": "string"
-						}
-					}
-				],
-				"requestBody": {
-					"description": "Create a forex rate Request",
-					"content": {
-						"application/json": {
-							"schema": {
-								"$ref": "#/components/schemas/forexRequest"
-							}
-						}
-					},
-					"required": true
-				},
-				"responses": {
-					"200": {
-						"description": "Successfully fetched forex rates",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/forexResponse"
-								}
-							}
-						}
-					},
-					"400": {
-						"description": "bad input parameter"
-					}
-				}
-			}
-		},
-		"/rtgs": {
-			"post": {
-				"tags": [
-					"Send Money"
-				],
-				"summary": "Send money via RTGS",
-				"description": "Send money via RTGS\n",
-				"operationId": "rtgs",
-				"parameters": [{
-						"name": "x-app-id",
-						"in": "header",
-						"description": "pass the project id",
-						"required": true,
-						"style": "simple",
-						"explode": false,
-						"schema": {
-							"type": "string"
-						}
-					},
-					{
-						"name": "x-api-key",
-						"in": "header",
-						"description": "api-key",
-						"required": true,
-						"style": "simple",
-						"explode": false,
-						"schema": {
-							"type": "string"
-						}
-					}
-				],
-				"requestBody": {
-					"description": "Create a RTGS Request",
-					"content": {
-						"application/json": {
-							"schema": {
-								"$ref": "#/components/schemas/rtgsRequest"
-							}
-						}
-					},
-					"required": true
-				},
-				"responses": {
-					"200": {
-						"description": "Successfully fetched forex rates",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/rtgsResponse"
-								}
-							}
-						}
-					},
-					"400": {
-						"description": "bad input parameter"
-					}
-				}
-			}
-		},
-		"/pesa-link-to-bank": {
-			"post": {
-				"tags": [
-					"Send Money"
-				],
-				"summary": "Transfer funds from your CBL account through Pesalink to other banks",
-				"description": "Transfer funds from your CBL account through Pesalink to other banks\n",
-				"operationId": "pesalinkToBank",
-				"parameters": [{
-						"name": "x-app-id",
-						"in": "header",
-						"description": "pass the project id",
-						"required": true,
-						"style": "simple",
-						"explode": false,
-						"schema": {
-							"type": "string"
-						}
-					},
-					{
-						"name": "x-api-key",
-						"in": "header",
-						"description": "api-key",
-						"required": true,
-						"style": "simple",
-						"explode": false,
-						"schema": {
-							"type": "string"
-						}
-					}
-				],
-				"requestBody": {
-					"description": "Pesa link to other bank Request",
-					"content": {
-						"application/json": {
-							"schema": {
-								"$ref": "#/components/schemas/pesalinkToBankRequest"
-							}
-						}
-					},
-					"required": true
-				},
-				"responses": {
-					"200": {
-						"description": "Successfully transfered the funds",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/defaultResponse"
-								}
-							}
-						}
-					},
-					"400": {
-						"description": "bad input parameter"
-					}
-				}
-			}
-		},
-		"/mpesa-b2c": {
-			"post": {
-				"tags": [
-					"Send Money"
-				],
-				"summary": "Transfer funds from your CBL account to MPESA",
-				"description": "Transfer funds from your CBL account to MPESA\n",
-				"operationId": "mpesaB2C",
-				"parameters": [{
-						"name": "x-app-id",
-						"in": "header",
-						"description": "pass the project id",
-						"required": true,
-						"style": "simple",
-						"explode": false,
-						"schema": {
-							"type": "string"
-						}
-					},
-					{
-						"name": "x-api-key",
-						"in": "header",
-						"description": "api-key",
-						"required": true,
-						"style": "simple",
-						"explode": false,
-						"schema": {
-							"type": "string"
-						}
-					}
-				],
-				"requestBody": {
-					"description": "MPESA B2C Request",
-					"content": {
-						"application/json": {
-							"schema": {
-								"$ref": "#/components/schemas/mpesaB2CRequest"
-							}
-						}
-					},
-					"required": true
-				},
-				"responses": {
-					"200": {
-						"description": "Successfully transfered the funds",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/defaultResponse"
-								}
-							}
-						}
-					},
-					"400": {
-						"description": "bad input parameter"
-					}
-				}
-			}
-		},
-		"/airtel-b2c": {
-			"post": {
-				"tags": [
-					"Send Money"
-				],
-				"summary": "Transfer funds from your CBL account to Airtel",
-				"description": "Transfer funds from your CBL account to Airtel\n",
-				"operationId": "airtelB2C",
-				"parameters": [{
-						"name": "x-app-id",
-						"in": "header",
-						"description": "pass the project id",
-						"required": true,
-						"style": "simple",
-						"explode": false,
-						"schema": {
-							"type": "string"
-						}
-					},
-					{
-						"name": "x-api-key",
-						"in": "header",
-						"description": "api-key",
-						"required": true,
-						"style": "simple",
-						"explode": false,
-						"schema": {
-							"type": "string"
-						}
-					}
-				],
-				"requestBody": {
-					"description": "Airtel B2C Request",
-					"content": {
-						"application/json": {
-							"schema": {
-								"$ref": "#/components/schemas/airtelB2CRequest"
-							}
-						}
-					},
-					"required": true
-				},
-				"responses": {
-					"200": {
-						"description": "Successfully transfered the funds",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/defaultResponse"
-								}
-							}
-						}
-					},
-					"400": {
-						"description": "bad input parameter"
-					}
-				}
-			}
-		},
-		"/internal-funds-transfer": {
-			"post": {
-				"tags": [
-					"Send Money"
-				],
-				"summary": "Transfer funds from your CBL account to other CBL accounts",
-				"description": "Transfer funds from your CBL account to other CBL accounts\n",
-				"operationId": "internalFundsTransfer",
-				"parameters": [{
-						"name": "x-app-id",
-						"in": "header",
-						"description": "pass the project id",
-						"required": true,
-						"style": "simple",
-						"explode": false,
-						"schema": {
-							"type": "string"
-						}
-					},
-					{
-						"name": "x-api-key",
-						"in": "header",
-						"description": "api-key",
-						"required": true,
-						"style": "simple",
-						"explode": false,
-						"schema": {
-							"type": "string"
-						}
-					}
-				],
-				"requestBody": {
-					"description": "Internal Funds Transfer Request",
-					"content": {
-						"application/json": {
-							"schema": {
-								"$ref": "#/components/schemas/internalFundsTransferRequest"
-							}
-						}
-					},
-					"required": true
-				},
-				"responses": {
-					"200": {
-						"description": "Successfully transfered the funds",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/defaultResponse"
-								}
-							}
-						}
-					},
-					"400": {
-						"description": "bad input parameter"
-					}
-				}
-			}
-		},
-		"/wallet-funds-transfer": {
-			"post": {
-				"tags": [
-					"Send Money"
-				],
-				"summary": "Transfer funds from your CBL account to wallet accounts",
-				"description": "Transfer funds from your CBL account to wallet accounts\n",
-				"operationId": "walletFundsTransfer",
-				"parameters": [{
-						"name": "x-app-id",
-						"in": "header",
-						"description": "pass the project id",
-						"required": true,
-						"style": "simple",
-						"explode": false,
-						"schema": {
-							"type": "string"
-						}
-					},
-					{
-						"name": "x-api-key",
-						"in": "header",
-						"description": "api-key",
-						"required": true,
-						"style": "simple",
-						"explode": false,
-						"schema": {
-							"type": "string"
-						}
-					}
-				],
-				"requestBody": {
-					"description": "Wallet Funds Transfer Request",
-					"content": {
-						"application/json": {
-							"schema": {
-								"$ref": "#/components/schemas/walletFundsTransferRequest"
-							}
-						}
-					},
-					"required": true
-				},
-				"responses": {
-					"200": {
-						"description": "Successfully transfered the funds",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/defaultResponse"
-								}
-							}
-						}
-					},
-					"400": {
-						"description": "bad input parameter"
-					}
-				}
-			}
-		},
-		"/wallet-to-wallet-transfer": {
-			"post": {
-				"tags": [
-					"Send Money"
-				],
-				"summary": "Transfer funds from your CBL wallet to another CBL wallet accounts",
-				"description": "Transfer funds from your CBL wallet to another CBL wallet accounts\n",
-				"operationId": "walletToWalletTransfer",
-				"parameters": [{
-						"name": "x-app-id",
-						"in": "header",
-						"description": "pass the project id",
-						"required": true,
-						"style": "simple",
-						"explode": false,
-						"schema": {
-							"type": "string"
-						}
-					},
-					{
-						"name": "x-api-key",
-						"in": "header",
-						"description": "api-key",
-						"required": true,
-						"style": "simple",
-						"explode": false,
-						"schema": {
-							"type": "string"
-						}
-					}
-				],
-				"requestBody": {
-					"description": "Wallet to Wallet Transfer Request",
-					"content": {
-						"application/json": {
-							"schema": {
-								"$ref": "#/components/schemas/walletToWalletTransferRequest"
-							}
-						}
-					},
-					"required": true
-				},
-				"responses": {
-					"200": {
-						"description": "Successfully transfered the funds",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/defaultResponse"
-								}
-							}
-						}
-					},
-					"400": {
-						"description": "bad input parameter"
-					}
-				}
-			}
-		},
-		"/safaricom-airtime-top-up": {
-			"post": {
-				"tags": [
-					"Buy"
-				],
-				"summary": "Safaricom Airtime Topup",
-				"description": "Buy Safaricom pre-paid airtime from your CBL account\n",
-				"operationId": "safaricomAirtimeTopUp",
-				"parameters": [{
-						"name": "x-app-id",
-						"in": "header",
-						"description": "pass the project id",
-						"required": true,
-						"style": "simple",
-						"explode": false,
-						"schema": {
-							"type": "string"
-						}
-					},
-					{
-						"name": "x-api-key",
-						"in": "header",
-						"description": "api-key",
-						"required": true,
-						"style": "simple",
-						"explode": false,
-						"schema": {
-							"type": "string"
-						}
-					}
-				],
-				"requestBody": {
-					"description": "Safaricom Airtime Top Up Request",
-					"content": {
-						"application/json": {
-							"schema": {
-								"$ref": "#/components/schemas/safaricomAirtimeTopUpRequest"
-							}
-						}
-					},
-					"required": true
-				},
-				"responses": {
-					"200": {
-						"description": "search results matching criteria",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/defaultResponse"
-								}
-							}
-						}
-					},
-					"400": {
-						"description": "bad input parameter"
-					}
-				}
-			}
-		},
-		"/telkom-airtime-top-up": {
-			"post": {
-				"tags": [
-					"Buy"
-				],
-				"summary": "Telkom Airtime Topup",
-				"description": "Buy Telkom pre-paid airtime from your CBL account\n",
-				"operationId": "telkomAirtimeTopUp",
-				"parameters": [{
-						"name": "x-app-id",
-						"in": "header",
-						"description": "pass the project id",
-						"required": true,
-						"style": "simple",
-						"explode": false,
-						"schema": {
-							"type": "string"
-						}
-					},
-					{
-						"name": "x-api-key",
-						"in": "header",
-						"description": "api-key",
-						"required": true,
-						"style": "simple",
-						"explode": false,
-						"schema": {
-							"type": "string"
-						}
-					}
-				],
-				"requestBody": {
-					"description": "Telkom Airtime Top Up Request",
-					"content": {
-						"application/json": {
-							"schema": {
-								"$ref": "#/components/schemas/telkomAirtimeTopUpRequest"
-							}
-						}
-					},
-					"required": true
-				},
-				"responses": {
-					"200": {
-						"description": "search results matching criteria",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/defaultResponse"
-								}
-							}
-						}
-					},
-					"400": {
-						"description": "bad input parameter"
-					}
-				}
-			}
-		},
-		"/airtel-airtime-top-up": {
-			"post": {
-				"tags": [
-					"Buy"
-				],
-				"summary": "Airtel Airtime Topup",
-				"description": "Buy Airtel pre-paid airtime from your CBL account\n",
-				"operationId": "airtelAirtimeTopUp",
-				"parameters": [{
-						"name": "x-app-id",
-						"in": "header",
-						"description": "pass the project id",
-						"required": true,
-						"style": "simple",
-						"explode": false,
-						"schema": {
-							"type": "string"
-						}
-					},
-					{
-						"name": "x-api-key",
-						"in": "header",
-						"description": "api-key",
-						"required": true,
-						"style": "simple",
-						"explode": false,
-						"schema": {
-							"type": "string"
-						}
-					}
-				],
-				"requestBody": {
-					"description": "Airtel Airtime Top Up Request",
-					"content": {
-						"application/json": {
-							"schema": {
-								"$ref": "#/components/schemas/airtelAirtimeTopUpRequest"
-							}
-						}
-					},
-					"required": true
-				},
-				"responses": {
-					"200": {
-						"description": "search results matching criteria",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/defaultResponse"
-								}
-							}
-						}
-					},
-					"400": {
-						"description": "bad input parameter"
-					}
-				}
-			}
-		},
-		"/iprs": {
-			"post": {
-				"tags": [
-					"Other Services"
-				],
-				"summary": "Query IPRS for details of a kenyan citizen",
-				"description": "Query IPRS for details of a kenyan citizen\n",
-				"operationId": "iprs",
-				"parameters": [{
-						"name": "x-app-id",
-						"in": "header",
-						"description": "pass the project id",
-						"required": true,
-						"style": "simple",
-						"explode": false,
-						"schema": {
-							"type": "string"
-						}
-					},
-					{
-						"name": "x-api-key",
-						"in": "header",
-						"description": "api-key",
-						"required": true,
-						"style": "simple",
-						"explode": false,
-						"schema": {
-							"type": "string"
-						}
-					}
-				],
-				"requestBody": {
-					"description": "IPRS Query Request",
-					"content": {
-						"application/json": {
-							"schema": {
-								"$ref": "#/components/schemas/iprsRequest"
-							}
-						}
-					},
-					"required": true
-				},
-				"responses": {
-					"200": {
-						"description": "search results matching criteria",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/iprsResponse"
-								}
-							}
-						}
-					},
-					"400": {
-						"description": "bad input parameter"
-					}
-				}
-			}
-		},
-		"/crb": {
-			"post": {
-				"tags": [
-					"Other Services"
-				],
-				"summary": "Query CRB for details of a kenyan citizen",
-				"description": "Query CRB for details of a kenyan citizen\n",
-				"operationId": "crb",
-				"parameters": [{
-						"name": "x-app-id",
-						"in": "header",
-						"description": "pass the project id",
-						"required": true,
-						"style": "simple",
-						"explode": false,
-						"schema": {
-							"type": "string"
-						}
-					},
-					{
-						"name": "x-api-key",
-						"in": "header",
-						"description": "api-key",
-						"required": true,
-						"style": "simple",
-						"explode": false,
-						"schema": {
-							"type": "string"
-						}
-					}
-				],
-				"requestBody": {
-					"description": "CRB Request",
-					"content": {
-						"application/json": {
-							"schema": {
-								"$ref": "#/components/schemas/crbRequest"
-							}
-						}
-					},
-					"required": true
-				},
-				"responses": {
-					"200": {
-						"description": "search results matching criteria",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/crbResponse"
-								}
-							}
-						}
-					},
-					"400": {
-						"description": "bad input parameter"
-					}
-				}
-			}
-		},
-		"/nairobi-water": {
-			"post": {
-				"tags": [
-					"Bill Payments"
-				],
-				"summary": "Pay your nairobi water bill from your CBL account",
-				"description": "Pay your nairobi water bill from your CBL account\n",
-				"operationId": "nairobiWater",
-				"parameters": [{
-						"name": "x-app-id",
-						"in": "header",
-						"description": "pass the project id",
-						"required": true,
-						"style": "simple",
-						"explode": false,
-						"schema": {
-							"type": "string"
-						}
-					},
-					{
-						"name": "x-api-key",
-						"in": "header",
-						"description": "api-key",
-						"required": true,
-						"style": "simple",
-						"explode": false,
-						"schema": {
-							"type": "string"
-						}
-					}
-				],
-				"requestBody": {
-					"description": "Nairobi water bill payment Request",
-					"content": {
-						"application/json": {
-							"schema": {
-								"$ref": "#/components/schemas/nairobiWaterBillPaymentRequest"
-							}
-						}
-					},
-					"required": true
-				},
-				"responses": {
-					"200": {
-						"description": "Request successfully processed",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/defaultResponse"
-								}
-							}
-						}
-					},
-					"400": {
-						"description": "bad input parameter"
-					}
-				}
-			}
-		},
-		"/zuku-internet": {
-			"post": {
-				"tags": [
-					"Bill Payments"
-				],
-				"summary": "Pay your zuku internet bill from your CBL account",
-				"description": "Pay your zuku internet bill from your CBL account\n",
-				"operationId": "zukuInternet",
-				"parameters": [{
-						"name": "x-app-id",
-						"in": "header",
-						"description": "pass the project id",
-						"required": true,
-						"style": "simple",
-						"explode": false,
-						"schema": {
-							"type": "string"
-						}
-					},
-					{
-						"name": "x-api-key",
-						"in": "header",
-						"description": "api-key",
-						"required": true,
-						"style": "simple",
-						"explode": false,
-						"schema": {
-							"type": "string"
-						}
-					}
-				],
-				"requestBody": {
-					"description": "Zuku internet bill payment Request",
-					"content": {
-						"application/json": {
-							"schema": {
-								"$ref": "#/components/schemas/zukuInternetBillPaymentRequest"
-							}
-						}
-					},
-					"required": true
-				},
-				"responses": {
-					"200": {
-						"description": "Request successfully processed",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/defaultResponse"
-								}
-							}
-						}
-					},
-					"400": {
-						"description": "bad input parameter"
-					}
-				}
-			}
-		},
-		"/zuku-tv": {
-			"post": {
-				"tags": [
-					"Bill Payments"
-				],
-				"summary": "Pay your zuku TV bill from your CBL account",
-				"description": "Pay your zuku TV bill from your CBL account\n",
-				"operationId": "zukuTV",
-				"parameters": [{
-						"name": "x-app-id",
-						"in": "header",
-						"description": "pass the project id",
-						"required": true,
-						"style": "simple",
-						"explode": false,
-						"schema": {
-							"type": "string"
-						}
-					},
-					{
-						"name": "x-api-key",
-						"in": "header",
-						"description": "api-key",
-						"required": true,
-						"style": "simple",
-						"explode": false,
-						"schema": {
-							"type": "string"
-						}
-					}
-				],
-				"requestBody": {
-					"description": "Zuku TV bill payment Request",
-					"content": {
-						"application/json": {
-							"schema": {
-								"$ref": "#/components/schemas/zukuTVBillPaymentRequest"
-							}
-						}
-					},
-					"required": true
-				},
-				"responses": {
-					"200": {
-						"description": "Request successfully processed",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/defaultResponse"
-								}
-							}
-						}
-					},
-					"400": {
-						"description": "bad input parameter"
-					}
-				}
-			}
-		},
-		"/startimes-tv": {
-			"post": {
-				"tags": [
-					"Bill Payments"
-				],
-				"summary": "Pay your startimes TV bill from your CBL account",
-				"description": "Pay your startimes TV bill from your CBL account\n",
-				"operationId": "startimesTV",
-				"parameters": [{
-						"name": "x-app-id",
-						"in": "header",
-						"description": "pass the project id",
-						"required": true,
-						"style": "simple",
-						"explode": false,
-						"schema": {
-							"type": "string"
-						}
-					},
-					{
-						"name": "x-api-key",
-						"in": "header",
-						"description": "api-key",
-						"required": true,
-						"style": "simple",
-						"explode": false,
-						"schema": {
-							"type": "string"
-						}
-					}
-				],
-				"requestBody": {
-					"description": "Startimes TV bill payment Request",
-					"content": {
-						"application/json": {
-							"schema": {
-								"$ref": "#/components/schemas/starTimesBillPaymentRequest"
-							}
-						}
-					},
-					"required": true
-				},
-				"responses": {
-					"200": {
-						"description": "Request successfully processed",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/defaultResponse"
-								}
-							}
-						}
-					},
-					"400": {
-						"description": "bad input parameter"
-					}
-				}
-			}
-		},
-		"/dstv-presentment": {
-			"post": {
-				"tags": [
-					"Bill Payments"
-				],
-				"summary": "Pay your DSTV bill from your CBL account",
-				"description": "Pay your DSTV bill from your CBL account\n",
-				"operationId": "dstvPresentment",
-				"parameters": [{
-						"name": "x-app-id",
-						"in": "header",
-						"description": "pass the project id",
-						"required": true,
-						"style": "simple",
-						"explode": false,
-						"schema": {
-							"type": "string"
-						}
-					},
-					{
-						"name": "x-api-key",
-						"in": "header",
-						"description": "api-key",
-						"required": true,
-						"style": "simple",
-						"explode": false,
-						"schema": {
-							"type": "string"
-						}
-					}
-				],
-				"requestBody": {
-					"description": "DSTV bill presentment Request",
-					"content": {
-						"application/json": {
-							"schema": {
-								"$ref": "#/components/schemas/dstvPresentmentRequest"
-							}
-						}
-					},
-					"required": true
-				},
-				"responses": {
-					"200": {
-						"description": "Request successfully processed",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/dstvPresentmentResponse"
-								}
-							}
-						}
-					},
-					"400": {
-						"description": "bad input parameter"
-					}
-				}
-			}
-		},
-		"/dstv-payment": {
-			"post": {
-				"tags": [
-					"Bill Payments"
-				],
-				"summary": "Pay your DSTV bill from your CBL account",
-				"description": "Pay your DSTV bill from your CBL account\n",
-				"operationId": "dstvPayment",
-				"parameters": [{
-						"name": "x-app-id",
-						"in": "header",
-						"description": "pass the project id",
-						"required": true,
-						"style": "simple",
-						"explode": false,
-						"schema": {
-							"type": "string"
-						}
-					},
-					{
-						"name": "x-api-key",
-						"in": "header",
-						"description": "api-key",
-						"required": true,
-						"style": "simple",
-						"explode": false,
-						"schema": {
-							"type": "string"
-						}
-					}
-				],
-				"requestBody": {
-					"description": "DSTV bill payment Request",
-					"content": {
-						"application/json": {
-							"schema": {
-								"$ref": "#/components/schemas/dstvBillPaymentRequest"
-							}
-						}
-					},
-					"required": true
-				},
-				"responses": {
-					"200": {
-						"description": "Request successfully processed",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/defaultResponse"
-								}
-							}
-						}
-					},
-					"400": {
-						"description": "bad input parameter"
-					}
-				}
-			}
-		},
-		"/gotv-presentment": {
-			"post": {
-				"tags": [
-					"Bill Payments"
-				],
-				"summary": "Pay your GOTV bill from your CBL account",
-				"description": "Pay your GOTV bill from your CBL account\n",
-				"operationId": "gotvPresentment",
-				"parameters": [{
-						"name": "x-app-id",
-						"in": "header",
-						"description": "pass the project id",
-						"required": true,
-						"style": "simple",
-						"explode": false,
-						"schema": {
-							"type": "string"
-						}
-					},
-					{
-						"name": "x-api-key",
-						"in": "header",
-						"description": "api-key",
-						"required": true,
-						"style": "simple",
-						"explode": false,
-						"schema": {
-							"type": "string"
-						}
-					}
-				],
-				"requestBody": {
-					"description": "GOTV bill presentment Request",
-					"content": {
-						"application/json": {
-							"schema": {
-								"$ref": "#/components/schemas/gotvPresentmentRequest"
-							}
-						}
-					},
-					"required": true
-				},
-				"responses": {
-					"200": {
-						"description": "Request successfully processed",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/gotvPresentmentResponse"
-								}
-							}
-						}
-					},
-					"400": {
-						"description": "bad input parameter"
-					}
-				}
-			}
-		},
-		"/gotv-payment": {
-			"post": {
-				"tags": [
-					"Bill Payments"
-				],
-				"summary": "Pay your GOTV bill from your CBL account",
-				"description": "Pay your GOTV bill from your CBL account\n",
-				"operationId": "gotvPayment",
-				"parameters": [{
-						"name": "x-app-id",
-						"in": "header",
-						"description": "pass the project id",
-						"required": true,
-						"style": "simple",
-						"explode": false,
-						"schema": {
-							"type": "string"
-						}
-					},
-					{
-						"name": "x-api-key",
-						"in": "header",
-						"description": "api-key",
-						"required": true,
-						"style": "simple",
-						"explode": false,
-						"schema": {
-							"type": "string"
-						}
-					}
-				],
-				"requestBody": {
-					"description": "GOTV bill payment Request",
-					"content": {
-						"application/json": {
-							"schema": {
-								"$ref": "#/components/schemas/gotvBillPaymentRequest"
-							}
-						}
-					},
-					"required": true
-				},
-				"responses": {
-					"200": {
-						"description": "Request successfully processed",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/defaultResponse"
-								}
-							}
-						}
-					},
-					"400": {
-						"description": "bad input parameter"
-					}
-				}
-			}
-		}
-	},
-	"/pesalink-verification": {
-		"post": {
-			"tags": [
-				"Send Money"
-			],
-			"summary": "Verify account number Pesalink",
-			"description": "Verify account number Pesalink\n",
-			"operationId": "pesalinkVerification",
-			"parameters": [{
-					"name": "x-app-id",
-					"in": "header",
-					"description": "pass the project id",
-					"required": true,
-					"style": "simple",
-					"explode": false,
-					"schema": {
-						"type": "string"
-					}
-				},
-				{
-					"name": "x-api-key",
-					"in": "header",
-					"description": "api-key",
-					"required": true,
-					"style": "simple",
-					"explode": false,
-					"schema": {
-						"type": "string"
-					}
-				}
-			],
-			"requestBody": {
-				"description": "Verify account number on Pesalink",
-				"content": {
-					"application/json": {
-						"schema": {
-							"$ref": "#/components/schemas/pesalinkVerificationRequest"
-						}
-					}
-				},
-				"required": true
-			},
-			"responses": {
-				"200": {
-					"description": "Request successfully processed",
-					"content": {
-						"application/json": {
-							"schema": {
-								"$ref": "#/components/schemas/defaultResponse"
-							}
-						}
-					}
-				},
-				"400": {
-					"description": "bad input parameter"
-				}
-			}
-		}
-	},
-	"/wallet-registration": {
-		"post": {
-			"tags": [
-				"Send Money"
-			],
-			"summary": "create a wallet account CBL",
-			"description": "create a wallet account CBL\n",
-			"operationId": "walletRegistration",
-			"parameters": [{
-					"name": "x-app-id",
-					"in": "header",
-					"description": "pass the project id",
-					"required": true,
-					"style": "simple",
-					"explode": false,
-					"schema": {
-						"type": "string"
-					}
-				},
-				{
-					"name": "x-api-key",
-					"in": "header",
-					"description": "api-key",
-					"required": true,
-					"style": "simple",
-					"explode": false,
-					"schema": {
-						"type": "string"
-					}
-				}
-			],
-			"requestBody": {
-				"description": "create a wallet account CBL",
-				"content": {
-					"application/json": {
-						"schema": {
-							"$ref": "#/components/schemas/walletRegistrationRequest"
-						}
-					}
-				},
-				"required": true
-			},
-			"responses": {
-				"200": {
-					"description": "Request successfully processed",
-					"content": {
-						"application/json": {
-							"schema": {
-								"$ref": "#/components/schemas/defaultResponse"
-							}
-						}
-					}
-				},
-				"400": {
-					"description": "bad input parameter"
-				}
-			}
-		}
-	},
-	"components": {
-		"schemas": {
-			"walletRegistrationRequest": {
-				"required": [
-					"currency",
-					"timestamp",
-					"transactionType",
-					"surname",
-					"firstName",
-					"lastName",
-					"idNumber",
-					"email",
-					"deviceId",
-					"imsi",
-					"dateOfBirth",
-					"phoneNumber",
-					"gender"
-				],
-				"type": "object",
-				"properties": {
-					"currency": {
-						"type": "string",
-						"example": "KES"
-					},
-					"timestamp": {
-						"type": "string",
-						"example": "2021-01-29T00:54:08+03:00"
-					},
-					"transactionType": {
-						"type": "string",
-						"example": "WALLET_REGISTRATION"
-					},
-					"surname": {
-						"type": "string",
-						"example": "EKUWOM"
-					},
-					"firstName": {
-						"type": "string",
-						"example": "AGNES"
-					},
-					"lastName": {
-						"type": "string",
-						"example": "AMONI"
-					},
-					"idNumber": {
-						"type": "string",
-						"example": "20098160"
-					},
-					"email": {
-						"type": "string",
-						"example": "test@gmail.com"
-					},
-					"deviceId": {
-						"type": "string",
-						"example": "124359837755"
-					},
-					"imsi": {
-						"type": "string",
-						"example": "0893523736236"
-					},
-					"dateOfBirth": {
-						"type": "string",
-						"example": "09-12-2000"
-					},
-					"phoneNumber": {
-						"type": "string",
-						"example": "254"
-					},
-					"gender": {
-						"type": "string",
-						"example": "M"
-					}
-				}
-			},
-			"pesalinkVerificationRequest": {
-				"required": [
-					"bankCode",
-					"timestamp",
-					"transactionType"
-				],
-				"type": "object",
-				"properties": {
-					"bankCode": {
-						"type": "string",
-						"example": "0025"
-					},
-					"transactionType": {
-						"type": "string",
-						"example": "SAFARICOM"
-					},
-					"timestamp": {
-						"type": "string",
-						"example": "2021-01-29T00:54:08+03:00"
-					}
-				}
-			},
-			"safaricomAirtimeTopUpRequest": {
-				"required": [
-					"amount",
-					"creditAccount",
-					"currency",
-					"timestamp",
-					"transactionReference",
-					"transactionType"
-				],
-				"type": "object",
-				"properties": {
-					"amount": {
-						"type": "string",
-						"example": "300"
-					},
-					"creditAccount": {
-						"type": "string",
-						"example": "254700123151"
-					},
-					"transactionType": {
-						"type": "string",
-						"example": "SAFARICOM"
-					},
-					"timestamp": {
-						"type": "string",
-						"example": "2021-01-29T00:54:08+03:00"
-					},
-					"currency": {
-						"type": "string",
-						"example": "KES"
-					},
-					"transactionReference": {
-						"type": "string",
-						"example": "DKDFHST67DJD"
-					}
-				}
-			},
-			"telkomAirtimeTopUpRequest": {
-				"required": [
-					"amount",
-					"creditAccount",
-					"currency",
-					"timestamp",
-					"transactionReference",
-					"transactionType"
-				],
-				"type": "object",
-				"properties": {
-					"amount": {
-						"type": "string",
-						"example": "300"
-					},
-					"creditAccount": {
-						"type": "string",
-						"example": "254700123151"
-					},
-					"transactionType": {
-						"type": "string",
-						"example": "TELKOM"
-					},
-					"timestamp": {
-						"type": "string",
-						"example": "2021-01-29T00:54:08+03:00"
-					},
-					"currency": {
-						"type": "string",
-						"example": "KES"
-					},
-					"transactionReference": {
-						"type": "string",
-						"example": "DKDFHST67DJD"
-					}
-				}
-			},
-			"airtelAirtimeTopUpRequest": {
-				"required": [
-					"amount",
-					"creditAccount",
-					"currency",
-					"timestamp",
-					"transactionReference",
-					"transactionType"
-				],
-				"type": "object",
-				"properties": {
-					"amount": {
-						"type": "string",
-						"example": "300"
-					},
-					"creditAccount": {
-						"type": "string",
-						"example": "254700123151"
-					},
-					"transactionType": {
-						"type": "string",
-						"example": "AIRTEL"
-					},
-					"timestamp": {
-						"type": "string",
-						"example": "2021-01-29T00:54:08+03:00"
-					},
-					"currency": {
-						"type": "string",
-						"example": "KES"
-					},
-					"transactionReference": {
-						"type": "string",
-						"example": "DKDFHST67DJD"
-					}
-				}
-			},
-			"createStandingOrderRequest": {
-				"required": [
-					"accountFrom",
-					"accountTo",
-					"amount",
-					"dateSettlement",
-					"endDate",
-					"frequency"
-				],
-				"type": "object",
-				"properties": {
-					"amount": {
-						"type": "number",
-						"example": 3000
-					},
-					"accountFrom": {
-						"type": "string",
-						"example": "0076003000023"
-					},
-					"accountTo": {
-						"type": "string",
-						"example": "0026001001094"
-					},
-					"frequency": {
-						"type": "string",
-						"example": "M"
-					},
-					"endDate": {
-						"type": "string",
-						"example": "20240831"
-					},
-					"dateSettlement": {
-						"type": "string",
-						"example": "1120"
-					}
-				}
-			},
-			"createExternalStandingOrderRequest": {
-				"required": [
-					"accountFrom",
-					"accountTo",
-					"amount",
-					"dateSettlement",
-					"endDate",
-					"frequency",
-					"sortCode",
-					"name"
-				],
-				"type": "object",
-				"properties": {
-					"amount": {
-						"type": "string",
-						"example": "3000"
-					},
-					"accountFrom": {
-						"type": "string",
-						"example": "0076003000023"
-					},
-					"accountTo": {
-						"type": "string",
-						"example": "0026001001094"
-					},
-					"frequency": {
-						"type": "string",
-						"example": "M"
-					},
-					"endDate": {
-						"type": "string",
-						"example": "20240831"
-					},
-					"dateSettlement": {
-						"type": "string",
-						"example": "1120"
-					},
-					"sortCode": {
-						"type": "string",
-						"example": "17000"
-					},
-					"name": {
-						"type": "string",
-						"example": "John Doe"
-					}
-				}
-			},
-			"balanceInquiryRequest": {
-				"required": [
-					"account"
-				],
-				"type": "object",
-				"properties": {
-					"account": {
-						"type": "string",
-						"example": "0076003000023"
-					}
-				}
-			},
-			"accountStatementRequest": {
-				"required": [
-					"startDate",
-					"endDate"
-				],
-				"type": "object",
-				"properties": {
-					"startDate": {
-						"type": "string",
-						"example": "20210628"
-					},
-					"endDate": {
-						"type": "string",
-						"example": "20210629"
-					}
-				}
-			},
-			"forexRequest": {
-				"required": [
-					"account"
-				],
-				"type": "object",
-				"properties": {
-					"account": {
-						"type": "string",
-						"example": "0076003000023"
-					}
-				}
-			},
-			"rtgsRequest": {
-				"required": [
-					"accountFrom",
-					"accountTo",
-					"amount",
-					"beneficiaryName",
-					"paymentNarrative",
-					"swiftCode"
-				],
-				"type": "object",
-				"properties": {
-					"amount": {
-						"type": "string",
-						"example": "50000"
-					},
-					"accountFrom": {
-						"type": "string",
-						"example": "0076003000023"
-					},
-					"accountTo": {
-						"type": "string",
-						"example": "0020276343557"
-					},
-					"beneficiaryName": {
-						"type": "string",
-						"example": "POWER GROUP TECHNOLOGIES LTD"
-					},
-					"paymentNarrative": {
-						"type": "string",
-						"example": "Payment for invoice #132189"
-					},
-					"swiftCode": {
-						"type": "string",
-						"example": "EQBLKENA"
-					}
-				}
-			},
-			"standingOrderLookupRequest": {
-				"required": [
-					"client_id",
-					"currency",
-					"reference_number",
-					"so_id",
-					"timestamp",
-					"transaction_type"
-				],
-				"type": "object",
-				"properties": {
-					"transaction_type": {
-						"type": "string",
-						"example": "STO"
-					},
-					"reference_number": {
-						"type": "string",
-						"example": "20GY1KKB2CSWL"
-					},
-					"timestamp": {
-						"type": "string",
-						"example": "2021-01-29T00:54:08+03:00"
-					},
-					"currency": {
-						"type": "string",
-						"example": "KES"
-					},
-					"client_id": {
-						"type": "string",
-						"example": "OA9876543"
-					}
-				}
-			},
-			"ammendStandingOrderRequest": {
-				"required": [
-					"amount",
-					"client_id",
-					"currency",
-					"end_date",
-					"reference_number",
-					"so_id",
-					"timestamp",
-					"transaction_type"
-				],
-				"type": "object",
-				"properties": {
-					"so_id": {
-						"type": "string",
-						"example": "0076003000023.10"
-					},
-					"end_date": {
-						"type": "string",
-						"example": "2021-04-29"
-					},
-					"amount": {
-						"type": "string",
-						"example": "5000"
-					},
-					"transaction_type": {
-						"type": "string",
-						"example": "STO_START"
-					},
-					"reference_number": {
-						"type": "string",
-						"example": "20GY1KKB2CSWL"
-					},
-					"timestamp": {
-						"type": "string",
-						"example": "2021-01-29T00:54:08+03:00"
-					},
-					"currency": {
-						"type": "string",
-						"example": "KES"
-					},
-					"client_id": {
-						"type": "string",
-						"example": "OA9876543"
-					}
-				}
-			},
-			"cancelStandingOrderRequest": {
-				"required": [
-					"date",
-					"stoId"
-				],
-				"type": "object",
-				"properties": {
-					"stoId": {
-						"type": "string",
-						"example": "0076003000023.10"
-					},
-					"date": {
-						"type": "string",
-						"example": "20221117"
-					}
-				}
-			},
-			"pesalinkToBankRequest": {
-				"required": [
-					"amount",
-					"bankCode",
-					"beneficiaryName",
-					"creditAccount",
-					"currency",
-					"direction",
-					"narration",
-					"receiverPhoneNumber",
-					"timestamp",
-					"transactionReference",
-					"transactionType"
-				],
-				"type": "object",
-				"properties": {
-					"amount": {
-						"type": "string",
-						"example": "3000"
-					},
-					"bankCode": {
-						"type": "string",
-						"example": "0025"
-					},
-					"direction": {
-						"type": "string",
-						"example": "A2A"
-					},
-					"narration": {
-						"type": "string",
-						"example": "pesalink to John Doe"
-					},
-
-					"receiverPhoneNumber": {
-						"type": "string",
-						"example": "254714315046"
-					},
-					"beneficiaryName": {
-						"type": "string",
-						"example": "John Doe"
-					},
-					"creditAccount": {
-						"type": "string",
-						"example": "0021024000038"
-					},
-					"transactionType": {
-						"type": "string",
-						"example": "PESALINK"
-					},
-					"transactionReference": {
-						"type": "string",
-						"example": "20GY1KKB2CSWL"
-					},
-					"timestamp": {
-						"type": "string",
-						"example": "2021-01-29T00:54:08+03:00"
-					},
-					"currency": {
-						"type": "string",
-						"example": "KES"
-					}
-				}
-			},
-			"mpesaB2CRequest": {
-				"required": [
-					"amount",
-					"creditAccount",
-					"currency",
-					"timestamp",
-					"transactionReference",
-					"transactionType"
-				],
-				"type": "object",
-				"properties": {
-					"amount": {
-						"type": "string",
-						"example": "3000"
-					},
-					"creditAccount": {
-						"type": "string",
-						"example": "+254711123123"
-					},
-					"transactionType": {
-						"type": "string",
-						"example": "MPESAB2C"
-					},
-					"transactionReference": {
-						"type": "string",
-						"example": "20GY1KKB2CSWL"
-					},
-					"timestamp": {
-						"type": "string",
-						"example": "2021-01-29T00:54:08+03:00"
-					},
-					"currency": {
-						"type": "string",
-						"example": "KES"
-					}
-				}
-			},
-			"airtelB2CRequest": {
-				"required": [
-					"amount",
-					"creditAccount",
-					"currency",
-					"timestamp",
-					"transactionReference",
-					"transactionType"
-				],
-				"type": "object",
-				"properties": {
-					"amount": {
-						"type": "string",
-						"example": "3000"
-					},
-					"creditAccount": {
-						"type": "string",
-						"example": "+254711123123"
-					},
-					"transactionType": {
-						"type": "string",
-						"example": "MPESAB2C"
-					},
-					"transactionReference": {
-						"type": "string",
-						"example": "20GY1KKB2CSWL"
-					},
-					"timestamp": {
-						"type": "string",
-						"example": "2021-01-29T00:54:08+03:00"
-					},
-					"currency": {
-						"type": "string",
-						"example": "KES"
-					}
-				}
-			},
-			"internalFundsTransferRequest": {
-				"required": [
-					"amount",
-					"accountFrom",
-					"accountTo",
-					"paymentNarrative"
-				],
-				"type": "object",
-				"properties": {
-					"amount": {
-						"type": "string",
-						"example": "3000"
-					},
-					"accountFrom": {
-						"type": "string",
-						"example": "0021007000823"
-					},
-					"accountTo": {
-						"type": "string",
-						"example": "0141007000038"
-					},
-					"paymentNarrative": {
-						"type": "string",
-						"example": "Transfer funds from your CBL account to other CBL accounts"
-					}
-				}
-			},
-			"walletFundsTransferRequest": {
-				"required": [
-					"amount",
-					"creditAccount",
-					"currency",
-					"timestamp",
-					"transactionReference",
-					"transactionType"
-				],
-				"type": "object",
-				"properties": {
-					"amount": {
-						"type": "string",
-						"example": "3000"
-					},
-					"creditAccount": {
-						"type": "string",
-						"example": "CA715748115"
-					},
-					"transactionType": {
-						"type": "string",
-						"example": "FTCORE2WALLET"
-					},
-					"transactionReference": {
-						"type": "string",
-						"example": "DL1LBN6HB89JR"
-					},
-					"timestamp": {
-						"type": "string",
-						"example": "2021-01-29T00:54:08+03:00"
-					},
-					"currency": {
-						"type": "string",
-						"example": "KES"
-					}
-				}
-			},
-			"walletToWalletTransferRequest": {
-				"required": [
-					"amount",
-					"creditAccount",
-					"currency",
-					"debitAccount",
-					"timestamp",
-					"transactionReference",
-					"transactionType"
-				],
-				"type": "object",
-				"properties": {
-					"transactionType": {
-						"type": "string",
-						"example": "FTWALLET2WALLET"
-					},
-
-					"amount": {
-						"type": "string",
-						"example": "3000"
-					},
-					"creditAccount": {
-						"type": "string",
-						"example": "CA720547666"
-					},
-					"debitAccount": {
-						"type": "string",
-						"example": "CA715748115"
-					},
-					"currency": {
-						"type": "string",
-						"example": "KES"
-					},
-					"timestamp": {
-						"type": "string",
-						"example": "2021-01-29T00:54:08+03:00"
-					}
-				}
-			},
-			"iprsRequest": {
-				"required": [
-					"idNumber",
-					"timestamp",
-					"transactionType"
-				],
-				"type": "object",
-				"properties": {
-					"idNumber": {
-						"type": "string",
-						"example": "1829732019321"
-					},
-					"transactionType": {
-						"type": "string",
-						"example": "IPRS"
-					},
-					"timestamp": {
-						"type": "string",
-						"example": "2021-01-29T00:54:08+03:00"
-					}
-				}
-			},
-			"crbRequest": {
-				"required": [
-					"firstName",
-					"idNumber",
-					"secondName",
-					"timestamp",
-					"transactionType"
-				],
-				"type": "object",
-				"properties": {
-					"idNumber": {
-						"type": "string",
-						"example": "1829732019321"
-					},
-					"firstName": {
-						"type": "string",
-						"example": "John"
-					},
-					"secondName": {
-						"type": "string",
-						"example": "Doe"
-					},
-					"transactionType": {
-						"type": "string",
-						"example": "CRB"
-					},
-					"reference_number": {
-						"type": "string",
-						"example": "20GY1KKB2CSWL"
-					},
-					"timestamp": {
-						"type": "string",
-						"example": "2021-01-29T00:54:08+03:00"
-					}
-				}
-			},
-			"nairobiWaterBillPaymentRequest": {
-				"required": [
-					"amount",
-					"creditAccount",
-					"currency",
-					"serviceName",
-					"transactionReference",
-					"timestamp",
-					"transactionType"
-				],
-				"type": "object",
-				"properties": {
-					"amount": {
-						"type": "string",
-						"example": "0"
-					},
-					"serviceName": {
-						"type": "string",
-						"example": "NAIROBIWATER"
-					},
-					"transactionType": {
-						"type": "string",
-						"example": "BILL_PAYMENT"
-					},
-					"transactionReference": {
-						"type": "string",
-						"example": "20GY1KKB2CSWL"
-					},
-					"timestamp": {
-						"type": "string",
-						"example": "2021-01-29T00:54:08+03:00"
-					},
-					"currency": {
-						"type": "string",
-						"example": "KES"
-					},
-					"creditAccount": {
-						"type": "string",
-						"example": "0021024000038"
-					}
-				}
-			},
-			"zukuInternetBillPaymentRequest": {
-				"required": [
-					"amount",
-					"creditAccount",
-					"transactionReference",
-					"currency",
-					"serviceName",
-					"timestamp",
-					"transactionType"
-				],
-				"type": "object",
-				"properties": {
-					"amount": {
-						"type": "string",
-						"example": "0"
-					},
-					"creditAccount": {
-						"type": "string",
-						"example": "0021024000038"
-					},
-					"transactionType": {
-						"type": "string",
-						"example": "BILL_PAYMENT"
-					},
-					"serviceName": {
-						"type": "string",
-						"example": "ZUKU_INTERNET"
-					},
-					"timestamp": {
-						"type": "string",
-						"example": "2021-01-29T00:54:08+03:00"
-					},
-					"currency": {
-						"type": "string",
-						"example": "KES"
-					},
-					"transactionReference": {
-						"type": "string",
-						"example": "DADJDKDUENDD"
-					}
-				}
-			},
-			"zukuTVBillPaymentRequest": {
-				"required": [
-					"amount",
-					"creditAccount",
-					"transactionReference",
-					"currency",
-					"serviceName",
-					"timestamp",
-					"transactionType"
-				],
-				"type": "object",
-				"properties": {
-					"amount": {
-						"type": "string",
-						"example": "0"
-					},
-					"creditAccount": {
-						"type": "string",
-						"example": "0021024000038"
-					},
-					"transactionType": {
-						"type": "string",
-						"example": "BILL_PAYMENT"
-					},
-					"transactionReference": {
-						"type": "string",
-						"example": "20GY1KKB2CSWL"
-					},
-					"timestamp": {
-						"type": "string",
-						"example": "2021-01-29T00:54:08+03:00"
-					},
-					"currency": {
-						"type": "string",
-						"example": "KES"
-					},
-
-					"serviceName": {
-						"type": "string",
-						"example": "ZUKU_TV"
-					}
-
-				}
-			},
-			"starTimesBillPaymentRequest": {
-				"required": [
-					"amount",
-					"serviceName",
-					"creditAccount",
-					"currency",
-					"transactionReference",
-					"timestamp",
-					"transactionType"
-				],
-				"type": "object",
-				"properties": {
-					"amount": {
-						"type": "string",
-						"example": "0"
-					},
-					"creditAccount": {
-						"type": "string",
-						"example": "0021024000038"
-					},
-					"transactionType": {
-						"type": "string",
-						"example": "STARTIMES"
-					},
-					"transactionReference": {
-						"type": "string",
-						"example": "20GY1KKB2CSWL"
-					},
-					"timestamp": {
-						"type": "string",
-						"example": "2021-01-29T00:54:08+03:00"
-					},
-					"currency": {
-						"type": "string",
-						"example": "KES"
-					},
-					"serviceName": {
-						"type": "string",
-						"example": "STARTIMES"
-					}
-				}
-			},
-			"dstvPresentmentRequest": {
-				"required": [
-					"client_id",
-					"credit_account",
-					"currency",
-					"reference_number",
-					"timestamp",
-					"transaction_type"
-				],
-				"type": "object",
-				"properties": {
-					"credit_account": {
-						"type": "string",
-						"example": "9876445667"
-					},
-					"transaction_type": {
-						"type": "string",
-						"example": "DSTVPRESENTMENT"
-					},
-					"reference_number": {
-						"type": "string",
-						"example": "20GY1KKB2CSWL"
-					},
-					"timestamp": {
-						"type": "string",
-						"example": "2021-01-29T00:54:08+03:00"
-					},
-					"currency": {
-						"type": "string",
-						"example": "KES"
-					},
-					"client_id": {
-						"type": "string",
-						"example": "OA9876543"
-					}
-				}
-			},
-			"dstvBillPaymentRequest": {
-				"required": [
-					"amount",
-					"serviceName",
-					"creditAccount",
-					"currency",
-					"transactionReference",
-					"timestamp",
-					"transactionType"
-				],
-				"type": "object",
-				"properties": {
-					"amount": {
-						"type": "string",
-						"example": "2500"
-					},
-					"creditAccount": {
-						"type": "string",
-						"example": "0021024000038"
-					},
-					"transactionType": {
-						"type": "string",
-						"example": "BILL_PAYMENT"
-					},
-					"transactionReference": {
-						"type": "string",
-						"example": "20GY1KKB2CSWL"
-					},
-					"timestamp": {
-						"type": "string",
-						"example": "2021-01-29T00:54:08+03:00"
-					},
-					"currency": {
-						"type": "string",
-						"example": "KES"
-					},
-					"serviceName": {
-						"type": "string",
-						"example": "DSTV"
-					}
-				}
-			},
-			"gotvPresentmentRequest": {
-				"required": [
-					"client_id",
-					"creditAccount",
-					"currency",
-					"transactionReference",
-					"timestamp",
-					"transactionType"
-				],
-				"type": "object",
-				"properties": {
-					"credit_account": {
-						"type": "string",
-						"example": "9876445667"
-					},
-					"transactionType": {
-						"type": "string",
-						"example": "GOTVPRESENTMENT"
-					},
-					"reference_number": {
-						"type": "string",
-						"example": "20GY1KKB2CSWL"
-					},
-					"timestamp": {
-						"type": "string",
-						"example": "2021-01-29T00:54:08+03:00"
-					},
-					"currency": {
-						"type": "string",
-						"example": "KES"
-					},
-					"client_id": {
-						"type": "string",
-						"example": "OA9876543"
-					}
-				}
-			},
-			"gotvBillPaymentRequest": {
-				"required": [
-					"amount",
-					"creditAccount",
-					"serviceName",
-					"currency",
-					"transactionReference",
-					"timestamp",
-					"transactionType"
-				],
-				"type": "object",
-				"properties": {
-					"amount": {
-						"type": "string",
-						"example": "2500"
-					},
-					"creditAccount": {
-						"type": "string",
-						"example": "0021024000038"
-					},
-					"transactionType": {
-						"type": "string",
-						"example": "GOTV"
-					},
-					"transactionReference": {
-						"type": "string",
-						"example": "20GY1KKB2CSWL"
-					},
-					"timestamp": {
-						"type": "string",
-						"example": "2021-01-29T00:54:08+03:00"
-					},
-					"currency": {
-						"type": "string",
-						"example": "KES"
-					},
-					"serviceName": {
-						"type": "string",
-						"example": "GOTV"
-					}
-				}
-			},
-			"defaultResponse": {
-				"type": "object",
-				"properties": {
-					"responseCode": {
-						"type": "string",
-						"example": "00"
-					},
-					"responseMessage": {
-						"type": "string",
-						"example": "Request processed successfully"
-					},
-					"transactionReference": {
-						"type": "string",
-						"example": "FT120GY1KKB2"
-					},
-					"referenceNumber": {
-						"type": "string",
-						"example": "20GY1KKB2CSWL"
-					},
-					"transaction_value_date": {
-						"type": "string",
-						"example": "2021-01-29"
-					},
-					"debitAccount": {
-						"type": "string",
-						"example": "9012311313212"
-					},
-					"creditAccount": {
-						"type": "string",
-						"example": "25478120100"
-					},
-					"transactionDate": {
-						"type": "string",
-						"example": "2021-01-29"
-					}
-				}
-			},
-			"balanceInquiryResponse": {
-				"type": "object",
-				"properties": {
-					"responseCode": {
-						"type": "string",
-						"example": "00"
-					},
-					"dateAndTimeTransmission": {
-						"type": "string",
-						"example": "0306150321"
-					},
-					"currencyCode": {
-						"type": "string",
-						"example": "404"
-					},
-					"actualBalance": {
-						"type": "string",
-						"example": "20000"
-					},
-					"availableBalance": {
-						"type": "string",
-						"example": "20000"
-					}
-				}
-			},
-			"forexResponse": {
-				"type": "object",
-				"properties": {
-					"responseCode": {
-						"type": "string",
-						"example": "00"
-					},
-					"dateAndTimeTransmission": {
-						"type": "string",
-						"example": "0306150321"
-					},
-					"currencyCode": {
-						"type": "string",
-						"example": "404"
-					},
-					"currencyRates": {
-						"type": "string",
-						"example": "CURRENCY|RATE.BUY|RATE.SELL~EUR|122.64|134.04~USD|118.55|129.65~TZS|0.0416|0.0623~GBP|140.69|152.09~UGX|.0281|.0363~ZAR|8.6|13.72~JPY|1.125|1.1816~INR|1.46|1.607~CAD|85.89|91.42~AUD|89.2|94.72"
-					}
-				}
-			},
-			"rtgsResponse": {
-				"type": "object",
-				"properties": {
-					"responseCode": {
-						"type": "string",
-						"example": "00"
-					},
-					"dateAndTimeTransmission": {
-						"type": "string",
-						"example": "0306150321"
-					},
-					"amount": {
-						"type": "integer",
-						"example": 5000
-					},
-					"currencyCode": {
-						"type": "string",
-						"example": "404"
-					},
-					"paymentNarrative": {
-						"type": "string",
-						"example": "Payment for invoice #132189"
-					},
-					"actualBalance": {
-						"type": "integer"
-					},
-					"availableBalance": {
-						"type": "integer"
-					}
-				}
-			},
-			"iprsResponse": {
-				"type": "object",
-				"properties": {
-					"responseCode": {
-						"type": "string",
-						"example": "00"
-					},
-					"responseMessage": {
-						"type": "string",
-						"example": "Request processed successfully"
-					},
-					"transactionReference": {
-						"type": "string",
-						"example": "FT120GY1KKB2"
-					},
-					"referenceNumber": {
-						"type": "string",
-						"example": "20GY1KKB2CSWL"
-					},
-					"transactionValueDate": {
-						"type": "string",
-						"example": "2021-01-29"
-					},
-					"transactionDate": {
-						"type": "string",
-						"example": "2021-01-29"
-					},
-					"dateOfBirth": {
-						"type": "string",
-						"example": "00"
-					},
-					"dateOfDeath": {
-						"type": "string",
-						"example": "00"
-					},
-					"dateOfIssue": {
-						"type": "string",
-						"example": "00"
-					},
-					"ethnicGroup": {
-						"type": "string",
-						"example": "00"
-					},
-					"family": {
-						"type": "string",
-						"example": "00"
-					},
-					"fingerprint": {
-						"type": "string",
-						"example": "00"
-					},
-					"firstName": {
-						"type": "string",
-						"example": "00"
-					},
-					"gender": {
-						"type": "string",
-						"example": "00"
-					},
-					"iDNumber": {
-						"type": "string",
-						"example": "00"
-					},
-					"occupation": {
-						"type": "string",
-						"example": "00"
-					},
-					"otherName": {
-						"type": "string",
-						"example": "00"
-					},
-					"photo": {
-						"type": "string",
-						"example": "00"
-					},
-					"pin": {
-						"type": "string",
-						"example": "00"
-					},
-					"placeOfBirth": {
-						"type": "string",
-						"example": "00"
-					},
-					"placeOfDeath": {
-						"type": "string",
-						"example": "00"
-					},
-					"placeOfLive": {
-						"type": "string",
-						"example": "00"
-					},
-					"regOffice": {
-						"type": "string",
-						"example": "00"
-					},
-					"serialNumber": {
-						"type": "string",
-						"example": "00"
-					},
-					"signature": {
-						"type": "string",
-						"example": "00"
-					},
-					"surname": {
-						"type": "string",
-						"example": "00"
-					}
-				}
-			},
-			"crbResponse": {
-				"type": "object",
-				"properties": {
-					"responseCode": {
-						"type": "string",
-						"example": "00"
-					},
-					"responseMessage": {
-						"type": "string",
-						"example": "Request processed successfully"
-					},
-					"transactionReference": {
-						"type": "string",
-						"example": "FT120GY1KKB2"
-					},
-					"referenceNumber": {
-						"type": "string",
-						"example": "20GY1KKB2CSWL"
-					},
-					"transactionValueDate": {
-						"type": "string",
-						"example": "2021-01-29"
-					},
-					"CRBData": {
-						"type": "object",
-						"example": {
-							"Score": "728",
-							"Grade": "DD"
-						}
-					},
-					"transactionDate": {
-						"type": "string",
-						"example": "2021-01-29"
-					}
-				}
-			},
-			"dstvPresentmentResponse": {
-				"type": "object",
-				"properties": {
-					"response_code": {
-						"type": "string",
-						"example": "00"
-					},
-					"response_message": {
-						"type": "string",
-						"example": "Request processed successfully"
-					},
-					"transaction_reference": {
-						"type": "string",
-						"example": "FT120GY1KKB2"
-					},
-					"reference_number": {
-						"type": "string",
-						"example": "20GY1KKB2CSWL"
-					},
-					"transaction_value_date": {
-						"type": "string",
-						"example": "2021-01-29"
-					},
-					"account_id": {
-						"type": "string",
-						"example": "901233212"
-					},
-					"due_date": {
-						"type": "string",
-						"example": "2020-11-08"
-					},
-					"due_amount": {
-						"type": "string",
-						"example": "2500"
-					},
-					"customer_name": {
-						"type": "string",
-						"example": "John Doe"
-					},
-					"transaction_date": {
-						"type": "string",
-						"example": "2021-01-29"
-					}
-				}
-			},
-			"gotvPresentmentResponse": {
-				"type": "object",
-				"properties": {
-					"response_code": {
-						"type": "string",
-						"example": "00"
-					},
-					"response_message": {
-						"type": "string",
-						"example": "Request processed successfully"
-					},
-					"transaction_reference": {
-						"type": "string",
-						"example": "FT120GY1KKB2"
-					},
-					"reference_number": {
-						"type": "string",
-						"example": "20GY1KKB2CSWL"
-					},
-					"transaction_value_date": {
-						"type": "string",
-						"example": "2021-01-29"
-					},
-					"account_id": {
-						"type": "string",
-						"example": "901233212"
-					},
-					"due_date": {
-						"type": "string",
-						"example": "2020-11-08"
-					},
-					"due_amount": {
-						"type": "string",
-						"example": "2500"
-					},
-					"customer_name": {
-						"type": "string",
-						"example": "John Doe"
-					},
-					"transaction_date": {
-						"type": "string",
-						"example": "2021-01-29"
-					}
-				}
-			}
-		}
-	}
+   "openapi":"3.0.0",
+   "info":{
+      "title":"CBL APIs",
+      "description":"This is test on CBL APIs",
+      "contact":{
+         "email":"it@creditbank.co.ke"
+      },
+      "license":{
+         "name":"Apache 2.0",
+         "url":"http://www.apache.org/licenses/LICENSE-2.0.html"
+      },
+      "version":"1.0.0"
+   },
+   "servers":[
+      {
+         "url":"https://konnectapigateway.creditbank.co.ke",
+         "description":"CBL Dev API Gateway"
+      }
+   ],
+   "tags":[
+      {
+         "name":"Send Money",
+         "description":"Send Money APIs"
+      },
+      {
+         "name":"Accounts",
+         "description":"CBL Accounts"
+      },
+      {
+         "name":"Buy",
+         "description":"Buy Apis"
+      },
+      {
+         "name":"Bill Payments",
+         "description":"Pay your bills from your CBL account"
+      },
+      {
+         "name":"Other Services",
+         "description":"Other Service APIs"
+      }
+   ],
+   "paths":{
+      "/create-standing-order":{
+         "post":{
+            "tags":[
+               "Accounts"
+            ],
+            "summary":"Create a standing order on your CBL account",
+            "description":"Create a standing order on your CBL account\n",
+            "operationId":"createStandingOrder",
+            "parameters":[
+               {
+                  "name":"x-app-id",
+                  "in":"header",
+                  "description":"pass the project id",
+                  "required":true,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               },
+               {
+                  "name":"x-api-key",
+                  "in":"header",
+                  "description":"api-key",
+                  "required":true,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               }
+            ],
+            "requestBody":{
+               "description":"Create a standing order Request",
+               "content":{
+                  "application/json":{
+                     "schema":{
+                        "$ref":"#/components/schemas/createStandingOrderRequest"
+                     }
+                  }
+               },
+               "required":true
+            },
+            "responses":{
+               "200":{
+                  "description":"Successfully created standing order",
+                  "content":{
+                     "application/json":{
+                        "schema":{
+                           "$ref":"#/components/schemas/defaultResponse"
+                        }
+                     }
+                  }
+               },
+               "400":{
+                  "description":"bad input parameter"
+               }
+            }
+         }
+      },
+      "/create-external-standing-order":{
+         "post":{
+            "tags":[
+               "Accounts"
+            ],
+            "summary":"Create a standing order from your CBL account to an account within another bank",
+            "description":"Create a standing order from your CBL account to an account within another bank\n",
+            "operationId":"createExternalStandingOrder",
+            "parameters":[
+               {
+                  "name":"x-app-id",
+                  "in":"header",
+                  "description":"pass the project id",
+                  "required":true,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               },
+               {
+                  "name":"x-api-key",
+                  "in":"header",
+                  "description":"api-key",
+                  "required":true,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               }
+            ],
+            "requestBody":{
+               "description":"Create a standing order Request",
+               "content":{
+                  "application/json":{
+                     "schema":{
+                        "$ref":"#/components/schemas/createExternalStandingOrderRequest"
+                     }
+                  }
+               },
+               "required":true
+            },
+            "responses":{
+               "200":{
+                  "description":"Successfully created standing order",
+                  "content":{
+                     "application/json":{
+                        "schema":{
+                           "$ref":"#/components/schemas/defaultResponse"
+                        }
+                     }
+                  }
+               },
+               "400":{
+                  "description":"bad input parameter"
+               }
+            }
+         }
+      },
+      "/standing-order-lookup":{
+         "post":{
+            "tags":[
+               "Accounts"
+            ],
+            "summary":"Search for an existing standing order on your CBL account",
+            "description":"Search for existing standing order on your CBL account\n",
+            "operationId":"standingOrderLookup",
+            "parameters":[
+               {
+                  "name":"x-app-id",
+                  "in":"header",
+                  "description":"pass the project id",
+                  "required":true,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               },
+               {
+                  "name":"x-api-key",
+                  "in":"header",
+                  "description":"api-key",
+                  "required":true,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               }
+            ],
+            "requestBody":{
+               "description":"Results for Search on an existing standing order Request",
+               "content":{
+                  "application/json":{
+                     "schema":{
+                        "$ref":"#/components/schemas/standingOrderLookupRequest"
+                     }
+                  }
+               },
+               "required":true
+            },
+            "responses":{
+               "200":{
+                  "description":"Found the following details",
+                  "content":{
+                     "application/json":{
+                        "schema":{
+                           "$ref":"#/components/schemas/defaultResponse"
+                        }
+                     }
+                  }
+               },
+               "400":{
+                  "description":"bad input parameter"
+               }
+            }
+         }
+      },
+      "/ammend-standing-order":{
+         "post":{
+            "tags":[
+               "Accounts"
+            ],
+            "summary":"Ammend an existing standing order on your CBL account",
+            "description":"Ammend an existing standing order on your CBL account\n",
+            "operationId":"ammendStandingOrder",
+            "parameters":[
+               {
+                  "name":"x-app-id",
+                  "in":"header",
+                  "description":"pass the project id",
+                  "required":true,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               },
+               {
+                  "name":"x-api-key",
+                  "in":"header",
+                  "description":"api-key",
+                  "required":true,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               }
+            ],
+            "requestBody":{
+               "description":"Ammend an existing standing order Request",
+               "content":{
+                  "application/json":{
+                     "schema":{
+                        "$ref":"#/components/schemas/ammendStandingOrderRequest"
+                     }
+                  }
+               },
+               "required":true
+            },
+            "responses":{
+               "200":{
+                  "description":"Successfully ammended standing order",
+                  "content":{
+                     "application/json":{
+                        "schema":{
+                           "$ref":"#/components/schemas/defaultResponse"
+                        }
+                     }
+                  }
+               },
+               "400":{
+                  "description":"bad input parameter"
+               }
+            }
+         }
+      },
+      "/cancel-standing-order":{
+         "post":{
+            "tags":[
+               "Accounts"
+            ],
+            "summary":"Cancel an existing standing order on your CBL account",
+            "description":"Cancel an existing standing order on your CBL account\n",
+            "operationId":"cancelStandingOrder",
+            "parameters":[
+               {
+                  "name":"x-app-id",
+                  "in":"header",
+                  "description":"pass the project id",
+                  "required":true,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               },
+               {
+                  "name":"x-api-key",
+                  "in":"header",
+                  "description":"api-key",
+                  "required":true,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               }
+            ],
+            "requestBody":{
+               "description":"Cancel a standing order Request",
+               "content":{
+                  "application/json":{
+                     "schema":{
+                        "$ref":"#/components/schemas/cancelStandingOrderRequest"
+                     }
+                  }
+               },
+               "required":true
+            },
+            "responses":{
+               "200":{
+                  "description":"Successfully cancelled the standing order",
+                  "content":{
+                     "application/json":{
+                        "schema":{
+                           "$ref":"#/components/schemas/defaultResponse"
+                        }
+                     }
+                  }
+               },
+               "400":{
+                  "description":"bad input parameter"
+               }
+            }
+         }
+      },
+      "/balance-inquiry":{
+         "post":{
+            "tags":[
+               "Accounts"
+            ],
+            "summary":"Get account balance",
+            "description":"Get account balance\n",
+            "operationId":"balanceInquiry",
+            "parameters":[
+               {
+                  "name":"x-app-id",
+                  "in":"header",
+                  "description":"pass the project id",
+                  "required":true,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               },
+               {
+                  "name":"x-api-key",
+                  "in":"header",
+                  "description":"api-key",
+                  "required":true,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               }
+            ],
+            "requestBody":{
+               "description":"Create a balance inquiry Request",
+               "content":{
+                  "application/json":{
+                     "schema":{
+                        "$ref":"#/components/schemas/balanceInquiryRequest"
+                     }
+                  }
+               },
+               "required":true
+            },
+            "responses":{
+               "200":{
+                  "description":"Successfully created standing order",
+                  "content":{
+                     "application/json":{
+                        "schema":{
+                           "$ref":"#/components/schemas/balanceInquiryResponse"
+                        }
+                     }
+                  }
+               },
+               "400":{
+                  "description":"bad input parameter"
+               }
+            }
+         }
+      },
+      "/account-statement":{
+         "post":{
+            "tags":[
+               "Accounts"
+            ],
+            "summary":"Get account statement",
+            "description":"Get account statement\n",
+            "operationId":"accountStatement",
+            "parameters":[
+               {
+                  "name":"x-app-id",
+                  "in":"header",
+                  "description":"pass the project id",
+                  "required":true,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               },
+               {
+                  "name":"x-api-key",
+                  "in":"header",
+                  "description":"api-key",
+                  "required":true,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               }
+            ],
+            "requestBody":{
+               "description":"Create a account statement inquiry Request",
+               "content":{
+                  "application/json":{
+                     "schema":{
+                        "$ref":"#/components/schemas/accountStatementRequest"
+                     }
+                  }
+               },
+               "required":true
+            },
+            "responses":{
+               "200":{
+                  "description":"Successfully created standing order",
+                  "content":{
+                     "application/json":{
+                        "schema":{
+                           "$ref":"#/components/schemas/balanceInquiryResponse"
+                        }
+                     }
+                  }
+               },
+               "400":{
+                  "description":"bad input parameter"
+               }
+            }
+         }
+      },
+      "/forex":{
+         "post":{
+            "tags":[
+               "Send Money"
+            ],
+            "summary":"Get Forex Rates",
+            "description":"Get Forex Rates\n",
+            "operationId":"forex",
+            "parameters":[
+               {
+                  "name":"x-app-id",
+                  "in":"header",
+                  "description":"pass the project id",
+                  "required":true,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               },
+               {
+                  "name":"x-api-key",
+                  "in":"header",
+                  "description":"api-key",
+                  "required":true,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               }
+            ],
+            "requestBody":{
+               "description":"Create a forex rate Request",
+               "content":{
+                  "application/json":{
+                     "schema":{
+                        "$ref":"#/components/schemas/forexRequest"
+                     }
+                  }
+               },
+               "required":true
+            },
+            "responses":{
+               "200":{
+                  "description":"Successfully fetched forex rates",
+                  "content":{
+                     "application/json":{
+                        "schema":{
+                           "$ref":"#/components/schemas/forexResponse"
+                        }
+                     }
+                  }
+               },
+               "400":{
+                  "description":"bad input parameter"
+               }
+            }
+         }
+      },
+      "/rtgs":{
+         "post":{
+            "tags":[
+               "Send Money"
+            ],
+            "summary":"Send money via RTGS",
+            "description":"Send money via RTGS\n",
+            "operationId":"rtgs",
+            "parameters":[
+               {
+                  "name":"x-app-id",
+                  "in":"header",
+                  "description":"pass the project id",
+                  "required":true,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               },
+               {
+                  "name":"x-api-key",
+                  "in":"header",
+                  "description":"api-key",
+                  "required":true,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               }
+            ],
+            "requestBody":{
+               "description":"Create a RTGS Request",
+               "content":{
+                  "application/json":{
+                     "schema":{
+                        "$ref":"#/components/schemas/rtgsRequest"
+                     }
+                  }
+               },
+               "required":true
+            },
+            "responses":{
+               "200":{
+                  "description":"Successfully fetched forex rates",
+                  "content":{
+                     "application/json":{
+                        "schema":{
+                           "$ref":"#/components/schemas/rtgsResponse"
+                        }
+                     }
+                  }
+               },
+               "400":{
+                  "description":"bad input parameter"
+               }
+            }
+         }
+      },
+      "/pesa-link-to-bank":{
+         "post":{
+            "tags":[
+               "Send Money"
+            ],
+            "summary":"Transfer funds from your CBL account through Pesalink to other banks",
+            "description":"Transfer funds from your CBL account through Pesalink to other banks\n",
+            "operationId":"pesalinkToBank",
+            "parameters":[
+               {
+                  "name":"x-app-id",
+                  "in":"header",
+                  "description":"pass the project id",
+                  "required":true,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               },
+               {
+                  "name":"x-api-key",
+                  "in":"header",
+                  "description":"api-key",
+                  "required":true,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               }
+            ],
+            "requestBody":{
+               "description":"Pesa link to other bank Request",
+               "content":{
+                  "application/json":{
+                     "schema":{
+                        "$ref":"#/components/schemas/pesalinkToBankRequest"
+                     }
+                  }
+               },
+               "required":true
+            },
+            "responses":{
+               "200":{
+                  "description":"Successfully transfered the funds",
+                  "content":{
+                     "application/json":{
+                        "schema":{
+                           "$ref":"#/components/schemas/defaultResponse"
+                        }
+                     }
+                  }
+               },
+               "400":{
+                  "description":"bad input parameter"
+               }
+            }
+         }
+      },
+      "/mpesa-b2c":{
+         "post":{
+            "tags":[
+               "Send Money"
+            ],
+            "summary":"Transfer funds from your CBL account to MPESA",
+            "description":"Transfer funds from your CBL account to MPESA\n",
+            "operationId":"mpesaB2C",
+            "parameters":[
+               {
+                  "name":"x-app-id",
+                  "in":"header",
+                  "description":"pass the project id",
+                  "required":true,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               },
+               {
+                  "name":"x-api-key",
+                  "in":"header",
+                  "description":"api-key",
+                  "required":true,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               }
+            ],
+            "requestBody":{
+               "description":"MPESA B2C Request",
+               "content":{
+                  "application/json":{
+                     "schema":{
+                        "$ref":"#/components/schemas/mpesaB2CRequest"
+                     }
+                  }
+               },
+               "required":true
+            },
+            "responses":{
+               "200":{
+                  "description":"Successfully transfered the funds",
+                  "content":{
+                     "application/json":{
+                        "schema":{
+                           "$ref":"#/components/schemas/defaultResponse"
+                        }
+                     }
+                  }
+               },
+               "400":{
+                  "description":"bad input parameter"
+               }
+            }
+         }
+      },
+      "/airtel-b2c":{
+         "post":{
+            "tags":[
+               "Send Money"
+            ],
+            "summary":"Transfer funds from your CBL account to Airtel",
+            "description":"Transfer funds from your CBL account to Airtel\n",
+            "operationId":"airtelB2C",
+            "parameters":[
+               {
+                  "name":"x-app-id",
+                  "in":"header",
+                  "description":"pass the project id",
+                  "required":true,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               },
+               {
+                  "name":"x-api-key",
+                  "in":"header",
+                  "description":"api-key",
+                  "required":true,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               }
+            ],
+            "requestBody":{
+               "description":"Airtel B2C Request",
+               "content":{
+                  "application/json":{
+                     "schema":{
+                        "$ref":"#/components/schemas/airtelB2CRequest"
+                     }
+                  }
+               },
+               "required":true
+            },
+            "responses":{
+               "200":{
+                  "description":"Successfully transfered the funds",
+                  "content":{
+                     "application/json":{
+                        "schema":{
+                           "$ref":"#/components/schemas/defaultResponse"
+                        }
+                     }
+                  }
+               },
+               "400":{
+                  "description":"bad input parameter"
+               }
+            }
+         }
+      },
+      "/internal-funds-transfer":{
+         "post":{
+            "tags":[
+               "Send Money"
+            ],
+            "summary":"Transfer funds from your CBL account to other CBL accounts",
+            "description":"Transfer funds from your CBL account to other CBL accounts\n",
+            "operationId":"internalFundsTransfer",
+            "parameters":[
+               {
+                  "name":"x-app-id",
+                  "in":"header",
+                  "description":"pass the project id",
+                  "required":true,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               },
+               {
+                  "name":"x-api-key",
+                  "in":"header",
+                  "description":"api-key",
+                  "required":true,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               }
+            ],
+            "requestBody":{
+               "description":"Internal Funds Transfer Request",
+               "content":{
+                  "application/json":{
+                     "schema":{
+                        "$ref":"#/components/schemas/internalFundsTransferRequest"
+                     }
+                  }
+               },
+               "required":true
+            },
+            "responses":{
+               "200":{
+                  "description":"Successfully transfered the funds",
+                  "content":{
+                     "application/json":{
+                        "schema":{
+                           "$ref":"#/components/schemas/defaultResponse"
+                        }
+                     }
+                  }
+               },
+               "400":{
+                  "description":"bad input parameter"
+               }
+            }
+         }
+      },
+      "/wallet-funds-transfer":{
+         "post":{
+            "tags":[
+               "Send Money"
+            ],
+            "summary":"Transfer funds from your CBL account to wallet accounts",
+            "description":"Transfer funds from your CBL account to wallet accounts\n",
+            "operationId":"walletFundsTransfer",
+            "parameters":[
+               {
+                  "name":"x-app-id",
+                  "in":"header",
+                  "description":"pass the project id",
+                  "required":true,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               },
+               {
+                  "name":"x-api-key",
+                  "in":"header",
+                  "description":"api-key",
+                  "required":true,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               }
+            ],
+            "requestBody":{
+               "description":"Wallet Funds Transfer Request",
+               "content":{
+                  "application/json":{
+                     "schema":{
+                        "$ref":"#/components/schemas/walletFundsTransferRequest"
+                     }
+                  }
+               },
+               "required":true
+            },
+            "responses":{
+               "200":{
+                  "description":"Successfully transfered the funds",
+                  "content":{
+                     "application/json":{
+                        "schema":{
+                           "$ref":"#/components/schemas/defaultResponse"
+                        }
+                     }
+                  }
+               },
+               "400":{
+                  "description":"bad input parameter"
+               }
+            }
+         }
+      },
+      "/wallet-to-wallet-transfer":{
+         "post":{
+            "tags":[
+               "Send Money"
+            ],
+            "summary":"Transfer funds from your CBL wallet to another CBL wallet accounts",
+            "description":"Transfer funds from your CBL wallet to another CBL wallet accounts\n",
+            "operationId":"walletToWalletTransfer",
+            "parameters":[
+               {
+                  "name":"x-app-id",
+                  "in":"header",
+                  "description":"pass the project id",
+                  "required":true,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               },
+               {
+                  "name":"x-api-key",
+                  "in":"header",
+                  "description":"api-key",
+                  "required":true,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               }
+            ],
+            "requestBody":{
+               "description":"Wallet to Wallet Transfer Request",
+               "content":{
+                  "application/json":{
+                     "schema":{
+                        "$ref":"#/components/schemas/walletToWalletTransferRequest"
+                     }
+                  }
+               },
+               "required":true
+            },
+            "responses":{
+               "200":{
+                  "description":"Successfully transfered the funds",
+                  "content":{
+                     "application/json":{
+                        "schema":{
+                           "$ref":"#/components/schemas/defaultResponse"
+                        }
+                     }
+                  }
+               },
+               "400":{
+                  "description":"bad input parameter"
+               }
+            }
+         }
+      },
+      "/safaricom-airtime-top-up":{
+         "post":{
+            "tags":[
+               "Buy"
+            ],
+            "summary":"Safaricom Airtime Topup",
+            "description":"Buy Safaricom pre-paid airtime from your CBL account\n",
+            "operationId":"safaricomAirtimeTopUp",
+            "parameters":[
+               {
+                  "name":"x-app-id",
+                  "in":"header",
+                  "description":"pass the project id",
+                  "required":true,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               },
+               {
+                  "name":"x-api-key",
+                  "in":"header",
+                  "description":"api-key",
+                  "required":true,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               }
+            ],
+            "requestBody":{
+               "description":"Safaricom Airtime Top Up Request",
+               "content":{
+                  "application/json":{
+                     "schema":{
+                        "$ref":"#/components/schemas/safaricomAirtimeTopUpRequest"
+                     }
+                  }
+               },
+               "required":true
+            },
+            "responses":{
+               "200":{
+                  "description":"search results matching criteria",
+                  "content":{
+                     "application/json":{
+                        "schema":{
+                           "$ref":"#/components/schemas/defaultResponse"
+                        }
+                     }
+                  }
+               },
+               "400":{
+                  "description":"bad input parameter"
+               }
+            }
+         }
+      },
+      "/telkom-airtime-top-up":{
+         "post":{
+            "tags":[
+               "Buy"
+            ],
+            "summary":"Telkom Airtime Topup",
+            "description":"Buy Telkom pre-paid airtime from your CBL account\n",
+            "operationId":"telkomAirtimeTopUp",
+            "parameters":[
+               {
+                  "name":"x-app-id",
+                  "in":"header",
+                  "description":"pass the project id",
+                  "required":true,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               },
+               {
+                  "name":"x-api-key",
+                  "in":"header",
+                  "description":"api-key",
+                  "required":true,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               }
+            ],
+            "requestBody":{
+               "description":"Telkom Airtime Top Up Request",
+               "content":{
+                  "application/json":{
+                     "schema":{
+                        "$ref":"#/components/schemas/telkomAirtimeTopUpRequest"
+                     }
+                  }
+               },
+               "required":true
+            },
+            "responses":{
+               "200":{
+                  "description":"search results matching criteria",
+                  "content":{
+                     "application/json":{
+                        "schema":{
+                           "$ref":"#/components/schemas/defaultResponse"
+                        }
+                     }
+                  }
+               },
+               "400":{
+                  "description":"bad input parameter"
+               }
+            }
+         }
+      },
+      "/airtel-airtime-top-up":{
+         "post":{
+            "tags":[
+               "Buy"
+            ],
+            "summary":"Airtel Airtime Topup",
+            "description":"Buy Airtel pre-paid airtime from your CBL account\n",
+            "operationId":"airtelAirtimeTopUp",
+            "parameters":[
+               {
+                  "name":"x-app-id",
+                  "in":"header",
+                  "description":"pass the project id",
+                  "required":true,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               },
+               {
+                  "name":"x-api-key",
+                  "in":"header",
+                  "description":"api-key",
+                  "required":true,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               }
+            ],
+            "requestBody":{
+               "description":"Airtel Airtime Top Up Request",
+               "content":{
+                  "application/json":{
+                     "schema":{
+                        "$ref":"#/components/schemas/airtelAirtimeTopUpRequest"
+                     }
+                  }
+               },
+               "required":true
+            },
+            "responses":{
+               "200":{
+                  "description":"search results matching criteria",
+                  "content":{
+                     "application/json":{
+                        "schema":{
+                           "$ref":"#/components/schemas/defaultResponse"
+                        }
+                     }
+                  }
+               },
+               "400":{
+                  "description":"bad input parameter"
+               }
+            }
+         }
+      },
+      "/iprs":{
+         "post":{
+            "tags":[
+               "Other Services"
+            ],
+            "summary":"Query IPRS for details of a kenyan citizen",
+            "description":"Query IPRS for details of a kenyan citizen\n",
+            "operationId":"iprs",
+            "parameters":[
+               {
+                  "name":"x-app-id",
+                  "in":"header",
+                  "description":"pass the project id",
+                  "required":true,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               },
+               {
+                  "name":"x-api-key",
+                  "in":"header",
+                  "description":"api-key",
+                  "required":true,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               }
+            ],
+            "requestBody":{
+               "description":"IPRS Query Request",
+               "content":{
+                  "application/json":{
+                     "schema":{
+                        "$ref":"#/components/schemas/iprsRequest"
+                     }
+                  }
+               },
+               "required":true
+            },
+            "responses":{
+               "200":{
+                  "description":"search results matching criteria",
+                  "content":{
+                     "application/json":{
+                        "schema":{
+                           "$ref":"#/components/schemas/iprsResponse"
+                        }
+                     }
+                  }
+               },
+               "400":{
+                  "description":"bad input parameter"
+               }
+            }
+         }
+      },
+      "/crb":{
+         "post":{
+            "tags":[
+               "Other Services"
+            ],
+            "summary":"Query CRB for details of a kenyan citizen",
+            "description":"Query CRB for details of a kenyan citizen\n",
+            "operationId":"crb",
+            "parameters":[
+               {
+                  "name":"x-app-id",
+                  "in":"header",
+                  "description":"pass the project id",
+                  "required":true,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               },
+               {
+                  "name":"x-api-key",
+                  "in":"header",
+                  "description":"api-key",
+                  "required":true,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               }
+            ],
+            "requestBody":{
+               "description":"CRB Request",
+               "content":{
+                  "application/json":{
+                     "schema":{
+                        "$ref":"#/components/schemas/crbRequest"
+                     }
+                  }
+               },
+               "required":true
+            },
+            "responses":{
+               "200":{
+                  "description":"search results matching criteria",
+                  "content":{
+                     "application/json":{
+                        "schema":{
+                           "$ref":"#/components/schemas/crbResponse"
+                        }
+                     }
+                  }
+               },
+               "400":{
+                  "description":"bad input parameter"
+               }
+            }
+         }
+      },
+      "/nairobi-water":{
+         "post":{
+            "tags":[
+               "Bill Payments"
+            ],
+            "summary":"Pay your nairobi water bill from your CBL account",
+            "description":"Pay your nairobi water bill from your CBL account\n",
+            "operationId":"nairobiWater",
+            "parameters":[
+               {
+                  "name":"x-app-id",
+                  "in":"header",
+                  "description":"pass the project id",
+                  "required":true,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               },
+               {
+                  "name":"x-api-key",
+                  "in":"header",
+                  "description":"api-key",
+                  "required":true,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               }
+            ],
+            "requestBody":{
+               "description":"Nairobi water bill payment Request",
+               "content":{
+                  "application/json":{
+                     "schema":{
+                        "$ref":"#/components/schemas/nairobiWaterBillPaymentRequest"
+                     }
+                  }
+               },
+               "required":true
+            },
+            "responses":{
+               "200":{
+                  "description":"Request successfully processed",
+                  "content":{
+                     "application/json":{
+                        "schema":{
+                           "$ref":"#/components/schemas/defaultResponse"
+                        }
+                     }
+                  }
+               },
+               "400":{
+                  "description":"bad input parameter"
+               }
+            }
+         }
+      },
+      "/zuku-internet":{
+         "post":{
+            "tags":[
+               "Bill Payments"
+            ],
+            "summary":"Pay your zuku internet bill from your CBL account",
+            "description":"Pay your zuku internet bill from your CBL account\n",
+            "operationId":"zukuInternet",
+            "parameters":[
+               {
+                  "name":"x-app-id",
+                  "in":"header",
+                  "description":"pass the project id",
+                  "required":true,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               },
+               {
+                  "name":"x-api-key",
+                  "in":"header",
+                  "description":"api-key",
+                  "required":true,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               }
+            ],
+            "requestBody":{
+               "description":"Zuku internet bill payment Request",
+               "content":{
+                  "application/json":{
+                     "schema":{
+                        "$ref":"#/components/schemas/zukuInternetBillPaymentRequest"
+                     }
+                  }
+               },
+               "required":true
+            },
+            "responses":{
+               "200":{
+                  "description":"Request successfully processed",
+                  "content":{
+                     "application/json":{
+                        "schema":{
+                           "$ref":"#/components/schemas/defaultResponse"
+                        }
+                     }
+                  }
+               },
+               "400":{
+                  "description":"bad input parameter"
+               }
+            }
+         }
+      },
+      "/zuku-tv":{
+         "post":{
+            "tags":[
+               "Bill Payments"
+            ],
+            "summary":"Pay your zuku TV bill from your CBL account",
+            "description":"Pay your zuku TV bill from your CBL account\n",
+            "operationId":"zukuTV",
+            "parameters":[
+               {
+                  "name":"x-app-id",
+                  "in":"header",
+                  "description":"pass the project id",
+                  "required":true,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               },
+               {
+                  "name":"x-api-key",
+                  "in":"header",
+                  "description":"api-key",
+                  "required":true,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               }
+            ],
+            "requestBody":{
+               "description":"Zuku TV bill payment Request",
+               "content":{
+                  "application/json":{
+                     "schema":{
+                        "$ref":"#/components/schemas/zukuTVBillPaymentRequest"
+                     }
+                  }
+               },
+               "required":true
+            },
+            "responses":{
+               "200":{
+                  "description":"Request successfully processed",
+                  "content":{
+                     "application/json":{
+                        "schema":{
+                           "$ref":"#/components/schemas/defaultResponse"
+                        }
+                     }
+                  }
+               },
+               "400":{
+                  "description":"bad input parameter"
+               }
+            }
+         }
+      },
+      "/startimes-tv":{
+         "post":{
+            "tags":[
+               "Bill Payments"
+            ],
+            "summary":"Pay your startimes TV bill from your CBL account",
+            "description":"Pay your startimes TV bill from your CBL account\n",
+            "operationId":"startimesTV",
+            "parameters":[
+               {
+                  "name":"x-app-id",
+                  "in":"header",
+                  "description":"pass the project id",
+                  "required":true,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               },
+               {
+                  "name":"x-api-key",
+                  "in":"header",
+                  "description":"api-key",
+                  "required":true,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               }
+            ],
+            "requestBody":{
+               "description":"Startimes TV bill payment Request",
+               "content":{
+                  "application/json":{
+                     "schema":{
+                        "$ref":"#/components/schemas/starTimesBillPaymentRequest"
+                     }
+                  }
+               },
+               "required":true
+            },
+            "responses":{
+               "200":{
+                  "description":"Request successfully processed",
+                  "content":{
+                     "application/json":{
+                        "schema":{
+                           "$ref":"#/components/schemas/defaultResponse"
+                        }
+                     }
+                  }
+               },
+               "400":{
+                  "description":"bad input parameter"
+               }
+            }
+         }
+      },
+      "/dstv-presentment":{
+         "post":{
+            "tags":[
+               "Bill Payments"
+            ],
+            "summary":"Pay your DSTV bill from your CBL account",
+            "description":"Pay your DSTV bill from your CBL account\n",
+            "operationId":"dstvPresentment",
+            "parameters":[
+               {
+                  "name":"x-app-id",
+                  "in":"header",
+                  "description":"pass the project id",
+                  "required":true,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               },
+               {
+                  "name":"x-api-key",
+                  "in":"header",
+                  "description":"api-key",
+                  "required":true,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               }
+            ],
+            "requestBody":{
+               "description":"DSTV bill presentment Request",
+               "content":{
+                  "application/json":{
+                     "schema":{
+                        "$ref":"#/components/schemas/dstvPresentmentRequest"
+                     }
+                  }
+               },
+               "required":true
+            },
+            "responses":{
+               "200":{
+                  "description":"Request successfully processed",
+                  "content":{
+                     "application/json":{
+                        "schema":{
+                           "$ref":"#/components/schemas/dstvPresentmentResponse"
+                        }
+                     }
+                  }
+               },
+               "400":{
+                  "description":"bad input parameter"
+               }
+            }
+         }
+      },
+      "/dstv-payment":{
+         "post":{
+            "tags":[
+               "Bill Payments"
+            ],
+            "summary":"Pay your DSTV bill from your CBL account",
+            "description":"Pay your DSTV bill from your CBL account\n",
+            "operationId":"dstvPayment",
+            "parameters":[
+               {
+                  "name":"x-app-id",
+                  "in":"header",
+                  "description":"pass the project id",
+                  "required":true,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               },
+               {
+                  "name":"x-api-key",
+                  "in":"header",
+                  "description":"api-key",
+                  "required":true,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               }
+            ],
+            "requestBody":{
+               "description":"DSTV bill payment Request",
+               "content":{
+                  "application/json":{
+                     "schema":{
+                        "$ref":"#/components/schemas/dstvBillPaymentRequest"
+                     }
+                  }
+               },
+               "required":true
+            },
+            "responses":{
+               "200":{
+                  "description":"Request successfully processed",
+                  "content":{
+                     "application/json":{
+                        "schema":{
+                           "$ref":"#/components/schemas/defaultResponse"
+                        }
+                     }
+                  }
+               },
+               "400":{
+                  "description":"bad input parameter"
+               }
+            }
+         }
+      },
+      "/gotv-presentment":{
+         "post":{
+            "tags":[
+               "Bill Payments"
+            ],
+            "summary":"Pay your GOTV bill from your CBL account",
+            "description":"Pay your GOTV bill from your CBL account\n",
+            "operationId":"gotvPresentment",
+            "parameters":[
+               {
+                  "name":"x-app-id",
+                  "in":"header",
+                  "description":"pass the project id",
+                  "required":true,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               },
+               {
+                  "name":"x-api-key",
+                  "in":"header",
+                  "description":"api-key",
+                  "required":true,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               }
+            ],
+            "requestBody":{
+               "description":"GOTV bill presentment Request",
+               "content":{
+                  "application/json":{
+                     "schema":{
+                        "$ref":"#/components/schemas/gotvPresentmentRequest"
+                     }
+                  }
+               },
+               "required":true
+            },
+            "responses":{
+               "200":{
+                  "description":"Request successfully processed",
+                  "content":{
+                     "application/json":{
+                        "schema":{
+                           "$ref":"#/components/schemas/gotvPresentmentResponse"
+                        }
+                     }
+                  }
+               },
+               "400":{
+                  "description":"bad input parameter"
+               }
+            }
+         }
+      },
+      "/gotv-payment":{
+         "post":{
+            "tags":[
+               "Bill Payments"
+            ],
+            "summary":"Pay your GOTV bill from your CBL account",
+            "description":"Pay your GOTV bill from your CBL account\n",
+            "operationId":"gotvPayment",
+            "parameters":[
+               {
+                  "name":"x-app-id",
+                  "in":"header",
+                  "description":"pass the project id",
+                  "required":true,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               },
+               {
+                  "name":"x-api-key",
+                  "in":"header",
+                  "description":"api-key",
+                  "required":true,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               }
+            ],
+            "requestBody":{
+               "description":"GOTV bill payment Request",
+               "content":{
+                  "application/json":{
+                     "schema":{
+                        "$ref":"#/components/schemas/gotvBillPaymentRequest"
+                     }
+                  }
+               },
+               "required":true
+            },
+            "responses":{
+               "200":{
+                  "description":"Request successfully processed",
+                  "content":{
+                     "application/json":{
+                        "schema":{
+                           "$ref":"#/components/schemas/defaultResponse"
+                        }
+                     }
+                  }
+               },
+               "400":{
+                  "description":"bad input parameter"
+               }
+            }
+         }
+      }
+   },
+   "/pesalink-verification":{
+      "post":{
+         "tags":[
+            "Send Money"
+         ],
+         "summary":"Verify account number Pesalink",
+         "description":"Verify account number Pesalink\n",
+         "operationId":"pesalinkVerification",
+         "parameters":[
+            {
+               "name":"x-app-id",
+               "in":"header",
+               "description":"pass the project id",
+               "required":true,
+               "style":"simple",
+               "explode":false,
+               "schema":{
+                  "type":"string"
+               }
+            },
+            {
+               "name":"x-api-key",
+               "in":"header",
+               "description":"api-key",
+               "required":true,
+               "style":"simple",
+               "explode":false,
+               "schema":{
+                  "type":"string"
+               }
+            }
+         ],
+         "requestBody":{
+            "description":"Verify account number on Pesalink",
+            "content":{
+               "application/json":{
+                  "schema":{
+                     "$ref":"#/components/schemas/pesalinkVerificationRequest"
+                  }
+               }
+            },
+            "required":true
+         },
+         "responses":{
+            "200":{
+               "description":"Request successfully processed",
+               "content":{
+                  "application/json":{
+                     "schema":{
+                        "$ref":"#/components/schemas/defaultResponse"
+                     }
+                  }
+               }
+            },
+            "400":{
+               "description":"bad input parameter"
+            }
+         }
+      }
+   },
+   "/wallet-registration":{
+      "post":{
+         "tags":[
+            "Send Money"
+         ],
+         "summary":"create a wallet account CBL",
+         "description":"create a wallet account CBL\n",
+         "operationId":"walletRegistration",
+         "parameters":[
+            {
+               "name":"x-app-id",
+               "in":"header",
+               "description":"pass the project id",
+               "required":true,
+               "style":"simple",
+               "explode":false,
+               "schema":{
+                  "type":"string"
+               }
+            },
+            {
+               "name":"x-api-key",
+               "in":"header",
+               "description":"api-key",
+               "required":true,
+               "style":"simple",
+               "explode":false,
+               "schema":{
+                  "type":"string"
+               }
+            }
+         ],
+         "requestBody":{
+            "description":"create a wallet account CBL",
+            "content":{
+               "application/json":{
+                  "schema":{
+                     "$ref":"#/components/schemas/walletRegistrationRequest"
+                  }
+               }
+            },
+            "required":true
+         },
+         "responses":{
+            "200":{
+               "description":"Request successfully processed",
+               "content":{
+                  "application/json":{
+                     "schema":{
+                        "$ref":"#/components/schemas/defaultResponse"
+                     }
+                  }
+               }
+            },
+            "400":{
+               "description":"bad input parameter"
+            }
+         }
+      }
+   },
+   "components":{
+      "schemas":{
+         "walletRegistrationRequest":{
+            "required":[
+               "currency",
+               "timestamp",
+               "transactionType",
+               "surname",
+               "firstName",
+               "lastName",
+               "idNumber",
+               "email",
+               "deviceId",
+               "imsi",
+               "dateOfBirth",
+               "phoneNumber",
+               "gender"
+            ],
+            "type":"object",
+            "properties":{
+               "currency":{
+                  "type":"string",
+                  "example":"KES"
+               },
+               "timestamp":{
+                  "type":"string",
+                  "example":"2021-01-29T00:54:08+03:00"
+               },
+               "transactionType":{
+                  "type":"string",
+                  "example":"WALLET_REGISTRATION"
+               },
+               "surname":{
+                  "type":"string",
+                  "example":"EKUWOM"
+               },
+               "firstName":{
+                  "type":"string",
+                  "example":"AGNES"
+               },
+               "lastName":{
+                  "type":"string",
+                  "example":"AMONI"
+               },
+               "idNumber":{
+                  "type":"string",
+                  "example":"20098160"
+               },
+               "email":{
+                  "type":"string",
+                  "example":"test@gmail.com"
+               },
+               "deviceId":{
+                  "type":"string",
+                  "example":"124359837755"
+               },
+               "imsi":{
+                  "type":"string",
+                  "example":"0893523736236"
+               },
+               "dateOfBirth":{
+                  "type":"string",
+                  "example":"09-12-2000"
+               },
+               "phoneNumber":{
+                  "type":"string",
+                  "example":"254"
+               },
+               "gender":{
+                  "type":"string",
+                  "example":"M"
+               }
+            }
+         },
+         "pesalinkVerificationRequest":{
+            "required":[
+               "bankCode",
+               "timestamp",
+               "transactionType"
+            ],
+            "type":"object",
+            "properties":{
+               "bankCode":{
+                  "type":"string",
+                  "example":"0025"
+               },
+               "transactionType":{
+                  "type":"string",
+                  "example":"SAFARICOM"
+               },
+               "timestamp":{
+                  "type":"string",
+                  "example":"2021-01-29T00:54:08+03:00"
+               }
+            }
+         },
+         "safaricomAirtimeTopUpRequest":{
+            "required":[
+               "amount",
+               "creditAccount",
+               "currency",
+               "timestamp",
+               "transactionReference",
+               "transactionType"
+            ],
+            "type":"object",
+            "properties":{
+               "amount":{
+                  "type":"string",
+                  "example":"300"
+               },
+               "creditAccount":{
+                  "type":"string",
+                  "example":"254700123151"
+               },
+               "transactionType":{
+                  "type":"string",
+                  "example":"SAFARICOM"
+               },
+               "timestamp":{
+                  "type":"string",
+                  "example":"2021-01-29T00:54:08+03:00"
+               },
+               "currency":{
+                  "type":"string",
+                  "example":"KES"
+               },
+               "transactionReference":{
+                  "type":"string",
+                  "example":"DKDFHST67DJD"
+               }
+            }
+         },
+         "telkomAirtimeTopUpRequest":{
+            "required":[
+               "amount",
+               "creditAccount",
+               "currency",
+               "timestamp",
+               "transactionReference",
+               "transactionType"
+            ],
+            "type":"object",
+            "properties":{
+               "amount":{
+                  "type":"string",
+                  "example":"300"
+               },
+               "creditAccount":{
+                  "type":"string",
+                  "example":"254700123151"
+               },
+               "transactionType":{
+                  "type":"string",
+                  "example":"TELKOM"
+               },
+               "timestamp":{
+                  "type":"string",
+                  "example":"2021-01-29T00:54:08+03:00"
+               },
+               "currency":{
+                  "type":"string",
+                  "example":"KES"
+               },
+               "transactionReference":{
+                  "type":"string",
+                  "example":"DKDFHST67DJD"
+               }
+            }
+         },
+         "airtelAirtimeTopUpRequest":{
+            "required":[
+               "amount",
+               "creditAccount",
+               "currency",
+               "timestamp",
+               "transactionReference",
+               "transactionType"
+            ],
+            "type":"object",
+            "properties":{
+               "amount":{
+                  "type":"string",
+                  "example":"300"
+               },
+               "creditAccount":{
+                  "type":"string",
+                  "example":"254700123151"
+               },
+               "transactionType":{
+                  "type":"string",
+                  "example":"AIRTEL"
+               },
+               "timestamp":{
+                  "type":"string",
+                  "example":"2021-01-29T00:54:08+03:00"
+               },
+               "currency":{
+                  "type":"string",
+                  "example":"KES"
+               },
+               "transactionReference":{
+                  "type":"string",
+                  "example":"DKDFHST67DJD"
+               }
+            }
+         },
+         "createStandingOrderRequest":{
+            "required":[
+               "accountFrom",
+               "accountTo",
+               "amount",
+               "dateSettlement",
+               "endDate",
+               "frequency"
+            ],
+            "type":"object",
+            "properties":{
+               "amount":{
+                  "type":"number",
+                  "example":3000
+               },
+               "accountFrom":{
+                  "type":"string",
+                  "example":"0076003000023"
+               },
+               "accountTo":{
+                  "type":"string",
+                  "example":"0026001001094"
+               },
+               "frequency":{
+                  "type":"string",
+                  "example":"M"
+               },
+               "endDate":{
+                  "type":"string",
+                  "example":"20240831"
+               },
+               "dateSettlement":{
+                  "type":"string",
+                  "example":"1120"
+               }
+            }
+         },
+         "createExternalStandingOrderRequest":{
+            "required":[
+               "accountFrom",
+               "accountTo",
+               "amount",
+               "dateSettlement",
+               "endDate",
+               "frequency",
+               "sortCode",
+               "name"
+            ],
+            "type":"object",
+            "properties":{
+               "amount":{
+                  "type":"string",
+                  "example":"3000"
+               },
+               "accountFrom":{
+                  "type":"string",
+                  "example":"0076003000023"
+               },
+               "accountTo":{
+                  "type":"string",
+                  "example":"0026001001094"
+               },
+               "frequency":{
+                  "type":"string",
+                  "example":"M"
+               },
+               "endDate":{
+                  "type":"string",
+                  "example":"20240831"
+               },
+               "dateSettlement":{
+                  "type":"string",
+                  "example":"1120"
+               },
+               "sortCode":{
+                  "type":"string",
+                  "example":"17000"
+               },
+               "name":{
+                  "type":"string",
+                  "example":"John Doe"
+               }
+            }
+         },
+         "balanceInquiryRequest":{
+            "required":[
+               "account"
+            ],
+            "type":"object",
+            "properties":{
+               "account":{
+                  "type":"string",
+                  "example":"0076003000023"
+               }
+            }
+         },
+         "accountStatementRequest":{
+            "required":[
+               "startDate",
+               "endDate"
+            ],
+            "type":"object",
+            "properties":{
+               "startDate":{
+                  "type":"string",
+                  "example":"20210628"
+               },
+               "endDate":{
+                  "type":"string",
+                  "example":"20210629"
+               }
+            }
+         },
+         "forexRequest":{
+            "required":[
+               "account"
+            ],
+            "type":"object",
+            "properties":{
+               "account":{
+                  "type":"string",
+                  "example":"0076003000023"
+               }
+            }
+         },
+         "rtgsRequest":{
+            "required":[
+               "accountFrom",
+               "accountTo",
+               "amount",
+               "beneficiaryName",
+               "paymentNarrative",
+               "swiftCode"
+            ],
+            "type":"object",
+            "properties":{
+               "amount":{
+                  "type":"string",
+                  "example":"50000"
+               },
+               "accountFrom":{
+                  "type":"string",
+                  "example":"0076003000023"
+               },
+               "accountTo":{
+                  "type":"string",
+                  "example":"0020276343557"
+               },
+               "beneficiaryName":{
+                  "type":"string",
+                  "example":"POWER GROUP TECHNOLOGIES LTD"
+               },
+               "paymentNarrative":{
+                  "type":"string",
+                  "example":"Payment for invoice #132189"
+               },
+               "swiftCode":{
+                  "type":"string",
+                  "example":"EQBLKENA"
+               }
+            }
+         },
+         "standingOrderLookupRequest":{
+            "required":[
+               "client_id",
+               "currency",
+               "reference_number",
+               "so_id",
+               "timestamp",
+               "transaction_type"
+            ],
+            "type":"object",
+            "properties":{
+               "transaction_type":{
+                  "type":"string",
+                  "example":"STO"
+               },
+               "reference_number":{
+                  "type":"string",
+                  "example":"20GY1KKB2CSWL"
+               },
+               "timestamp":{
+                  "type":"string",
+                  "example":"2021-01-29T00:54:08+03:00"
+               },
+               "currency":{
+                  "type":"string",
+                  "example":"KES"
+               },
+               "client_id":{
+                  "type":"string",
+                  "example":"OA9876543"
+               }
+            }
+         },
+         "ammendStandingOrderRequest":{
+            "required":[
+               "amount",
+               "client_id",
+               "currency",
+               "end_date",
+               "reference_number",
+               "so_id",
+               "timestamp",
+               "transaction_type"
+            ],
+            "type":"object",
+            "properties":{
+               "so_id":{
+                  "type":"string",
+                  "example":"0076003000023.10"
+               },
+               "end_date":{
+                  "type":"string",
+                  "example":"2021-04-29"
+               },
+               "amount":{
+                  "type":"string",
+                  "example":"5000"
+               },
+               "transaction_type":{
+                  "type":"string",
+                  "example":"STO_START"
+               },
+               "reference_number":{
+                  "type":"string",
+                  "example":"20GY1KKB2CSWL"
+               },
+               "timestamp":{
+                  "type":"string",
+                  "example":"2021-01-29T00:54:08+03:00"
+               },
+               "currency":{
+                  "type":"string",
+                  "example":"KES"
+               },
+               "client_id":{
+                  "type":"string",
+                  "example":"OA9876543"
+               }
+            }
+         },
+         "cancelStandingOrderRequest":{
+            "required":[
+               "date",
+               "stoId"
+            ],
+            "type":"object",
+            "properties":{
+               "stoId":{
+                  "type":"string",
+                  "example":"0076003000023.10"
+               },
+               "date":{
+                  "type":"string",
+                  "example":"20221117"
+               }
+            }
+         },
+         "pesalinkToBankRequest":{
+            "required":[
+               "amount",
+               "bankCode",
+               "beneficiaryName",
+               "creditAccount",
+               "currency",
+               "direction",
+               "narration",
+               "receiverPhoneNumber",
+               "timestamp",
+               "transactionReference",
+               "transactionType"
+            ],
+            "type":"object",
+            "properties":{
+               "amount":{
+                  "type":"string",
+                  "example":"3000"
+               },
+               "bankCode":{
+                  "type":"string",
+                  "example":"0025"
+               },
+               "direction":{
+                  "type":"string",
+                  "example":"A2A"
+               },
+               "narration":{
+                  "type":"string",
+                  "example":"pesalink to John Doe"
+               },
+               "receiverPhoneNumber":{
+                  "type":"string",
+                  "example":"254714315046"
+               },
+               "beneficiaryName":{
+                  "type":"string",
+                  "example":"John Doe"
+               },
+               "creditAccount":{
+                  "type":"string",
+                  "example":"0021024000038"
+               },
+               "transactionType":{
+                  "type":"string",
+                  "example":"PESALINK"
+               },
+               "transactionReference":{
+                  "type":"string",
+                  "example":"20GY1KKB2CSWL"
+               },
+               "timestamp":{
+                  "type":"string",
+                  "example":"2021-01-29T00:54:08+03:00"
+               },
+               "currency":{
+                  "type":"string",
+                  "example":"KES"
+               }
+            }
+         },
+         "mpesaB2CRequest":{
+            "required":[
+               "amount",
+               "creditAccount",
+               "currency",
+               "timestamp",
+               "transactionReference",
+               "transactionType"
+            ],
+            "type":"object",
+            "properties":{
+               "amount":{
+                  "type":"string",
+                  "example":"3000"
+               },
+               "creditAccount":{
+                  "type":"string",
+                  "example":"+254711123123"
+               },
+               "transactionType":{
+                  "type":"string",
+                  "example":"MPESAB2C"
+               },
+               "transactionReference":{
+                  "type":"string",
+                  "example":"20GY1KKB2CSWL"
+               },
+               "timestamp":{
+                  "type":"string",
+                  "example":"2021-01-29T00:54:08+03:00"
+               },
+               "currency":{
+                  "type":"string",
+                  "example":"KES"
+               }
+            }
+         },
+         "airtelB2CRequest":{
+            "required":[
+               "amount",
+               "creditAccount",
+               "currency",
+               "timestamp",
+               "transactionReference",
+               "transactionType"
+            ],
+            "type":"object",
+            "properties":{
+               "amount":{
+                  "type":"string",
+                  "example":"3000"
+               },
+               "creditAccount":{
+                  "type":"string",
+                  "example":"+254711123123"
+               },
+               "transactionType":{
+                  "type":"string",
+                  "example":"MPESAB2C"
+               },
+               "transactionReference":{
+                  "type":"string",
+                  "example":"20GY1KKB2CSWL"
+               },
+               "timestamp":{
+                  "type":"string",
+                  "example":"2021-01-29T00:54:08+03:00"
+               },
+               "currency":{
+                  "type":"string",
+                  "example":"KES"
+               }
+            }
+         },
+         "internalFundsTransferRequest":{
+            "required":[
+               "amount",
+               "accountFrom",
+               "accountTo",
+               "paymentNarrative"
+            ],
+            "type":"object",
+            "properties":{
+               "amount":{
+                  "type":"string",
+                  "example":"3000"
+               },
+               "accountFrom":{
+                  "type":"string",
+                  "example":"0021007000823"
+               },
+               "accountTo":{
+                  "type":"string",
+                  "example":"0141007000038"
+               },
+               "paymentNarrative":{
+                  "type":"string",
+                  "example":"Transfer funds from your CBL account to other CBL accounts"
+               }
+            }
+         },
+         "walletFundsTransferRequest":{
+            "required":[
+               "amount",
+               "creditAccount",
+               "currency",
+               "timestamp",
+               "transactionReference",
+               "transactionType"
+            ],
+            "type":"object",
+            "properties":{
+               "amount":{
+                  "type":"string",
+                  "example":"3000"
+               },
+               "creditAccount":{
+                  "type":"string",
+                  "example":"CA715748115"
+               },
+               "transactionType":{
+                  "type":"string",
+                  "example":"FTCORE2WALLET"
+               },
+               "transactionReference":{
+                  "type":"string",
+                  "example":"DL1LBN6HB89JR"
+               },
+               "timestamp":{
+                  "type":"string",
+                  "example":"2021-01-29T00:54:08+03:00"
+               },
+               "currency":{
+                  "type":"string",
+                  "example":"KES"
+               }
+            }
+         },
+         "walletToWalletTransferRequest":{
+            "required":[
+               "amount",
+               "creditAccount",
+               "currency",
+               "debitAccount",
+               "timestamp",
+               "transactionReference",
+               "transactionType"
+            ],
+            "type":"object",
+            "properties":{
+               "transactionType":{
+                  "type":"string",
+                  "example":"FTWALLET2WALLET"
+               },
+               "amount":{
+                  "type":"string",
+                  "example":"3000"
+               },
+               "creditAccount":{
+                  "type":"string",
+                  "example":"CA720547666"
+               },
+               "debitAccount":{
+                  "type":"string",
+                  "example":"CA715748115"
+               },
+               "currency":{
+                  "type":"string",
+                  "example":"KES"
+               },
+               "timestamp":{
+                  "type":"string",
+                  "example":"2021-01-29T00:54:08+03:00"
+               }
+            }
+         },
+         "iprsRequest":{
+            "required":[
+               "idNumber",
+               "timestamp",
+               "transactionType"
+            ],
+            "type":"object",
+            "properties":{
+               "idNumber":{
+                  "type":"string",
+                  "example":"1829732019321"
+               },
+               "transactionType":{
+                  "type":"string",
+                  "example":"IPRS"
+               },
+               "timestamp":{
+                  "type":"string",
+                  "example":"2021-01-29T00:54:08+03:00"
+               }
+            }
+         },
+         "crbRequest":{
+            "required":[
+               "firstName",
+               "idNumber",
+               "secondName",
+               "timestamp",
+               "transactionType"
+            ],
+            "type":"object",
+            "properties":{
+               "idNumber":{
+                  "type":"string",
+                  "example":"1829732019321"
+               },
+               "firstName":{
+                  "type":"string",
+                  "example":"John"
+               },
+               "secondName":{
+                  "type":"string",
+                  "example":"Doe"
+               },
+               "transactionType":{
+                  "type":"string",
+                  "example":"CRB"
+               },
+               "reference_number":{
+                  "type":"string",
+                  "example":"20GY1KKB2CSWL"
+               },
+               "timestamp":{
+                  "type":"string",
+                  "example":"2021-01-29T00:54:08+03:00"
+               }
+            }
+         },
+         "nairobiWaterBillPaymentRequest":{
+            "required":[
+               "amount",
+               "creditAccount",
+               "currency",
+               "serviceName",
+               "transactionReference",
+               "timestamp",
+               "transactionType"
+            ],
+            "type":"object",
+            "properties":{
+               "amount":{
+                  "type":"string",
+                  "example":"0"
+               },
+               "serviceName":{
+                  "type":"string",
+                  "example":"NAIROBIWATER"
+               },
+               "transactionType":{
+                  "type":"string",
+                  "example":"BILL_PAYMENT"
+               },
+               "transactionReference":{
+                  "type":"string",
+                  "example":"20GY1KKB2CSWL"
+               },
+               "timestamp":{
+                  "type":"string",
+                  "example":"2021-01-29T00:54:08+03:00"
+               },
+               "currency":{
+                  "type":"string",
+                  "example":"KES"
+               },
+               "creditAccount":{
+                  "type":"string",
+                  "example":"0021024000038"
+               }
+            }
+         },
+         "zukuInternetBillPaymentRequest":{
+            "required":[
+               "amount",
+               "creditAccount",
+               "transactionReference",
+               "currency",
+               "serviceName",
+               "timestamp",
+               "transactionType"
+            ],
+            "type":"object",
+            "properties":{
+               "amount":{
+                  "type":"string",
+                  "example":"0"
+               },
+               "creditAccount":{
+                  "type":"string",
+                  "example":"0021024000038"
+               },
+               "transactionType":{
+                  "type":"string",
+                  "example":"BILL_PAYMENT"
+               },
+               "serviceName":{
+                  "type":"string",
+                  "example":"ZUKU_INTERNET"
+               },
+               "timestamp":{
+                  "type":"string",
+                  "example":"2021-01-29T00:54:08+03:00"
+               },
+               "currency":{
+                  "type":"string",
+                  "example":"KES"
+               },
+               "transactionReference":{
+                  "type":"string",
+                  "example":"DADJDKDUENDD"
+               }
+            }
+         },
+         "zukuTVBillPaymentRequest":{
+            "required":[
+               "amount",
+               "creditAccount",
+               "transactionReference",
+               "currency",
+               "serviceName",
+               "timestamp",
+               "transactionType"
+            ],
+            "type":"object",
+            "properties":{
+               "amount":{
+                  "type":"string",
+                  "example":"0"
+               },
+               "creditAccount":{
+                  "type":"string",
+                  "example":"0021024000038"
+               },
+               "transactionType":{
+                  "type":"string",
+                  "example":"BILL_PAYMENT"
+               },
+               "transactionReference":{
+                  "type":"string",
+                  "example":"20GY1KKB2CSWL"
+               },
+               "timestamp":{
+                  "type":"string",
+                  "example":"2021-01-29T00:54:08+03:00"
+               },
+               "currency":{
+                  "type":"string",
+                  "example":"KES"
+               },
+               "serviceName":{
+                  "type":"string",
+                  "example":"ZUKU_TV"
+               }
+            }
+         },
+         "starTimesBillPaymentRequest":{
+            "required":[
+               "amount",
+               "serviceName",
+               "creditAccount",
+               "currency",
+               "transactionReference",
+               "timestamp",
+               "transactionType"
+            ],
+            "type":"object",
+            "properties":{
+               "amount":{
+                  "type":"string",
+                  "example":"0"
+               },
+               "creditAccount":{
+                  "type":"string",
+                  "example":"0021024000038"
+               },
+               "transactionType":{
+                  "type":"string",
+                  "example":"STARTIMES"
+               },
+               "transactionReference":{
+                  "type":"string",
+                  "example":"20GY1KKB2CSWL"
+               },
+               "timestamp":{
+                  "type":"string",
+                  "example":"2021-01-29T00:54:08+03:00"
+               },
+               "currency":{
+                  "type":"string",
+                  "example":"KES"
+               },
+               "serviceName":{
+                  "type":"string",
+                  "example":"STARTIMES"
+               }
+            }
+         },
+         "dstvPresentmentRequest":{
+            "required":[
+               "client_id",
+               "credit_account",
+               "currency",
+               "reference_number",
+               "timestamp",
+               "transaction_type"
+            ],
+            "type":"object",
+            "properties":{
+               "credit_account":{
+                  "type":"string",
+                  "example":"9876445667"
+               },
+               "transaction_type":{
+                  "type":"string",
+                  "example":"DSTVPRESENTMENT"
+               },
+               "reference_number":{
+                  "type":"string",
+                  "example":"20GY1KKB2CSWL"
+               },
+               "timestamp":{
+                  "type":"string",
+                  "example":"2021-01-29T00:54:08+03:00"
+               },
+               "currency":{
+                  "type":"string",
+                  "example":"KES"
+               },
+               "client_id":{
+                  "type":"string",
+                  "example":"OA9876543"
+               }
+            }
+         },
+         "dstvBillPaymentRequest":{
+            "required":[
+               "amount",
+               "serviceName",
+               "creditAccount",
+               "currency",
+               "transactionReference",
+               "timestamp",
+               "transactionType"
+            ],
+            "type":"object",
+            "properties":{
+               "amount":{
+                  "type":"string",
+                  "example":"2500"
+               },
+               "creditAccount":{
+                  "type":"string",
+                  "example":"0021024000038"
+               },
+               "transactionType":{
+                  "type":"string",
+                  "example":"BILL_PAYMENT"
+               },
+               "transactionReference":{
+                  "type":"string",
+                  "example":"20GY1KKB2CSWL"
+               },
+               "timestamp":{
+                  "type":"string",
+                  "example":"2021-01-29T00:54:08+03:00"
+               },
+               "currency":{
+                  "type":"string",
+                  "example":"KES"
+               },
+               "serviceName":{
+                  "type":"string",
+                  "example":"DSTV"
+               }
+            }
+         },
+         "gotvPresentmentRequest":{
+            "required":[
+               "client_id",
+               "creditAccount",
+               "currency",
+               "transactionReference",
+               "timestamp",
+               "transactionType"
+            ],
+            "type":"object",
+            "properties":{
+               "credit_account":{
+                  "type":"string",
+                  "example":"9876445667"
+               },
+               "transactionType":{
+                  "type":"string",
+                  "example":"GOTVPRESENTMENT"
+               },
+               "reference_number":{
+                  "type":"string",
+                  "example":"20GY1KKB2CSWL"
+               },
+               "timestamp":{
+                  "type":"string",
+                  "example":"2021-01-29T00:54:08+03:00"
+               },
+               "currency":{
+                  "type":"string",
+                  "example":"KES"
+               },
+               "client_id":{
+                  "type":"string",
+                  "example":"OA9876543"
+               }
+            }
+         },
+         "gotvBillPaymentRequest":{
+            "required":[
+               "amount",
+               "creditAccount",
+               "serviceName",
+               "currency",
+               "transactionReference",
+               "timestamp",
+               "transactionType"
+            ],
+            "type":"object",
+            "properties":{
+               "amount":{
+                  "type":"string",
+                  "example":"2500"
+               },
+               "creditAccount":{
+                  "type":"string",
+                  "example":"0021024000038"
+               },
+               "transactionType":{
+                  "type":"string",
+                  "example":"GOTV"
+               },
+               "transactionReference":{
+                  "type":"string",
+                  "example":"20GY1KKB2CSWL"
+               },
+               "timestamp":{
+                  "type":"string",
+                  "example":"2021-01-29T00:54:08+03:00"
+               },
+               "currency":{
+                  "type":"string",
+                  "example":"KES"
+               },
+               "serviceName":{
+                  "type":"string",
+                  "example":"GOTV"
+               }
+            }
+         },
+         "defaultResponse":{
+            "type":"object",
+            "properties":{
+               "responseCode":{
+                  "type":"string",
+                  "example":"00"
+               },
+               "responseMessage":{
+                  "type":"string",
+                  "example":"Request processed successfully"
+               },
+               "transactionReference":{
+                  "type":"string",
+                  "example":"FT120GY1KKB2"
+               },
+               "referenceNumber":{
+                  "type":"string",
+                  "example":"20GY1KKB2CSWL"
+               },
+               "transaction_value_date":{
+                  "type":"string",
+                  "example":"2021-01-29"
+               },
+               "debitAccount":{
+                  "type":"string",
+                  "example":"9012311313212"
+               },
+               "creditAccount":{
+                  "type":"string",
+                  "example":"25478120100"
+               },
+               "transactionDate":{
+                  "type":"string",
+                  "example":"2021-01-29"
+               }
+            }
+         },
+         "balanceInquiryResponse":{
+            "type":"object",
+            "properties":{
+               "responseCode":{
+                  "type":"string",
+                  "example":"00"
+               },
+               "dateAndTimeTransmission":{
+                  "type":"string",
+                  "example":"0306150321"
+               },
+               "currencyCode":{
+                  "type":"string",
+                  "example":"404"
+               },
+               "actualBalance":{
+                  "type":"string",
+                  "example":"20000"
+               },
+               "availableBalance":{
+                  "type":"string",
+                  "example":"20000"
+               }
+            }
+         },
+         "forexResponse":{
+            "type":"object",
+            "properties":{
+               "responseCode":{
+                  "type":"string",
+                  "example":"00"
+               },
+               "dateAndTimeTransmission":{
+                  "type":"string",
+                  "example":"0306150321"
+               },
+               "currencyCode":{
+                  "type":"string",
+                  "example":"404"
+               },
+               "currencyRates":{
+                  "type":"string",
+                  "example":"CURRENCY|RATE.BUY|RATE.SELL~EUR|122.64|134.04~USD|118.55|129.65~TZS|0.0416|0.0623~GBP|140.69|152.09~UGX|.0281|.0363~ZAR|8.6|13.72~JPY|1.125|1.1816~INR|1.46|1.607~CAD|85.89|91.42~AUD|89.2|94.72"
+               }
+            }
+         },
+         "rtgsResponse":{
+            "type":"object",
+            "properties":{
+               "responseCode":{
+                  "type":"string",
+                  "example":"00"
+               },
+               "dateAndTimeTransmission":{
+                  "type":"string",
+                  "example":"0306150321"
+               },
+               "amount":{
+                  "type":"integer",
+                  "example":5000
+               },
+               "currencyCode":{
+                  "type":"string",
+                  "example":"404"
+               },
+               "paymentNarrative":{
+                  "type":"string",
+                  "example":"Payment for invoice #132189"
+               },
+               "actualBalance":{
+                  "type":"integer"
+               },
+               "availableBalance":{
+                  "type":"integer"
+               }
+            }
+         },
+         "iprsResponse":{
+            "type":"object",
+            "properties":{
+               "responseCode":{
+                  "type":"string",
+                  "example":"00"
+               },
+               "responseMessage":{
+                  "type":"string",
+                  "example":"Request processed successfully"
+               },
+               "transactionReference":{
+                  "type":"string",
+                  "example":"FT120GY1KKB2"
+               },
+               "referenceNumber":{
+                  "type":"string",
+                  "example":"20GY1KKB2CSWL"
+               },
+               "transactionValueDate":{
+                  "type":"string",
+                  "example":"2021-01-29"
+               },
+               "transactionDate":{
+                  "type":"string",
+                  "example":"2021-01-29"
+               },
+               "dateOfBirth":{
+                  "type":"string",
+                  "example":"00"
+               },
+               "dateOfDeath":{
+                  "type":"string",
+                  "example":"00"
+               },
+               "dateOfIssue":{
+                  "type":"string",
+                  "example":"00"
+               },
+               "ethnicGroup":{
+                  "type":"string",
+                  "example":"00"
+               },
+               "family":{
+                  "type":"string",
+                  "example":"00"
+               },
+               "fingerprint":{
+                  "type":"string",
+                  "example":"00"
+               },
+               "firstName":{
+                  "type":"string",
+                  "example":"00"
+               },
+               "gender":{
+                  "type":"string",
+                  "example":"00"
+               },
+               "iDNumber":{
+                  "type":"string",
+                  "example":"00"
+               },
+               "occupation":{
+                  "type":"string",
+                  "example":"00"
+               },
+               "otherName":{
+                  "type":"string",
+                  "example":"00"
+               },
+               "photo":{
+                  "type":"string",
+                  "example":"00"
+               },
+               "pin":{
+                  "type":"string",
+                  "example":"00"
+               },
+               "placeOfBirth":{
+                  "type":"string",
+                  "example":"00"
+               },
+               "placeOfDeath":{
+                  "type":"string",
+                  "example":"00"
+               },
+               "placeOfLive":{
+                  "type":"string",
+                  "example":"00"
+               },
+               "regOffice":{
+                  "type":"string",
+                  "example":"00"
+               },
+               "serialNumber":{
+                  "type":"string",
+                  "example":"00"
+               },
+               "signature":{
+                  "type":"string",
+                  "example":"00"
+               },
+               "surname":{
+                  "type":"string",
+                  "example":"00"
+               }
+            }
+         },
+         "crbResponse":{
+            "type":"object",
+            "properties":{
+               "responseCode":{
+                  "type":"string",
+                  "example":"00"
+               },
+               "responseMessage":{
+                  "type":"string",
+                  "example":"Request processed successfully"
+               },
+               "transactionReference":{
+                  "type":"string",
+                  "example":"FT120GY1KKB2"
+               },
+               "referenceNumber":{
+                  "type":"string",
+                  "example":"20GY1KKB2CSWL"
+               },
+               "transactionValueDate":{
+                  "type":"string",
+                  "example":"2021-01-29"
+               },
+               "CRBData":{
+                  "type":"object",
+                  "example":{
+                     "Score":"728",
+                     "Grade":"DD"
+                  }
+               },
+               "transactionDate":{
+                  "type":"string",
+                  "example":"2021-01-29"
+               }
+            }
+         },
+         "dstvPresentmentResponse":{
+            "type":"object",
+            "properties":{
+               "response_code":{
+                  "type":"string",
+                  "example":"00"
+               },
+               "response_message":{
+                  "type":"string",
+                  "example":"Request processed successfully"
+               },
+               "transaction_reference":{
+                  "type":"string",
+                  "example":"FT120GY1KKB2"
+               },
+               "reference_number":{
+                  "type":"string",
+                  "example":"20GY1KKB2CSWL"
+               },
+               "transaction_value_date":{
+                  "type":"string",
+                  "example":"2021-01-29"
+               },
+               "account_id":{
+                  "type":"string",
+                  "example":"901233212"
+               },
+               "due_date":{
+                  "type":"string",
+                  "example":"2020-11-08"
+               },
+               "due_amount":{
+                  "type":"string",
+                  "example":"2500"
+               },
+               "customer_name":{
+                  "type":"string",
+                  "example":"John Doe"
+               },
+               "transaction_date":{
+                  "type":"string",
+                  "example":"2021-01-29"
+               }
+            }
+         },
+         "gotvPresentmentResponse":{
+            "type":"object",
+            "properties":{
+               "response_code":{
+                  "type":"string",
+                  "example":"00"
+               },
+               "response_message":{
+                  "type":"string",
+                  "example":"Request processed successfully"
+               },
+               "transaction_reference":{
+                  "type":"string",
+                  "example":"FT120GY1KKB2"
+               },
+               "reference_number":{
+                  "type":"string",
+                  "example":"20GY1KKB2CSWL"
+               },
+               "transaction_value_date":{
+                  "type":"string",
+                  "example":"2021-01-29"
+               },
+               "account_id":{
+                  "type":"string",
+                  "example":"901233212"
+               },
+               "due_date":{
+                  "type":"string",
+                  "example":"2020-11-08"
+               },
+               "due_amount":{
+                  "type":"string",
+                  "example":"2500"
+               },
+               "customer_name":{
+                  "type":"string",
+                  "example":"John Doe"
+               },
+               "transaction_date":{
+                  "type":"string",
+                  "example":"2021-01-29"
+               }
+            }
+         }
+      }
+   }
 }
