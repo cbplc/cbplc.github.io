@@ -1720,124 +1720,124 @@
                }
             }
          }
-      }
-   },
-   "/pesalink-verification":{
-      "post":{
-         "tags":[
-            "Send Money"
-         ],
-         "summary":"Verify account number Pesalink",
-         "description":"Verify account number Pesalink\n",
-         "operationId":"pesalinkVerification",
-         "parameters":[
-            {
-               "name":"x-app-id",
-               "in":"header",
-               "description":"pass the project id",
-               "required":true,
-               "style":"simple",
-               "explode":false,
-               "schema":{
-                  "type":"string"
-               }
-            },
-            {
-               "name":"x-api-key",
-               "in":"header",
-               "description":"api-key",
-               "required":true,
-               "style":"simple",
-               "explode":false,
-               "schema":{
-                  "type":"string"
-               }
-            }
-         ],
-         "requestBody":{
-            "description":"Verify account number on Pesalink",
-            "content":{
-               "application/json":{
+      },
+      "/pesalink-verification":{
+         "post":{
+            "tags":[
+               "Send Money"
+            ],
+            "summary":"Verify account number Pesalink",
+            "description":"Verify account number Pesalink\n",
+            "operationId":"pesalinkVerification",
+            "parameters":[
+               {
+                  "name":"x-app-id",
+                  "in":"header",
+                  "description":"pass the project id",
+                  "required":true,
+                  "style":"simple",
+                  "explode":false,
                   "schema":{
-                     "$ref":"#/components/schemas/pesalinkVerificationRequest"
+                     "type":"string"
+                  }
+               },
+               {
+                  "name":"x-api-key",
+                  "in":"header",
+                  "description":"api-key",
+                  "required":true,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
                   }
                }
-            },
-            "required":true
-         },
-         "responses":{
-            "200":{
-               "description":"Request successfully processed",
+            ],
+            "requestBody":{
+               "description":"Verify account number on Pesalink",
                "content":{
                   "application/json":{
                      "schema":{
-                        "$ref":"#/components/schemas/defaultResponse"
+                        "$ref":"#/components/schemas/pesalinkVerificationRequest"
                      }
                   }
-               }
+               },
+               "required":true
             },
-            "400":{
-               "description":"bad input parameter"
+            "responses":{
+               "200":{
+                  "description":"Request successfully processed",
+                  "content":{
+                     "application/json":{
+                        "schema":{
+                           "$ref":"#/components/schemas/defaultResponse"
+                        }
+                     }
+                  }
+               },
+               "400":{
+                  "description":"bad input parameter"
+               }
             }
          }
-      }
-   },
-   "/wallet-registration":{
-      "post":{
-         "tags":[
-            "Send Money"
-         ],
-         "summary":"create a wallet account CBL",
-         "description":"create a wallet account CBL\n",
-         "operationId":"walletRegistration",
-         "parameters":[
-            {
-               "name":"x-app-id",
-               "in":"header",
-               "description":"pass the project id",
-               "required":true,
-               "style":"simple",
-               "explode":false,
-               "schema":{
-                  "type":"string"
-               }
-            },
-            {
-               "name":"x-api-key",
-               "in":"header",
-               "description":"api-key",
-               "required":true,
-               "style":"simple",
-               "explode":false,
-               "schema":{
-                  "type":"string"
-               }
-            }
-         ],
-         "requestBody":{
-            "description":"create a wallet account CBL",
-            "content":{
-               "application/json":{
+      },
+      "/wallet-registration":{
+         "post":{
+            "tags":[
+               "Send Money"
+            ],
+            "summary":"create a wallet account CBL",
+            "description":"create a wallet account CBL\n",
+            "operationId":"walletRegistration",
+            "parameters":[
+               {
+                  "name":"x-app-id",
+                  "in":"header",
+                  "description":"pass the project id",
+                  "required":true,
+                  "style":"simple",
+                  "explode":false,
                   "schema":{
-                     "$ref":"#/components/schemas/walletRegistrationRequest"
+                     "type":"string"
+                  }
+               },
+               {
+                  "name":"x-api-key",
+                  "in":"header",
+                  "description":"api-key",
+                  "required":true,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
                   }
                }
-            },
-            "required":true
-         },
-         "responses":{
-            "200":{
-               "description":"Request successfully processed",
+            ],
+            "requestBody":{
+               "description":"create a wallet account CBL",
                "content":{
                   "application/json":{
                      "schema":{
-                        "$ref":"#/components/schemas/defaultResponse"
+                        "$ref":"#/components/schemas/walletRegistrationRequest"
                      }
                   }
-               }
+               },
+               "required":true
             },
-            "400":{
-               "description":"bad input parameter"
+            "responses":{
+               "200":{
+                  "description":"Request successfully processed",
+                  "content":{
+                     "application/json":{
+                        "schema":{
+                           "$ref":"#/components/schemas/defaultResponse"
+                        }
+                     }
+                  }
+               },
+               "400":{
+                  "description":"bad input parameter"
+               }
             }
          }
       }
