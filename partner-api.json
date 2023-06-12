@@ -63,7 +63,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/defaultResponse"
+                  "$ref": "#/components/schemas/networkingResponse"
                 }
               }
             }
@@ -74,5 +74,22 @@
         }
       }
     }
-   }
+   },
+   "components": {
+    "schemas": {
+       "networkingResponse": {
+        "type": "object",
+        "properties": {
+          "Response code": {
+            "type": "string",
+            "example": "00"
+          },
+          "Date and time transmission": {
+            "type": "string",
+            "example": "0612095546"
+          }
+        }
+      }
+    }
+  }
 }
