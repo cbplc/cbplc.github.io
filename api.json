@@ -1720,9 +1720,8 @@
           }
         }
       }
-    }
-  },
-  "/pesalink-verification": {
+    },
+      "/pesalink-verification": {
       "post": {
         "tags": [
           "Send Money"
@@ -1841,6 +1840,7 @@
           }
         }
       }
+  }
   },
   "components": {
     "schemas": {
@@ -1913,7 +1913,7 @@
           "gender": {
             "type": "string",
             "example": "M"
-          },
+          }
         }
       },
       "pesalinkVerificationRequest": {
