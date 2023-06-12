@@ -1,1 +1,78 @@
-
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "CBL Partner APIs",
+    "description": "This is test on CBL APIs",
+    "contact": {
+      "email": "william.kamuyu@gapstack.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://konnectapigateway.creditbank.co.ke",
+      "description": "CBL Dev API Gateway"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Networking",
+      "description": "Networking API"
+    }
+  ],
+   "paths": {
+    "/network-request": {
+      "get": {
+        "tags": [
+          "Networking"
+        ],
+        "summary": "Checks on the CBS if its up or down",
+        "description": "Network Request on the CBS\n",
+        "operationId": "networkRequest",
+        "parameters": [
+          {
+            "name": "x-app-id",
+            "in": "header",
+            "description": "pass the project id",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "api-key",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully created standing order",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/defaultResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      }
+    }
+   }
+}
