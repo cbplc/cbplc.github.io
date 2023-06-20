@@ -158,33 +158,16 @@
             "example": "CBS_FT"
           },
           "data": {
-            "amount": {
-              "type": "string",
-              "example":"300"
-            },
-            "transactionType": {
-              "type": "string",
-              "example":"credit"
-            },
-            "transactionReference":{
-              "type":"string",
-              "example":"12345"
-            },
-            "CBSReference": {
-              "type":"string",
-              "example":"FT22321YXDV8"
-            },
-            "mobileNumber": {
-              "type":"string",
-              "example":"254713258892"
-            },
-            "custAccount": {
-              "type":"string",
-              "example":"0021024000039"
-            },
-            "timestamp":{
-              "type":"string",
-              "example":"2023-01-13 12:40:55"
+            "type": "object",
+            "example":{
+              "amount":"300",
+              "transactionType":"credit",
+              "transactionReference":"12345",
+              "CBSReference": "FT22321YXDV8",
+              "mobileNumber": "254727123456",
+              "momoReference": "RTGH87685",
+              "custAccount": "0021024000039",
+              "timestamp": "2023-01-13 12:40:55"
             }
           }
         }
