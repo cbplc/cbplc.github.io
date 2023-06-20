@@ -22,6 +22,10 @@
     {
       "name": "Networking",
       "description": "Networking API"
+    },
+    {
+      "name": "Notifications",
+      "description": "Instant Payment Notifications"
     }
   ],
    "paths": {
@@ -73,10 +77,118 @@
           }
         }
       }
+    },
+     "/ipn": {
+      "get": {
+        "tags": [
+          "Notifications"
+        ],
+        "summary": "Sends Notifications to Merchants Endpoint",
+        "description": "Send Notification to Clients Webhook\n",
+        "operationId": "instantPaymentNotification",
+        "parameters": [
+          {
+            "name": "x-app-id",
+            "in": "header",
+            "description": "pass the project id",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "api-key",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Send Notification after transaction",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ipnRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Notification saved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ipnResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      }
     }
    },
    "components": {
     "schemas": {
+      "ipnRequest": {
+        "required": [
+          "notificationType",
+          "notificationSubType",
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "notificationType": {
+            "type": "string",
+            "example": "FT"
+          },
+          "notificationSubType": {
+            "type": "string",
+            "example": "CBS_FT"
+          },
+          "data": {
+            "amount": {
+              "type": "string",
+              "example":"300"
+            },
+            "transactionType": {
+              "type": "string",
+              "example":"credit"
+            },
+            "transactionReference":{
+              "type":"string",
+              "example":"12345"
+            },
+            "CBSReference": {
+              "type":"string",
+              "example":"FT22321YXDV8"
+            },
+            "mobileNumber": {
+              "type":"string",
+              "example":"254713258892"
+            },
+            "custAccount": {
+              "type":"string",
+              "example":"0021024000039"
+            },
+            "timestamp":{
+              "type":"string",
+              "example":"2023-01-13 12:40:55"
+            }
+          }
+        }
+      },
        "networkingResponse": {
         "type": "object",
         "properties": {
@@ -87,6 +199,23 @@
           "Date and time transmission": {
             "type": "string",
             "example": "0612095546"
+          }
+        }
+      },
+        "ipnResponse": {
+        "type": "object",
+        "properties": {
+          "statusCode": {
+            "type": "string",
+            "example": "201"
+          },
+          "message": {
+            "type": "string",
+            "example": "Notification saved successfully"
+          },
+          "data": {
+            "type": "string",
+            "example": "null"
           }
         }
       }
