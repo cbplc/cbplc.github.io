@@ -462,7 +462,7 @@
       }
     },
     "/forex": {
-      "post": {
+      "get": {
         "tags": [
           "Send Money"
         ],
@@ -493,17 +493,6 @@
             }
           }
         ],
-        "requestBody": {
-          "description": "Create a forex rate Request",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/forexRequest"
-              }
-            }
-          },
-          "required": true
-        },
         "responses": {
           "200": {
             "description": "Successfully fetched forex rates",
@@ -2145,13 +2134,6 @@
             "type": "string",
             "example": "20210629"
           }
-        }
-      },
-      "forexRequest": {
-      
-        "type": "object",
-        "properties": {
-       
         }
       },
       "rtgsRequest": {
