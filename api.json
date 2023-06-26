@@ -493,6 +493,19 @@
             }
           }
         ],
+
+    "requestBody": {
+          "description": "Create a forex rate Request",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "nullable": true
+              }
+            }
+          },
+          "required": true
+        },
         "responses": {
           "200": {
             "description": "Successfully fetched forex rates",
