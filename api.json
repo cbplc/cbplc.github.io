@@ -14,7 +14,7 @@
   },
   "servers": [
     {
-      "url": "https://konnectapigateway.creditbank.co.ke",
+      "url": "https://sandboxkonnectapi.creditbank.co.ke",
       "description": "CBL Dev API Gateway"
     }
   ],
