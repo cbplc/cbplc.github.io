@@ -2321,7 +2321,7 @@
           },
           "creditAccount": {
             "type": "string",
-            "example": "0021024000038"
+            "example": "0021024000039"
           },
           "transactionType": {
             "type": "string",
@@ -2609,7 +2609,7 @@
           },
           "creditAccount": {
             "type": "string",
-            "example": "0021024000038"
+            "example": "0021024000039"
           }
         }
       },
@@ -2631,7 +2631,7 @@
           },
           "creditAccount": {
             "type": "string",
-            "example": "0021024000038"
+            "example": "0021024000039"
           },
           "transactionType": {
             "type": "string",
@@ -2673,7 +2673,7 @@
           },
           "creditAccount": {
             "type": "string",
-            "example": "0021024000038"
+            "example": "0021024000039"
           },
           "transactionType": {
             "type": "string",
@@ -2717,7 +2717,7 @@
           },
           "creditAccount": {
             "type": "string",
-            "example": "0021024000038"
+            "example": "0021024000039"
           },
           "transactionType": {
             "type": "string",
@@ -2796,7 +2796,7 @@
           },
           "creditAccount": {
             "type": "string",
-            "example": "0021024000038"
+            "example": "0021024000039"
           },
           "transactionType": {
             "type": "string",
@@ -2875,7 +2875,7 @@
           },
           "creditAccount": {
             "type": "string",
-            "example": "0021024000038"
+            "example": "0021024000039"
           },
           "transactionType": {
             "type": "string",
