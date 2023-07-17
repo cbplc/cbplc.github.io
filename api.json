@@ -2681,7 +2681,7 @@
           },
           "transactionReference": {
             "type": "string",
-            "example": "20GY1KKB2CSWL"
+            "example": "DRFG5D6SYHAT"
           },
           "timestamp": {
             "type": "string",
@@ -2725,7 +2725,7 @@
           },
           "transactionReference": {
             "type": "string",
-            "example": "20GY1KKB2CSWL"
+            "example": "DRFG5D6SYHAT"
           },
           "timestamp": {
             "type": "string",
@@ -2762,7 +2762,7 @@
           },
           "reference_number": {
             "type": "string",
-            "example": "20GY1KKB2CSWL"
+            "example": "DRFG5D6SYHAT"
           },
           "timestamp": {
             "type": "string",
@@ -2804,7 +2804,7 @@
           },
           "transactionReference": {
             "type": "string",
-            "example": "20GY1KKB2CSWL"
+            "example": "DRFG5D6SYHAT"
           },
           "timestamp": {
             "type": "string",
@@ -2841,7 +2841,7 @@
           },
           "reference_number": {
             "type": "string",
-            "example": "20GY1KKB2CSWL"
+            "example": "20GY1KKB2CS"
           },
           "timestamp": {
             "type": "string",
@@ -2883,7 +2883,7 @@
           },
           "transactionReference": {
             "type": "string",
-            "example": "20GY1KKB2CSWL"
+            "example": "DRFG5D6SYHAT"
           },
           "timestamp": {
             "type": "string",
