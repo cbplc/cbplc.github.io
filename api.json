@@ -2585,7 +2585,7 @@
         "properties": {
           "amount": {
             "type": "string",
-            "example": "0"
+            "example": "100"
           },
           "serviceName": {
             "type": "string",
@@ -2627,7 +2627,7 @@
         "properties": {
           "amount": {
             "type": "string",
-            "example": "0"
+            "example": "100"
           },
           "creditAccount": {
             "type": "string",
@@ -2669,7 +2669,7 @@
         "properties": {
           "amount": {
             "type": "string",
-            "example": "0"
+            "example": "100"
           },
           "creditAccount": {
             "type": "string",
@@ -2713,7 +2713,7 @@
         "properties": {
           "amount": {
             "type": "string",
-            "example": "0"
+            "example": "100"
           },
           "creditAccount": {
             "type": "string",
