@@ -2329,7 +2329,7 @@
           },
           "transactionReference": {
             "type": "string",
-            "example": "20GY1KKB2CSWL"
+            "example": "20GY1KKB2CSB"
           },
           "timestamp": {
             "type": "string",
@@ -2366,7 +2366,7 @@
           },
           "transactionReference": {
             "type": "string",
-            "example": "20GY1KKB2CSWL"
+            "example": "20GY1KKB2CSA"
           },
           "timestamp": {
             "type": "string",
@@ -2403,7 +2403,7 @@
           },
           "transactionReference": {
             "type": "string",
-            "example": "20GY1KKB2CSWL"
+            "example": "20GY1KKB2CSL"
           },
           "timestamp": {
             "type": "string",
@@ -2563,7 +2563,7 @@
           },
           "reference_number": {
             "type": "string",
-            "example": "20GY1KKB2CS"
+            "example": "20GY1KKB2CSC"
           },
           "timestamp": {
             "type": "string",
