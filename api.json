@@ -2563,7 +2563,7 @@
           },
           "reference_number": {
             "type": "string",
-            "example": "20GY1KKB2CSWL"
+            "example": "20GY1KKB2CS"
           },
           "timestamp": {
             "type": "string",
@@ -2597,7 +2597,7 @@
           },
           "transactionReference": {
             "type": "string",
-            "example": "20GY1KKB2CSWL"
+            "example": "20GY1KKB2CS"
           },
           "timestamp": {
             "type": "string",
@@ -2721,7 +2721,7 @@
           },
           "transactionType": {
             "type": "string",
-            "example": "STARTIMES"
+            "example": "BILL_PAYMENT"
           },
           "transactionReference": {
             "type": "string",
@@ -2879,7 +2879,7 @@
           },
           "transactionType": {
             "type": "string",
-            "example": "GOTV"
+            "example": "BILL_PAYMENT"
           },
           "transactionReference": {
             "type": "string",
