@@ -462,7 +462,7 @@
       }
     },
     "/forex": {
-      "get": {
+      "post": {
         "tags": [
           "Send Money"
         ],
