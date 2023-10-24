@@ -26,6 +26,10 @@
     {
       "name": "Notifications",
       "description": "Instant Payment Notifications"
+    },
+    {
+      "name": "Accounts",
+      "description": "CBL Accounts"
     }
   ],
    "paths": {
@@ -137,6 +141,66 @@
           }
         }
       }
+    },
+    "/account-inquiry": {
+      "post": {
+        "tags": [
+          "Accounts"
+        ],
+        "summary": "Get account information",
+        "description": "Get account information\n",
+        "operationId": "accountInquiry",
+        "parameters": [
+          {
+            "name": "x-app-id",
+            "in": "header",
+            "description": "pass the project id",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "api-key",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Create an account inquiry Request",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/accountInquiryRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved account information",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/accountInquiryResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      }
     }
    },
    "components": {
@@ -158,16 +222,33 @@
             "example": "CBS_FT"
           },
           "data": {
-            "type": "object",
-            "example":{
-              "amount":"300",
-              "transactionType":"credit",
-              "transactionReference":"12345",
-              "CBSReference": "FT22321YXDV8",
-              "mobileNumber": "254727123456",
-              "momoReference": "RTGH87685",
-              "custAccount": "0021024000039",
-              "timestamp": "2023-01-13 12:40:55"
+            "amount": {
+              "type": "string",
+              "example":"300"
+            },
+            "transactionType": {
+              "type": "string",
+              "example":"credit"
+            },
+            "transactionReference":{
+              "type":"string",
+              "example":"12345"
+            },
+            "CBSReference": {
+              "type":"string",
+              "example":"FT22321YXDV8"
+            },
+            "mobileNumber": {
+              "type":"string",
+              "example":"254713258892"
+            },
+            "custAccount": {
+              "type":"string",
+              "example":"0021024000039"
+            },
+            "timestamp":{
+              "type":"string",
+              "example":"2023-01-13 12:40:55"
             }
           }
         }
@@ -199,6 +280,18 @@
           "data": {
             "type": "string",
             "example": "null"
+          }
+        }
+      },
+      "accountInquiryRequest": {
+        "required": [
+          "phoneNumber"
+        ],
+        "type": "object",
+        "properties": {
+          "phoneNumber": {
+            "type": "string",
+            "example": "254712345678"
           }
         }
       }
