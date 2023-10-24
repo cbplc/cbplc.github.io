@@ -2419,7 +2419,8 @@
         "required": [
           "amount",
           "accountTo",
-          "paymentNarrative"
+          "paymentNarrative",
+          "endToEndRef"
         ],
         "type": "object",
         "properties": {
