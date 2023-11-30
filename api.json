@@ -1922,6 +1922,7 @@
         "required": [
           "bankCode",
           "timestamp",
+          "accountNumber",
           "transactionType"
         ],
         "type": "object",
@@ -1932,7 +1933,12 @@
           },
           "transactionType": {
             "type": "string",
-            "example": "SAFARICOM"
+            "example": "PESALINK_LOOKUP"
+          },
+
+          "accountNumber": {
+            "type": "string",
+            "example": "0021024000039"
           },
           "timestamp": {
             "type": "string",
