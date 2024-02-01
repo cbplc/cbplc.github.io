@@ -307,6 +307,7 @@
           "amount",
           "accountTo",
           "accountFrom",
+          "endToEndRef",
           "paymentNarrative"
         ],
         "type": "object",
@@ -322,6 +323,10 @@
             "accountFrom": {
             "type": "string",
             "example": "0021024000038"
+          },
+            "endToEndRef": {
+              "type":"string",
+              "example": "ADHDKDUDHSJ"
           },
           "paymentNarrative": {
             "type": "string",
