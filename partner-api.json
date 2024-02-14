@@ -257,6 +257,66 @@
           }
         }
       }
+    },
+    "/consumer-internal-ft": {
+      "post": {
+        "tags": [
+          "Send Money"
+        ],
+        "summary": "Transfer funds from your CBL account to other CBL accounts",
+        "description": "Transfer funds from your CBL account to other CBL accounts\n",
+        "operationId": "internalFundsTransfer",
+        "parameters": [
+          {
+            "name": "x-app-id",
+            "in": "header",
+            "description": "pass the project id",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "api-key",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Internal Funds Transfer Request",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/consumerInternalFtRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successfully transfered the funds",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/defaultResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      }
     }
    },
    "components": {
@@ -334,6 +394,38 @@
           }
         }
       },
+      "consumerInternalFtRequest": {
+        "required": [
+          "amount",
+          "accountTo",
+          "accountFrom",
+          "endToEndRef",
+          "paymentNarrative"
+        ],
+        "type": "object",
+        "properties": {
+          "amount": {
+            "type": "number",
+            "example": 3000
+          },
+          "accountTo": {
+            "type": "string",
+            "example": "0021024000039"
+          },
+            "accountFrom": {
+            "type": "string",
+            "example": "0021024000038"
+          },
+            "endToEndRef": {
+              "type":"string",
+              "example": "ADHDKDUDHSJ"
+          },
+          "paymentNarrative": {
+            "type": "string",
+            "example": "Transfer funds from your CBL account to other CBL accounts"
+          }
+        }
+      },
        "networkingResponse": {
         "type": "object",
         "properties": {
@@ -372,7 +464,7 @@
           }
         }
       },
-        "ipnResponse": {
+       "ipnResponse": {
         "type": "object",
         "properties": {
           "statusCode": {
