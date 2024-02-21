@@ -2441,6 +2441,10 @@
           "paymentNarrative": {
             "type": "string",
             "example": "Transfer funds from your CBL account to other CBL accounts"
+          },
+          "endToEndRef": {
+            "type": "string",
+            "example": "ASDERTYGFTHH"
           }
         }
       },
