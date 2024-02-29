@@ -446,11 +446,11 @@
         },
         "responses": {
           "200": {
-            "description": "Successfully created standing order",
+            "description": "Successfully processed account statement",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/balanceInquiryResponse"
+                  "$ref": "#/components/schemas/accountStatementResponse"
                 }
               }
             }
@@ -1842,7 +1842,43 @@
           }
         }
       }
-  }
+  },
+      "/safaricom-callback": {
+      "post": {
+        "tags": [
+          "Other Services"
+        ],
+        "summary": "Call Back from Safaricom",
+        "description": "Callback service\n",
+        "operationId": "safaricomCallback",
+        "requestBody": {
+          "description": "Create a balance inquiry Request",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/safaricomCallback"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successfully created standing order",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/safaricomCallback"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      }
+    }
   },
   "components": {
     "schemas": {
@@ -2138,6 +2174,10 @@
        
         }
       },
+      "safaricomCallback": {
+            "type": "object",
+            "properties": {}
+      },
       "accountStatementRequest": {
         "required": [
           "startDate",
@@ -2147,11 +2187,11 @@
         "properties": {
           "startDate": {
             "type": "string",
-            "example": "20210628"
+            "example": "20230501"
           },
           "endDate": {
             "type": "string",
-            "example": "20210629"
+            "example": "20230816"
           }
         }
       },
@@ -3257,6 +3297,69 @@
             "type": "string",
             "example": "2022-01-29"
           }
+        }
+      },
+       "accountStatementResponse": {
+        "type": "object",
+        "properties": {
+           "openningBalance" : {
+                 "type": "string",
+                 "example": "0"
+            },
+      "accountNumber" : {
+              "type": "string",
+              "example": "0021024000038"
+            },
+     "accountCurrency" : {
+              "type": "string",
+              "example": "KES"
+            },
+     "bookingDate" : {
+              "type": "string",
+              "example": "20230714"
+            },
+      "valueDate" : {
+              "type": "string",
+              "example": "20230714"
+            },
+       "currency" : {
+              "type": "string",
+              "example": "KES"
+            },
+       "amount" : {
+              "type": "string",
+              "example": "1000000.00"
+            },
+        "reference" : {
+              "type": "string",
+              "example": "FT23195KX1PN"
+            },
+         "description" : {
+              "type": "string",
+              "example": "Transfer \\   MPESAB2C"
+            },   
+         "chequeNo" : {
+              "type": "string",
+              "example": ""
+            },  
+         "tranactionCode" : {
+              "type": "string",
+              "example": "258"
+            },
+          "accountTitle1" : {
+              "type": "string",
+              "example": "CREDIT BANK LIMITED"
+            },
+          "accountTitle2" : {
+              "type": "string",
+              "example": "CREDIT BANK LIMITED"
+            },
+
+            "shortTitle" : {
+              "type": "string",
+              "example": "CREDIT BANK LIMITED"
+            }
+
         }
       }
     }
