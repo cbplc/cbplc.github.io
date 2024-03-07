@@ -2206,8 +2206,8 @@
         "type": "object",
         "properties": {
           "amount": {
-            "type": "string",
-            "example": "50000"
+            "type": "number",
+            "example": 50000
           },
           "accountTo": {
             "type": "string",
