@@ -1878,6 +1878,78 @@
           }
         }
       }
+    },
+       "/safaricom-qrcode": {
+      "post": {
+        "tags": [
+          "Other Services"
+        ],
+        "summary": "Dynamic Qrcode for Till Payments",
+        "description": "Qrcode for making Payments\n",
+        "operationId": "mpesaQrcode",
+        "requestBody": {
+          "description": "Pay using the native Qrcode",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/qrCodeSchemaRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successfully created standing order",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/qrCodeSchemaResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      }
+    },
+      "/safaricom-stkpush": {
+      "post": {
+        "tags": [
+          "Other Services"
+        ],
+        "summary": "Dynamic Stk Push Initiated by Safaricom",
+        "description": "Qrcode for making Payments\n",
+        "operationId": "stkPush",
+        "requestBody": {
+          "description": "Pay using the stkPush",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/stkPushSchemaRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successfully created standing order",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/stkPushSchemaResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -2192,6 +2264,65 @@
           "endDate": {
             "type": "string",
             "example": "20230816"
+          }
+        }
+      },
+      "qrCodeSchemaRequest": {
+        "required": [
+          "RefNo",
+          "Amount"
+        ],
+        "type": "object",
+        "properties": {
+          "RefNo": {
+            "type": "string",
+            "example": "AERDUDSODEE"
+          },
+          "Amount": {
+            "type": "number",
+            "example":1
+          }
+        }
+      },
+      "stkPushSchemaRequest": {
+        "required": [
+          "TransactionType",
+          "Amount",
+          "Timestamp",
+          "PartyA",
+          "PhoneNumber",
+          "CallBackURL",
+          "TransactionDesc"
+        ],
+        "type": "object",
+        "properties": {
+          "TransactionType": {
+            "type": "string",
+            "example": "CustomerPayBillOnline"
+          },
+          "Amount": {
+            "type": "number",
+            "example":1
+          },
+          "Timestamp": {
+           "type": "string",
+           "example":"20160216165627"
+          },
+          "PartyA": {
+            "type":"string",
+            "example": "254708374149"
+          },
+         "PhoneNumber": {
+            "type":"string",
+            "example": "254708374149"
+          },
+           "CallBackURL": {
+            "type":"string",
+            "example": "https://my-domain.com"
+          },
+           "TransactionDesc": {
+            "type":"string",
+            "example": "Test Payment"
           }
         }
       },
@@ -3299,7 +3430,7 @@
           }
         }
       },
-       "accountStatementResponse": {
+      "accountStatementResponse": {
         "type": "object",
         "properties": {
            "openningBalance" : {
@@ -3361,7 +3492,54 @@
             }
 
         }
+      },
+      "qrCodeSchemaResponse": {
+        "type": "object",
+        "properties": {
+          "ResponseCode": {
+            "type": "string",
+            "example": "AG_20191219_000043fdf61864fe9ff5"
+          },
+          "RequestID": {
+            "type": "string",
+            "example": "16738-27456357-1"
+          },
+          "ResponseDescription": {
+            "type": "string",
+            "example": "QR Code Successfully Generated."
+          },
+          "QRCode": {
+            "type": "string",
+            "example": "SYEEHEHJJSJSKKKSSSHDBDDBBHSHSBSBHSHSBBBXBXXB"
+          }
+        }
+      },
+      "stkPushSchemaResponse": {
+        "type": "object",
+        "properties": {
+          "MerchantRequestID": {
+            "type": "string",
+            "example": "AG_20191219_000043fdf61864fe9ff5"
+          },
+          "CheckoutRequestID": {
+            "type": "string",
+            "example": "ws_CO_191220191020363925"
+          },
+          "ResponseCode": {
+            "type": "string",
+            "example": "QR Code Successfully Generated."
+          },
+          "ResponseDescription": {
+            "type": "string",
+            "example": "Success. Request accepted for processing"
+          },
+          "CustomerMessage":{
+            "type":"string",
+            "example":"Success. Request accepted for processing"
+          }
+        }
       }
+     
     }
   }
 }
