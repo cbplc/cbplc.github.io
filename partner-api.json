@@ -205,7 +205,7 @@
         ],
         "summary": "Transfer funds from your CBL account to other CBL accounts",
         "description": "Transfer funds from your CBL account to other CBL accounts\n",
-        "operationId": "internalFundsTransfer",
+        "operationId": "internalFundTransfer",
         "parameters": [
           {
             "name": "x-app-id",
@@ -235,7 +235,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/internalFundsTransferRequest"
+                "$ref": "#/components/schemas/internalFundTransferRequest"
               }
             }
           },
@@ -352,7 +352,7 @@
           }
         }
       },
-       "balanceInquiryRequest": {    
+      "balanceInquiryRequest": {    
         "type": "object",
         "properties": {
            "account": {
@@ -362,7 +362,7 @@
            }
         }
       },
-       "internalFundsTransferRequest": {
+      "internalFundTransferRequest": {
         "required": [
           "amount",
           "accountTo",
