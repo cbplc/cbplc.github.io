@@ -2332,6 +2332,7 @@
           "amount",
           "beneficiaryName",
           "paymentNarrative",
+          "endToEndRef",
           "swiftCode"
         ],
         "type": "object",
@@ -2351,6 +2352,10 @@
           "paymentNarrative": {
             "type": "string",
             "example": "Payment for invoice #132189"
+          },
+          "endToEndRef": {
+            "type": "string",
+            "example": "ADHDKDUDHSJ"
           },
           "swiftCode": {
             "type": "string",
@@ -3186,6 +3191,10 @@
           "paymentNarrative": {
             "type": "string",
             "example": "Payment for invoice #132189"
+          },
+          "endToEndRef": {
+            "type":"string",
+            "example":"ADHDKDUDHSJ"
           },
           "actualBalance": {
             "type": "integer"
