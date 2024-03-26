@@ -1950,6 +1950,42 @@
           }
         }
       }
+    },
+      "/safaricom-static-code": {
+      "post": {
+        "tags": [
+          "Other Services"
+        ],
+        "summary": "Static QRCode Initiated by Safaricom",
+        "description": "Qrcode for making Payments\n",
+        "operationId": "staticQRcode",
+        "requestBody": {
+          "description": "Pay using the Static Qrcode",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/staticQRSchemaRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successfully Paid with Static Code",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/staticQRSchemaResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -2268,6 +2304,39 @@
         }
       },
       "qrCodeSchemaRequest": {
+        "required": [
+          "RefNo",
+          "Amount",
+          "Merchantname",
+          "TrxCode",
+          "CPI",
+          "Size"
+        ],
+        "type": "object",
+        "properties": {
+          "RefNo": {
+            "type": "string",
+            "example": "AERDUDSODEE"
+          },
+          "Amount": {
+            "type": "number",
+            "example":1
+          },
+          "TrxCode":{
+            "type":"string",
+            "example":"BG"
+          },
+          "CPI": {
+            "type": "string",
+            "example": "373132"
+          },
+          "Size": {
+            "type": "string",
+            "example": "300"
+          }
+        }
+      },
+       "staticQRSchemaRequest": {
         "required": [
           "RefNo",
           "Amount"
@@ -3503,6 +3572,27 @@
         }
       },
       "qrCodeSchemaResponse": {
+        "type": "object",
+        "properties": {
+          "ResponseCode": {
+            "type": "string",
+            "example": "AG_20191219_000043fdf61864fe9ff5"
+          },
+          "RequestID": {
+            "type": "string",
+            "example": "16738-27456357-1"
+          },
+          "ResponseDescription": {
+            "type": "string",
+            "example": "QR Code Successfully Generated."
+          },
+          "QRCode": {
+            "type": "string",
+            "example": "SYEEHEHJJSJSKKKSSSHDBDDBBHSHSBSBHSHSBBBXBXXB"
+          }
+        }
+      },
+      "staticQRSchemaResponse": {
         "type": "object",
         "properties": {
           "ResponseCode": {
