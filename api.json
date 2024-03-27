@@ -38,6 +38,10 @@
     {
       "name": "Other Services",
       "description": "Other Service APIs"
+    },
+    {
+      "name": "Recieve Money",
+      "description": "Send Money Via Mpesa"
     }
   ],
   "paths": {
@@ -1882,10 +1886,10 @@
        "/safaricom-qrcode": {
       "post": {
         "tags": [
-          "Other Services"
+          "Recieve Money"
         ],
         "summary": "Dynamic Qrcode for Till Payments",
-        "description": "Qrcode for making Payments\n",
+        "description": "Generates a dynamic M-PESA QR Code.Which enables Safaricom MPESA Customers who have My Safaricom APP and Mpesa APP\n",
         "operationId": "mpesaQrcode",
         "requestBody": {
           "description": "Pay using the native Qrcode",
@@ -1918,10 +1922,10 @@
       "/safaricom-stkpush": {
       "post": {
         "tags": [
-          "Other Services"
+          "Recieve Money"
         ],
-        "summary": "Dynamic Stk Push Initiated by Safaricom",
-        "description": "Qrcode for making Payments\n",
+        "summary": "Stk Push Initiated by Safaricom",
+        "description": "Initiates Online Payments on behalf of a merchant by sending a payment prompt on the customers phone\n",
         "operationId": "stkPush",
         "requestBody": {
           "description": "Pay using the stkPush",
@@ -1954,10 +1958,10 @@
       "/safaricom-static-code": {
       "post": {
         "tags": [
-          "Other Services"
+          "Recieve Money"
         ],
         "summary": "Static QRCode Initiated by Safaricom",
-        "description": "Qrcode for making Payments\n",
+        "description": "Static Qrcode for making Payments\n",
         "operationId": "staticQRcode",
         "requestBody": {
           "description": "Pay using the Static Qrcode",
