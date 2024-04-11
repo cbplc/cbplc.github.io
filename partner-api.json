@@ -198,6 +198,66 @@
         }
       }
     },
+     "/account-lookup": {
+      "post": {
+        "tags": [
+          "Accounts"
+        ],
+        "summary": "Check Account Availability",
+        "description": "Check Account Availability\n",
+        "operationId": "accountLookup",
+        "parameters": [
+          {
+            "name": "x-app-id",
+            "in": "header",
+            "description": "pass the project id",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "api-key",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Check Availabilty of An Account",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/accountLookupRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successfully created standing order",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/accountLookupResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      }
+    },
     "/internal-fund-transfer": {
       "post": {
         "tags": [
@@ -317,6 +377,66 @@
           }
         }
       }
+    },
+    "/transaction-reversal": {
+      "post": {
+        "tags": [
+          "Send Money"
+        ],
+        "summary": "Reverse a made transaction using the the reference number",
+        "description": "Reverse a made transaction using the the reference number\n",
+        "operationId": "transactionReversal",
+        "parameters": [
+          {
+            "name": "x-app-id",
+            "in": "header",
+            "description": "pass the project id",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "api-key",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Transaction Reversal Request",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/transactionReversalRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successfully transfered the funds",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/transactionReversalResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      }
     }
    },
    "components": {
@@ -359,6 +479,30 @@
              "type":"string",
              "example":"0021024000038"
 
+           }
+        }
+      },
+      "accountLookupRequest": {    
+        "type": "object",
+        "properties": {
+           "account": {
+             "type":"string",
+             "example":"0021024000038"
+
+           }
+        }
+      },
+      "transactionReversalRequest": {    
+        "type": "object",
+        "properties": {
+           "account": {
+             "type":"string",
+             "example":"0021024000038"
+
+           },
+           "referenceNumber": {
+            "type": "string",
+            "example": "FT24002MDBWZ"
            }
         }
       },
@@ -458,6 +602,53 @@
             "type": "string",
             "example": "20000"
           },
+          "availableBalance": {
+            "type": "string",
+            "example": "20000"
+          }
+        }
+      },
+      "accountLookupResponse": {
+        "type": "object",
+        "properties": {
+          "responseCode": {
+            "type": "string",
+            "example": "00"
+          },
+          "dateAndTimeTransmission": {
+            "type": "string",
+            "example": "0306150321"
+          },
+          "currencyCode": {
+            "type": "string",
+            "example": "404"
+          },
+          "accountDetails": {
+            "type": "string",
+            "example": "1000013547|CREDIT BANK LTD||*|KES|OK|KE0010002|84467963.4"
+          },
+          "category": {
+            "type": "string",
+            "example": "0021024000038"
+          }
+        }
+      },
+       "transactionReversalResponse": {
+        "type": "object",
+        "properties": {
+          "responseCode": {
+            "type": "string",
+            "example": "00"
+          },
+          "dateAndTimeTransmission": {
+            "type": "string",
+            "example": "0306150321"
+          },
+          "currencyCode": {
+            "type": "string",
+            "example": "404"
+          },
+      
           "availableBalance": {
             "type": "string",
             "example": "20000"
