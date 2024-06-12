@@ -1727,7 +1727,7 @@
         }
       }
     },
-      "/pesalink-verification": {
+    "/pesalink-verification": {
       "post": {
         "tags": [
           "Send Money"
@@ -1777,6 +1777,127 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/defaultResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      }
+  },
+
+    "/verification-request": {
+      "post": {
+        "tags": [
+          "Send Money"
+        ],
+        "summary": "Verify account number Pesalink",
+        "description": "Verify account number Pesalink\n",
+        "operationId": "verificationRequest",
+        "parameters": [
+          {
+            "name": "x-app-id",
+            "in": "header",
+            "description": "pass the project id",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "api-key",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Verify account number on Pesalink",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/verificationRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Request successfully processed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/verificationResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      }
+  },
+    "/credit-transfer": {
+      "post": {
+        "tags": [
+          "Send Money"
+        ],
+        "summary": "Send Money To Another Account",
+        "description": "Send Money To Another Account\n",
+        "operationId": "creditTransferRequest",
+        "parameters": [
+          {
+            "name": "x-app-id",
+            "in": "header",
+            "description": "pass the project id",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "api-key",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Verify account number on Pesalink",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/creditTransferRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Request successfully processed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/creditTransferResponse"
                 }
               }
             }
@@ -1847,7 +1968,7 @@
         }
       }
   },
-      "/safaricom-callback": {
+  "/safaricom-callback": {
       "post": {
         "tags": [
           "Other Services"
@@ -1883,7 +2004,7 @@
         }
       }
     },
-       "/safaricom-qrcode": {
+  "/safaricom-qrcode": {
       "post": {
         "tags": [
           "Recieve Money"
@@ -1919,7 +2040,7 @@
         }
       }
     },
-      "/safaricom-stkpush": {
+   "/safaricom-stkpush": {
       "post": {
         "tags": [
           "Recieve Money"
@@ -1955,7 +2076,7 @@
         }
       }
     },
-      "/safaricom-static-code": {
+  "/safaricom-static-code": {
       "post": {
         "tags": [
           "Recieve Money"
@@ -2092,6 +2213,55 @@
             "type": "string",
             "example": "2021-01-29T00:54:08+03:00"
           }
+        }
+      },
+      "verificationRequest": {
+        "required": [
+          "requestId",
+          "channelId",
+          "sourceSystemId",
+          "sourceTranType",
+          "senderInstitutionCode",
+          "receiverAccount",
+          "receiverInstitutionCode",
+          "signature"
+        ],
+        "type": "object",
+        "properties": {
+          "requestId": {
+            "type": "string",
+            "example": "CBL000000000105"
+          },
+          "channelId": {
+            "type": "string",
+            "example": "USSD"
+          },
+
+          "sourceSystemId": {
+            "type": "string",
+            "example": "MOBILE_USSD"
+          },
+          "sourceTranType": {
+            "type": "string",
+            "example": "sendToAccount"
+          },
+          "senderInstitutionCode": {
+            "type": "string",
+            "example": "0025"
+          },
+           "receiverAccount": {
+            "type": "string",
+            "example": "0170197176640"
+          },
+            "receiverInstitutionCode": {
+            "type": "string",
+            "example": "0012"
+          },
+            "signature": {
+            "type": "string",
+            "example": "rtyusWRWTTWYIUUR=="
+          }
+          
         }
       },
       "safaricomAirtimeTopUpRequest": {
@@ -3159,6 +3329,115 @@
           }
         }
       },
+      "creditTransferRequest": {
+        "required": [
+          "requestId",
+          "channelId",
+          "sourceSystemId",
+          "callbackURL",
+          "sourceTranType",
+          "sourceAccount",
+          "sourceCountryCode",
+          "sourceCurrency",
+          "senderName",
+          "senderInstitutionCode",
+          "senderPhone",
+          "receiverAccount",
+          "receiverName",
+          "receiverInstitutionCode",
+          "recieverCurrency",
+          "amount",
+          "feeAmount",
+          "paymentReason",
+          "narration",
+          "signature"
+        ],
+        "type": "object",
+        "properties": {
+          "requestId": {
+            "type": "string",
+            "example": "UD00000000002"
+          },
+          "channelId": {
+            "type": "string",
+            "example": "USSD"
+          },
+          "sourceSystemId": {
+            "type": "string",
+            "example": "MOBILE_USSD"
+          },
+          "callbackURL": {
+            "type": "string",
+            "example": "https://localhost:8085/v1/callback/channel"
+          },
+          "sourceTranType": {
+            "type": "string",
+            "example": "sendToAccount"
+          },
+          "sourceAccount": {
+            "type": "string",
+            "example": "100100801940"
+          },
+          "sourceCountryCode": {
+            "type": "string",
+            "example": "54"
+          },
+            "sourceCurrency": {
+            "type": "string",
+            "example": "KES"
+          },
+            "senderName": {
+            "type": "string",
+            "example": "John Doe"
+          },
+
+          "senderInstitutionCode": {
+            "type": "string",
+            "example": "0025"
+          },
+            "receiverAccount": {
+            "type": "string",
+            "example": "0170197176640"
+          },
+           "receiverName": {
+            "type": "string",
+            "example": "John Doe"
+          },
+          "receiverInstitutionCode": {
+            "type": "string",
+            "example": "0012"
+          },
+           "recieverCurrency": {
+            "type": "string",
+            "example": "KES"
+          },
+          "amount": {
+            "type": "string",
+            "example": "John Doe"
+          },
+         "feeAmount": {
+            "type": "string",
+            "example": "0"
+          },
+         "paymentReason": {
+            "type": "string",
+            "example": "Payments"
+          },
+           "narration": {
+            "type": "string",
+            "example": "Pesalink Transfer"
+          },
+           "isVelocityEnabled": {
+            "type": "string",
+            "example": "Y"
+          },
+            "signature": {
+            "type": "string",
+            "example": "GDHDJSJSJSJBAUABAHAHAABBAHAHABHAHAJJSHJSHSHJA=="
+          }
+        }
+      },
+
       "defaultResponse": {
         "type": "object",
         "properties": {
@@ -3640,6 +3919,72 @@
             "type":"string",
             "example":"Success. Request accepted for processing"
           }
+        }
+      },
+      "verificationResponse": {
+        "type": "object",
+        "properties": {
+          "requestId": {
+            "type": "string",
+            "example": "US000000000105"
+          },
+          "endToEndId": {
+            "type": "string",
+            "example": "123456789"
+          },
+          "channelId": {
+            "type": "string",
+            "example": "USSD"
+          },
+          "sourceSystemId": {
+            "type": "string",
+            "example": "MOBILE_USSD"
+          },
+          "receiverAccount":{
+            "type":"string",
+            "example":"0170197176640"
+          },
+            "receiverInstitutionCode":{
+            "type":"string",
+            "example":"0012"
+          },
+          "receiverName":{
+            "type":"string",
+            "example":"John Doe"
+          },
+          "status":{
+            "type":"string",
+            "example":"Success"
+          },
+          "statusCode": {
+            "type":"string",
+            "example":"00"
+           },
+          "statusDesc": {
+            "type":"string",
+            "example":"Request Processed Successfully"
+           }
+        }
+      },
+      "CreditTransferResponse": {
+        "type": "object",
+        "properties": {
+          "requestId": {
+            "type": "string",
+            "example": "US000000000105"
+          },
+          "status":{
+            "type":"string",
+            "example":"Success"
+          },
+          "statusCode": {
+            "type":"string",
+            "example":"00"
+           },
+          "statusDesc": {
+            "type":"string",
+            "example":"Request Processed Successfully"
+           }
         }
       }
      
