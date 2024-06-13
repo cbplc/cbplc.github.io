@@ -1788,7 +1788,7 @@
       }
   },
 
-    "/verification-request": {
+   "/verification-request": {
       "post": {
         "tags": [
           "Send Money"
@@ -1838,6 +1838,66 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/verificationResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      }
+  },
+    "/sasapay-b2b": {
+      "post": {
+        "tags": [
+          "Recieve Money"
+        ],
+        "summary": "Send Money From Business To Business",
+        "description": "Send Money From Business To Business\n",
+        "operationId": "sasaPayB2BRequest",
+        "parameters": [
+          {
+            "name": "x-app-id",
+            "in": "header",
+            "description": "pass the project id",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "api-key",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Send Money From Business To Business",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/sasaPayB2BRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Request successfully processed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/sasaPayB2BResponse"
                 }
               }
             }
@@ -3438,6 +3498,66 @@
         }
       },
 
+      "sasaPayB2BRequest": {
+        "required": [
+          "MerchantCode",
+          "MerchantTransactionReference",
+          "Currency",
+          "Amount",
+          "ReceiverMerchantCode",
+          "AccountReference",
+          "ReceiverAccountType",
+          "NetworkCode",
+          "YourCallBackURL",
+          "Reason"
+        ],
+        "type": "object",
+        "properties": {
+          "MerchantCode": {
+            "type": "string",
+            "example": "59**75"
+          },
+          "MerchantTransactionReference": {
+            "type": "string",
+            "example": "87065"
+          },
+          "Currency": {
+            "type": "string",
+            "example": "KES"
+          },
+          "Amount": {
+            "type": "string",
+            "example": "10"
+          },
+          "ReceiverMerchantCode": {
+            "type": "string",
+            "example": "3209"
+          },
+          "AccountReference": {
+            "type": "string",
+            "example": "Test"
+          },
+          "ReceiverAccountType": {
+            "type": "string",
+            "example": "PAYBILL"
+          },
+          "NetworkCode": {
+            "type": "string",
+            "example": "0"
+          },
+
+          "YourCallBackURL": {
+            "type": "string",
+            "example": "https://******.io/4bdd-47d5-a54d"
+          },
+
+          "Reason": {
+            "type": "string",
+            "example": "Payment of transportation fee"
+          }
+        }
+      },
+
       "defaultResponse": {
         "type": "object",
         "properties": {
@@ -3985,6 +4105,39 @@
             "type":"string",
             "example":"Request Processed Successfully"
            }
+        }
+      },
+      "sasaPayB2BResponse": {
+        "type": "object",
+        "properties": {
+          "Status": {
+            "type": "string",
+            "example": "true"
+          },
+          "detail": {
+            "type": "string",
+            "example": "Transaction is being processed"
+          },
+          "B2BRequestID": {
+            "type": "string",
+            "example": "95000-6471280a-151c-4acd-98f0-abab82b3e951"
+          },
+          "ConversationID": {
+            "type": "string",
+            "example": "6471280a-151c-4acd-98f0-abab82b3e951"
+          },
+          "OriginatorConversationID":{
+            "type":"string",
+            "example":"87065"
+          },
+          "ResponseCode":{
+            "type":"string",
+            "example":"0"
+          },
+          "ResponseDescription":{
+            "type":"string",
+            "example":"Transaction is being processed"
+          }
         }
       }
      
