@@ -3391,38 +3391,50 @@
       },
       "creditTransferRequest": {
         "required": [
-          "requestId",
-          "channelId",
-          "sourceSystemId",
+          "requestID",
+          "channelID",
+          "sourceSystemID",
+          "serviceID",
           "callbackURL",
-          "sourceTranType",
+          "transactionDate",
+          "sourceType",
           "sourceAccount",
           "sourceCountryCode",
           "sourceCurrency",
           "senderName",
           "senderInstitutionCode",
           "senderPhone",
+          "recieverType",
           "receiverAccount",
           "receiverName",
           "receiverInstitutionCode",
-          "recieverCurrency",
           "amount",
-          "feeAmount",
+          "isInCharge",
+          "isSmsChargeIncluded",
+          "isVelocityEnabled",
+          "recieverCurrency",
           "paymentReason",
           "narration",
-          "signature"
+          "reference",
+          "signature",
+          "recieverAccount",
+          "feeAmount"
         ],
         "type": "object",
         "properties": {
-          "requestId": {
+          "requestID": {
             "type": "string",
             "example": "UD00000000002"
           },
-          "channelId": {
+          "channelID": {
             "type": "string",
             "example": "USSD"
           },
-          "sourceSystemId": {
+          "sourceSystemID": {
+            "type": "string",
+            "example": "MOBILE_USSD"
+          },
+          "serviceID": {
             "type": "string",
             "example": "MOBILE_USSD"
           },
@@ -3430,13 +3442,17 @@
             "type": "string",
             "example": "https://localhost:8085/v1/callback/channel"
           },
-          "sourceTranType": {
+          "transactionDate": {
+            "type": "string",
+            "example": ""
+          },
+          "sourceType": {
             "type": "string",
             "example": "sendToAccount"
           },
           "sourceAccount": {
             "type": "string",
-            "example": "100100801940"
+            "example": "0021024000038"
           },
           "sourceCountryCode": {
             "type": "string",
@@ -3454,6 +3470,15 @@
           "senderInstitutionCode": {
             "type": "string",
             "example": "0025"
+          },
+          "senderPhone" : {
+            "type": "string",
+            "example": "25720000000"
+
+          },
+          "recieverType": {
+            "type": "string",
+            "example": "Account"
           },
             "receiverAccount": {
             "type": "string",
@@ -3488,6 +3513,14 @@
             "example": "Pesalink Transfer"
           },
            "isVelocityEnabled": {
+            "type": "string",
+            "example": "Y"
+          },
+           "isInCharge": {
+            "type": "string",
+            "example": "N"
+          },
+          "isSmsChargeIncluded": {
             "type": "string",
             "example": "Y"
           },
