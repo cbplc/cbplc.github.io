@@ -1848,12 +1848,12 @@
         }
       }
   },
-    "/sasapay-b2b": {
+    "/b2b": {
       "post": {
         "tags": [
           "Recieve Money"
         ],
-        "summary": "Send Money From Business To Business",
+        "summary": "Send Money From Business Merchant To Business Merchant",
         "description": "Send Money From Business To Business\n",
         "operationId": "sasaPayB2BRequest",
         "parameters": [
