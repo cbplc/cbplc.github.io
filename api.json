@@ -1855,7 +1855,7 @@
         ],
         "summary": "Send Money From Business Merchant To Business Merchant",
         "description": "Send Money From Business To Business\n",
-        "operationId": "sasaPayB2BRequest",
+        "operationId": " b2bRequest",
         "parameters": [
           {
             "name": "x-app-id",
@@ -1885,7 +1885,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/sasaPayB2BRequest"
+                "$ref": "#/components/schemas/b2bRequest"
               }
             }
           },
@@ -1897,7 +1897,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/sasaPayB2BResponse"
+                  "$ref": "#/components/schemas/b2bResponse"
                 }
               }
             }
@@ -3531,7 +3531,7 @@
         }
       },
 
-      "sasaPayB2BRequest": {
+      "b2bRequest": {
         "required": [
           "MerchantCode",
           "MerchantTransactionReference",
@@ -4140,7 +4140,7 @@
            }
         }
       },
-      "sasaPayB2BResponse": {
+      "b2bResponse": {
         "type": "object",
         "properties": {
           "Status": {
