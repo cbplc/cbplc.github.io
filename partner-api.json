@@ -541,10 +541,12 @@
       "consumerInternalFtRequest": {
         "required": [
           "amount",
-          "accountTo",
-          "accountFrom",
-          "endToEndRef",
-          "paymentNarrative"
+          "creditAccount",
+          "debitAccount",
+          "endToEndID",
+          "paymentNarrative",
+          "beneficiaryName",
+          "referenceNumber"
         ],
         "type": "object",
         "properties": {
@@ -552,22 +554,32 @@
             "type": "number",
             "example": 3000
           },
-          "accountTo": {
+          "creditAccount": {
             "type": "string",
             "example": "0021024000039"
           },
-            "accountFrom": {
+            "debitAccount": {
             "type": "string",
             "example": "0021024000038"
           },
-            "endToEndRef": {
+            "endToEndID": {
               "type":"string",
               "example": "ADHDKDUDHSJ"
           },
           "paymentNarrative": {
             "type": "string",
             "example": "Transfer funds from your CBL account to other CBL accounts"
+          },
+          "beneficiaryName": {
+            "type": "string",
+            "example": "Jane Doe"
+
+          },
+          "referenceNumber": {
+            "type": "string",
+            "example": "DJDSKSLSK"
           }
+
         }
       },
        "networkingResponse": {
