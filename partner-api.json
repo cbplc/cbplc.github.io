@@ -378,6 +378,66 @@
         }
       }
     },
+    "/pesalink-internal-ft": {
+      "post": {
+        "tags": [
+          "Send Money"
+        ],
+        "summary": "Transfer funds from your CBL account to other CBL accounts",
+        "description": "Transfer funds from your CBL account to other CBL accounts\n",
+        "operationId": "pesalinkInternalFundsTransfer",
+        "parameters": [
+          {
+            "name": "x-app-id",
+            "in": "header",
+            "description": "pass the project id",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "api-key",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Pesalink Internal Funds Transfer Request",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/pesalinkInternalFtRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successfully transfered the funds",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/defaultResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      }
+    },
     "/transaction-reversal": {
       "post": {
         "tags": [
@@ -561,6 +621,45 @@
             "debitAccount": {
             "type": "string",
             "example": "0021024000038"
+          },
+            "endToEndID": {
+              "type":"string",
+              "example": "ADHDKDUDHSJ"
+          },
+          "paymentNarrative": {
+            "type": "string",
+            "example": "Transfer funds from your CBL account to other CBL accounts"
+          },
+          "beneficiaryName": {
+            "type": "string",
+            "example": "Jane Doe"
+
+          },
+          "referenceNumber": {
+            "type": "string",
+            "example": "DJDSKSLSK"
+          }
+
+        }
+      },
+      "pesalinkInternalFtRequest": {
+        "required": [
+          "amount",
+          "creditAccount",
+          "endToEndID",
+          "paymentNarrative",
+          "beneficiaryName",
+          "referenceNumber"
+        ],
+        "type": "object",
+        "properties": {
+          "amount": {
+            "type": "number",
+            "example": 3000
+          },
+          "creditAccount": {
+            "type": "string",
+            "example": "0021024000039"
           },
             "endToEndID": {
               "type":"string",
