@@ -1786,7 +1786,7 @@
                 }
             }
         },
-        "/pesalink-verification-request": {
+        "/account-lookup": {
             "post": {
                 "tags": [
                     "Send Money"
@@ -1906,7 +1906,7 @@
                 }
             }
         },
-        "/pesalink-credit-transfer": {
+        "/initiate-payment": {
             "post": {
                 "tags": [
                     "Send Money"
