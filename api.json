@@ -1853,7 +1853,7 @@
                 ],
                 "summary": "Send Money From Business Merchant To Business Merchant",
                 "description": "Send Money From Business To Business\n",
-                "operationId": " Mpesab2bRequest",
+                "operationId": "b2bRequest",
                 "parameters": [
                     {
                         "name": "x-app-id",
