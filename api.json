@@ -1786,7 +1786,7 @@
                 }
             }
         },
-        "/account-lookup": {
+        "/pesalink-account-lookup": {
             "post": {
                 "tags": [
                     "Send Money"
@@ -1853,7 +1853,7 @@
                 ],
                 "summary": "Send Money From Business Merchant To Business Merchant",
                 "description": "Send Money From Business To Business\n",
-                "operationId": "b2bRequest",
+                "operationId": " Mpesab2bRequest",
                 "parameters": [
                     {
                         "name": "x-app-id",
@@ -2747,7 +2747,8 @@
                     "receiverPhoneNumber",
                     "timestamp",
                     "transactionReference",
-                    "transactionType"
+                    "transactionType",
+                    "initiator"
                 ],
                 "type": "object",
                 "properties": {
@@ -2794,6 +2795,10 @@
                     "currency": {
                         "type": "string",
                         "example": "KES"
+                    },
+                    "initiator":{
+                        "type":"string",
+                        "example": "John"
                     }
                 }
             },
