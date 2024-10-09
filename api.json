@@ -1966,6 +1966,66 @@
                 }
             }
         },
+        "/pesalink-to-phone": {
+            "post": {
+                "tags": [
+                    "Send Money"
+                ],
+                "summary": "Send Money To Phone",
+                "description": "Send Money To Phone\n",
+                "operationId": "pesalinkToPhoneRequest",
+                "parameters": [
+                    {
+                        "name": "x-app-id",
+                        "in": "header",
+                        "description": "pass the project id",
+                        "required": true,
+                        "style": "simple",
+                        "explode": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "x-api-key",
+                        "in": "header",
+                        "description": "api-key",
+                        "required": true,
+                        "style": "simple",
+                        "explode": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Verify account number on Pesalink",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/pesalinkToPhoneRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Request successfully processed",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/creditTransferResponse"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "bad input parameter"
+                    }
+                }
+            }
+        },
         "/wallet-registration": {
             "post": {
                 "tags": [
@@ -3405,6 +3465,66 @@
                     "narration": {
                         "type": "string",
                         "example": "sendToAccount"
+                    },
+                    "timestamp": {
+                        "type": "string",
+                        "example": "2021-01-29T00:54:08+03:00"
+                    },
+                    "transactionReference": {
+                        "type": "string",
+                        "example": "SDFTYHJUIIJ"
+                    },
+                    "transactionType": {
+                        "type": "string",
+                        "example": "PESALINK"
+                    }
+                 
+                   
+                }
+            },
+            "pesalinkToPhoneRequest": {
+                "required": [
+                    "amount",
+                    "bankCode",
+                    "beneficiaryName",
+                    "creditAccount",
+                    "currency",
+                    "direction",
+                    "narration",
+                    "receiverPhoneNumber",
+                    "timestamp",
+                    "transactionReference",
+                    "transactionType"
+                ],
+                "type": "object",
+                "properties": {
+                    "amount": {
+                        "type": "string",
+                        "example": "10"
+                    },
+                    "bankCode": {
+                        "type": "string",
+                        "example": "1032"
+                    },
+                    "beneficiaryName": {
+                        "type": "string",
+                        "example": "John Doe"
+                    },
+                    "creditAccount": {
+                        "type": "string",
+                        "example": "254700000000"
+                    },
+                    "currency": {
+                        "type": "string",
+                        "example": "KES"
+                    },
+                    "direction": {
+                        "type": "string",
+                        "example": "A2A"
+                    },
+                    "narration": {
+                        "type": "string",
+                        "example": "sendToPhone"
                     },
                     "timestamp": {
                         "type": "string",
