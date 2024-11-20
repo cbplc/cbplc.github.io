@@ -1791,8 +1791,8 @@
                 "tags": [
                     "Send Money"
                 ],
-                "summary": "Verify account number Pesalink",
-                "description": "Verify account number Pesalink\n",
+                "summary": "Verify An Account Number on Pesalink Before Sending",
+                "description": "\n",
                 "operationId": "PesalinkverificationRequest",
                 "parameters": [
                     {
@@ -3510,6 +3510,10 @@
                         "type": "string",
                         "example": "John Doe"
                     },
+                    "receiverPhoneNumber" : {
+                        "type": "string",
+                        "example": "254700000000"
+                    },
                     "creditAccount": {
                         "type": "string",
                         "example": "0021024000039"
@@ -3570,6 +3574,10 @@
                         "type": "string",
                         "example": "John Doe"
                     },
+                    "receiverPhoneNumber": {
+                        "type": "string",
+                        "example": "254700000000"
+                    },
                     "creditAccount": {
                         "type": "string",
                         "example": "254700000000"
@@ -3604,11 +3612,11 @@
             },
             "pesalinkPaymentStatusRequest": {
                 "required": [
-                    "OriginalRequestID"
+                    "originalRequestID"
                 ],
                 "type": "object",
                 "properties": {
-                      "OriginalRequestID": {
+                      "originalRequestID": {
                         "type":"string",
                         "example": "CBL90222J29221"
                       }
