@@ -1853,7 +1853,7 @@
                 ],
                 "summary": "Send Money From Business Merchant To Business Merchant",
                 "description": "Send Money From Business To Business\n",
-                "operationId": "b2bRequest",
+                "operationId": "b2bRequestId",
                 "parameters": [
                     {
                         "name": "x-app-id",
@@ -1896,6 +1896,126 @@
                             "application/json": {
                                 "schema": {
                                     "$ref": "#/components/schemas/b2bResponse"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "bad input parameter"
+                    }
+                }
+            }
+        },
+        "/b2b-tills": {
+            "post": {
+                "tags": [
+                  "Recieve Money"
+                ],
+                "summary": "Send Money From Business Tills To Business Tills",
+                "description": "Send Money From Business To Business\n",
+                "operationId": "b2bTillsRequestId",
+                "parameters": [
+                    {
+                        "name": "x-app-id",
+                        "in": "header",
+                        "description": "pass the project id",
+                        "required": true,
+                        "style": "simple",
+                        "explode": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "x-api-key",
+                        "in": "header",
+                        "description": "api-key",
+                        "required": true,
+                        "style": "simple",
+                        "explode": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Send Money From Business To Business",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/b2bTillsRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Request successfully processed",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/b2bTillsResponse"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "bad input parameter"
+                    }
+                }
+            }
+        },
+        "/b2b-account-top-up": {
+            "post": {
+                "tags": [
+                    "Recieve Money"
+                ],
+                "summary": "Send Money From Business Tills To Business Tills",
+                "description": "Send Money From Business To Business\n",
+                "operationId": "b2bAccountTopUpRequestId",
+                "parameters": [
+                    {
+                        "name": "x-app-id",
+                        "in": "header",
+                        "description": "pass the project id",
+                        "required": true,
+                        "style": "simple",
+                        "explode": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "x-api-key",
+                        "in": "header",
+                        "description": "api-key",
+                        "required": true,
+                        "style": "simple",
+                        "explode": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Send Money From Business To Business",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/b2bAccountTopUpRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Request successfully processed",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/b2bAccountTopUpResponse"
                                 }
                             }
                         }
@@ -2681,43 +2801,43 @@
             },
             "stkPushSchemaRequest": {
                 "required": [
-                    "TransactionType",
-                    "Amount",
-                    "Timestamp",
-                    "PartyA",
-                    "PhoneNumber",
-                    "CallBackURL",
-                    "TransactionDesc"
+                    "phoneNumber",
+                    "reference",
+                    "amount",
+                    "countryCode",
+                    "narration",
+                    "callBackUrl",
+                    "errorCallBackUrl"
                 ],
                 "type": "object",
                 "properties": {
-                    "TransactionType": {
+                    "phoneNumber": {
                         "type": "string",
-                        "example": "CustomerPayBillOnline"
+                        "example": "254700000000"
                     },
-                    "Amount": {
-                        "type": "number",
+                    "amount": {
+                        "type": "string",
                         "example": 1
                     },
-                    "Timestamp": {
+                    "reference": {
                         "type": "string",
-                        "example": "20160216165627"
+                        "example": "AAwWEQ4Q2EOE"
                     },
-                    "PartyA": {
+                    "countryCode": {
                         "type": "string",
-                        "example": "254708374149"
+                        "example": "KE"
                     },
-                    "PhoneNumber": {
+                    "narration": {
                         "type": "string",
-                        "example": "254708374149"
+                        "example": "InvoiceNumber"
                     },
-                    "CallBackURL": {
+                    "callBackUrl": {
                         "type": "string",
-                        "example": "https://my-domain.com"
+                        "example": "https://webhook.site/9e759bd7-5ea2-41d7-a825-7583ffc736fc"
                     },
-                    "TransactionDesc": {
+                    "errorCallBackUrl": {
                         "type": "string",
-                        "example": "Test Payment"
+                        "example": "https://webhook.site/9e759bd7-5ea2-41d7-a825-7583ffc736f"
                     }
                 }
             },
@@ -3536,7 +3656,7 @@
                     },
                     "transactionReference": {
                         "type": "string",
-                        "example": "SDFTYHJUIIJ"
+                        "example": "SDFTYHJUIIJX"
                     },
                     "transactionType": {
                         "type": "string",
@@ -3588,7 +3708,7 @@
                     },
                     "direction": {
                         "type": "string",
-                        "example": "A2A"
+                        "example": "A2P"
                     },
                     "narration": {
                         "type": "string",
@@ -3600,7 +3720,7 @@
                     },
                     "transactionReference": {
                         "type": "string",
-                        "example": "SDFTYHJUIIJ"
+                        "example": "SDFTYHJUIIJX"
                     },
                     "transactionType": {
                         "type": "string",
@@ -3624,58 +3744,157 @@
             },
             "b2bRequest": {
                 "required": [
-                    "MerchantCode",
-                    "MerchantTransactionReference",
-                    "Currency",
-                    "Amount",
-                    "ReceiverMerchantCode",
-                    "AccountReference",
-                    "ReceiverAccountType",
-                    "NetworkCode",
-                    "YourCallBackURL",
-                    "Reason"
+                    "transactionType",
+                    "creditAccount",
+                    "recieverPhoneNumber",
+                    "narration",
+                    "amount",
+                    "timestamp",
+                    "errorCallBackUrl",
+                    "callBackUrl",
+                    "transactionReference"
                 ],
                 "type": "object",
                 "properties": {
-                    "MerchantCode": {
+                    "transactionType": {
                         "type": "string",
                         "example": "59**75"
                     },
-                    "MerchantTransactionReference": {
-                        "type": "string",
-                        "example": "87065"
+                    "creditAccount": {
+                        "type": "number",
+                        "example": 600000
                     },
-                    "Currency": {
+                    "receiverPhoneNumber": {
                         "type": "string",
-                        "example": "KES"
+                        "example": "254710000000"
                     },
-                    "Amount": {
+                    "narration": {
                         "type": "string",
-                        "example": "10"
+                        "example": "School Fees Payment"
                     },
-                    "ReceiverMerchantCode": {
+                    "amount": {
                         "type": "string",
-                        "example": "3209"
+                        "example": "1"
                     },
-                    "AccountReference": {
+                    "timestamp": {
                         "type": "string",
-                        "example": "Test"
+                        "example": "2021-01-29T00:54:08+03:00"
                     },
-                    "ReceiverAccountType": {
+                    "errorCallBackUrl": {
                         "type": "string",
-                        "example": "PAYBILL"
+                        "example": "https://whbc4735654c6eb6a002.free.beeceptor.com"
                     },
-                    "NetworkCode": {
+                    "callBackUrl": {
                         "type": "string",
-                        "example": "0"
+                        "example": "https://whbc4735654c6eb6a002.free.beeceptor.com"
                     },
-                    "YourCallBackURL": {
+                    "transactionReference": {
                         "type": "string",
-                        "example": "https://******.io/4bdd-47d5-a54d"
+                        "example": "B21E23KAJ123"
+                    }
+                }
+            },
+            "b2bTillsRequest": {
+                "required": [
+                    "transactionType",
+                    "creditAccount",
+                    "recieverPhoneNumber",
+                    "narration",
+                    "amount",
+                    "timestamp",
+                    "errorCallBackUrl",
+                    "callBackUrl",
+                    "transactionReference"
+                ],
+                "type": "object",
+                "properties": {
+                    "transactionType": {
+                        "type": "string",
+                        "example": "MPESAB2B_TILLS"
                     },
-                    "Reason": {
+                    "creditAccount": {
                         "type": "string",
-                        "example": "Payment of transportation fee"
+                        "example": "600000"
+                    },
+                    "receiverPhoneNumber": {
+                        "type": "string",
+                        "example": "254710000000"
+                    },
+                    "narration": {
+                        "type": "string",
+                        "example": "School Fees Payment"
+                    },
+                    "amount": {
+                        "type": "string",
+                        "example": "1"
+                    },
+                    "timestamp": {
+                        "type": "string",
+                        "example": "2021-01-29T00:54:08+03:00"
+                    },
+                    "errorCallBackUrl": {
+                        "type": "string",
+                        "example": "https://whbc4735654c6eb6a002.free.beeceptor.com"
+                    },
+                    "callBackUrl": {
+                        "type": "string",
+                        "example": "https://whbc4735654c6eb6a002.free.beeceptor.com"
+                    },
+                    "transactionReference": {
+                        "type": "string",
+                        "example": "B21E23KAJ123"
+                    }
+                }
+            },
+            "b2bAccountTopUpRequest": {
+                "required": [
+                    "transactionType",
+                    "creditAccount",
+                    "recieverPhoneNumber",
+                    "narration",
+                    "amount",
+                    "timestamp",
+                    "errorCallBackUrl",
+                    "callBackUrl",
+                    "transactionReference"
+                ],
+                "type": "object",
+                "properties": {
+                    "transactionType": {
+                        "type": "string",
+                        "example": "MPESAB2B_ACCOUNT_TOP_UP"
+                    },
+                    "creditAccount": {
+                        "type": "string",
+                        "example": "600000"
+                    },
+                    "receiverPhoneNumber": {
+                        "type": "string",
+                        "example": "254710000000"
+                    },
+                    "narration": {
+                        "type": "string",
+                        "example": "School Fees Payment"
+                    },
+                    "amount": {
+                        "type": "string",
+                        "example": "1"
+                    },
+                    "timestamp": {
+                        "type": "string",
+                        "example": "2021-01-29T00:54:08+03:00"
+                    },
+                    "errorCallBackUrl": {
+                        "type": "string",
+                        "example": "https://whbc4735654c6eb6a002.free.beeceptor.com"
+                    },
+                    "callBackUrl": {
+                        "type": "string",
+                        "example": "https://whbc4735654c6eb6a002.free.beeceptor.com"
+                    },
+                    "transactionReference": {
+                        "type": "string",
+                        "example": "B21E23KAJ123"
                     }
                 }
             },
@@ -4295,13 +4514,13 @@
             "b2bResponse": {
                 "type": "object",
                 "properties": {
-                    "Status": {
+                    "message": {
                         "type": "string",
-                        "example": "true"
+                        "example": "Request Processed Successfully, Please Check Your CallBack URL For Transaction Details"
                     },
-                    "detail": {
+                    "OriginatorConversationID": {
                         "type": "string",
-                        "example": "Transaction is being processed"
+                        "example": "2adc-4be5-8019-05163f8aa67f686594"
                     },
                     "B2BRequestID": {
                         "type": "string",
@@ -4311,9 +4530,38 @@
                         "type": "string",
                         "example": "6471280a-151c-4acd-98f0-abab82b3e951"
                     },
+                    "ResponseCode": {
+                        "type": "string",
+                        "example": "0"
+                    },
+                    "ResponseDescription": {
+                        "type": "string",
+                        "example": "Transaction is being processed"
+                    },
+                    "referenceNumber": {
+                        "type": "string",
+                        "example": "FT24578289921"
+                    }
+                }
+            },
+            "b2bTillsResponse": {
+                "type": "object",
+                "properties": {
+                    "message": {
+                        "type": "string",
+                        "example": "Request Processed Successfully, Please Check Your CallBack URL For Transaction Details"
+                    },
                     "OriginatorConversationID": {
                         "type": "string",
-                        "example": "87065"
+                        "example": "2adc-4be5-8019-05163f8aa67f686594"
+                    },
+                    "B2BRequestID": {
+                        "type": "string",
+                        "example": "95000-6471280a-151c-4acd-98f0-abab82b3e951"
+                    },
+                    "ConversationID": {
+                        "type": "string",
+                        "example": "6471280a-151c-4acd-98f0-abab82b3e951"
                     },
                     "ResponseCode": {
                         "type": "string",
@@ -4322,6 +4570,43 @@
                     "ResponseDescription": {
                         "type": "string",
                         "example": "Transaction is being processed"
+                    },
+                    "referenceNumber": {
+                        "type": "string",
+                        "example": "FT24578289921"
+                    }
+                }
+            },
+            "b2bAccountTopupResponse": {
+                "type": "object",
+                "properties": {
+                    "message": {
+                        "type": "string",
+                        "example": "Request Processed Successfully, Please Check Your CallBack URL For Transaction Details"
+                    },
+                    "OriginatorConversationID": {
+                        "type": "string",
+                        "example": "2adc-4be5-8019-05163f8aa67f686594"
+                    },
+                    "B2BRequestID": {
+                        "type": "string",
+                        "example": "95000-6471280a-151c-4acd-98f0-abab82b3e951"
+                    },
+                    "ConversationID": {
+                        "type": "string",
+                        "example": "6471280a-151c-4acd-98f0-abab82b3e951"
+                    },
+                    "ResponseCode": {
+                        "type": "string",
+                        "example": "0"
+                    },
+                    "ResponseDescription": {
+                        "type": "string",
+                        "example": "Transaction is being processed"
+                    },
+                    "referenceNumber": {
+                        "type": "string",
+                        "example": "FT24578289921"
                     }
                 }
             }
