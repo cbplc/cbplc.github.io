@@ -4,7 +4,7 @@
       "title": "CBL Partner APIs",
       "description": "This is test on CBL APIs",
       "contact": {
-        "email": "william.kamuyu@gapstack.com"
+        "email": "it@creditbank.co.ke"
       },
       "license": {
         "name": "Apache 2.0",
@@ -437,6 +437,66 @@
             }
           }
         }
+      },
+      "/resultCallback": {
+        "post": {
+          "tags": [
+            "Send Money"
+          ],
+          "summary": "Transfer funds from your CBL account to Ecitizen Account",
+          "description": "Transfer funds from your CBL account to Ecitizen Account\n",
+          "operationId": "recieveConfirmedTransaction",
+          "parameters": [
+            {
+              "name": "x-app-id",
+              "in": "header",
+              "description": "pass the project id",
+              "required": true,
+              "style": "simple",
+              "explode": false,
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "x-api-key",
+              "in": "header",
+              "description": "api-key",
+              "required": true,
+              "style": "simple",
+              "explode": false,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "requestBody": {
+            "description": "Confirm Payments Request ",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/resultCallBackRequest"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "Successfully transfered the funds",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/confirmPaymentResponse"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "bad input parameter"
+            }
+          }
+        }
       }
      },
      "components": {
@@ -481,6 +541,10 @@
   
              }
           }
+        },
+        "resultCallBackRequest": {    
+          "type": "object",
+          "properties": {}
         },
         "internalFundTransferRequest": {
           "required": [
@@ -680,6 +744,7 @@
             }
           }
         }
+        
       }
     }
   }
