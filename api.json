@@ -3746,7 +3746,7 @@
                 "required": [
                     "transactionType",
                     "creditAccount",
-                    "recieverPhoneNumber",
+                    "receiverPhoneNumber",
                     "narration",
                     "amount",
                     "timestamp",
