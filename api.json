@@ -3225,21 +3225,21 @@
             },
             "iprsRequest": {
                 "required": [
-                    "idNumber",
-                    "timestamp",
-                    "transactionType"
+                    "id_number",
+                    "serial_number",
+                    "accountFrom"
                 ],
                 "type": "object",
                 "properties": {
-                    "idNumber": {
+                    "id_number": {
                         "type": "string",
                         "example": "1829732019321"
                     },
-                    "transactionType": {
+                    "serial_number": {
                         "type": "string",
                         "example": "IPRS"
                     },
-                    "timestamp": {
+                    "accountFrom": {
                         "type": "string",
                         "example": "2021-01-29T00:54:08+03:00"
                     }
