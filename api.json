@@ -3120,7 +3120,6 @@
                 "required": [
                     "amount",
                     "accountTo",
-                    "accountFrom",
                     "paymentNarrative",
                     "endToEndRef"
                 ],
@@ -3133,10 +3132,6 @@
                     "accountTo": {
                         "type": "string",
                         "example": "0021024000039"
-                    },
-                    "accountFrom" {
-                        "type": "string",
-                        "example": "0021024000038"
                     },
                     "paymentNarrative": {
                         "type": "string",
