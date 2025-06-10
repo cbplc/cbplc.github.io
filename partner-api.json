@@ -558,6 +558,126 @@
           }
         }
       },
+      "/validationCallBack": {
+        "post": {
+          "tags": [
+            "Send Money"
+          ],
+          "summary": "Recieve Transaction Details From Safaricom",
+          "description": "Recieve Transaction Details From Safaricom\n",
+          "operationId": "recieveTransactionDeatils",
+          "parameters": [
+            {
+              "name": "x-app-id",
+              "in": "header",
+              "description": "pass the project id",
+              "required": true,
+              "style": "simple",
+              "explode": false,
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "x-api-key",
+              "in": "header",
+              "description": "api-key",
+              "required": true,
+              "style": "simple",
+              "explode": false,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "requestBody": {
+            "description": "Confirm Payments Request ",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/validationCallBackRequest"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "Successfully transfered the funds",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/confirmPaymentResponse"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "bad input parameter"
+            }
+          }
+        }
+      },
+      "/confirmationCallBack": {
+        "post": {
+          "tags": [
+            "Send Money"
+          ],
+          "summary": "Recieve Transaction Details From Safaricom",
+          "description": "Recieve Transaction Details From Safaricom\n",
+          "operationId": "recieveConfrimationTransactionDetails",
+          "parameters": [
+            {
+              "name": "x-app-id",
+              "in": "header",
+              "description": "pass the project id",
+              "required": true,
+              "style": "simple",
+              "explode": false,
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "x-api-key",
+              "in": "header",
+              "description": "api-key",
+              "required": true,
+              "style": "simple",
+              "explode": false,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "requestBody": {
+            "description": "Confirm Payments Request ",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/confirmationCallBackRequest"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "Successfully transfered the funds",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/confirmPaymentResponse"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "bad input parameter"
+            }
+          }
+        }
+      },
       "/create-bidbond": {
         "post": {
           "tags": [
@@ -663,6 +783,16 @@
           }
         },
         "resultCallBackRequest": {    
+          "type": "object",
+          "properties": {}
+        },
+
+        "validationCallBackRequest": {    
+          "type": "object",
+          "properties": {}
+        },
+
+        "confirmationCallBackRequest": {    
           "type": "object",
           "properties": {}
         },
