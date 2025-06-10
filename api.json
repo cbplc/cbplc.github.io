@@ -2409,6 +2409,42 @@
                     }
                 }
             }
+        },
+        "/alias-registration": {
+            "post": {
+                "tags": [
+                    "Recieve Money"
+                ],
+                "summary": "Create An Alias Account Number With Credit Bank For Easier Payments",
+                "description": "Create An Alias Account Number With Credit Bank For Easier Payments\n",
+                "operationId": "aliasRegistrationId",
+                "requestBody": {
+                    "description": "Create An Alias Account Number/ Name",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/aliasRegistrationRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successfully Paid with Alias Account Number",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/aliasRegistrationResponse"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "bad input parameter"
+                    }
+                }
+            }
         }
     },
     "components": {
@@ -2509,6 +2545,50 @@
                     "timestamp": {
                         "type": "string",
                         "example": "2021-01-29T00:54:08+03:00"
+                    }
+                }
+            },
+            "aliasRegistrationRequest": {
+                "required": [
+                    "transactionType",
+                    "accountNumber",
+                    "transactionReference",
+                    "aliasAccountName",
+                    "customerName",
+                    "phoneNumber"
+                ],
+                "type": "object",
+                "properties": {
+                    "bankCode": {
+                        "type": "string",
+                        "example": "0025"
+                    },
+                    "transactionType": {
+                        "type": "string",
+                        "example": "ALIAS_REGISTRATION"
+                    },
+                    "accountNumber": {
+                        "type": "string",
+                        "example": "0021024000039"
+                    },
+                    "transactionReference": {
+                        "type": "string",
+                        "example": "DIDKDJSSKAL"
+                    },
+
+                    "aliasAccountName": {
+                        "type": "string",
+                        "example": "TEST12"
+                    },
+
+                      "customerName": {
+                        "type": "string",
+                        "example": "Jane Doe"
+                    },
+
+                       "phoneNumber": {
+                        "type": "string",
+                        "example": "254712345678"
                     }
                 }
             },
@@ -3957,6 +4037,31 @@
                     "availableBalance": {
                         "type": "string",
                         "example": "20000"
+                    }
+                }
+            },
+            "aliasRegistrationResponse": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "example": "1"
+                    },
+                    "transactionType": {
+                        "type": "string",
+                        "example": "ALIAS_REGISTRATION"
+                    },
+                    "accountNumber": {
+                        "type": "string",
+                        "example": "0021024000039"
+                    },
+                    "transactionReference": {
+                        "type": "string",
+                        "example": "DIDKDJSSKAL"
+                    },
+                    "aliasAccountName": {
+                        "type": "string",
+                        "example": "TEST12"
                     }
                 }
             },
