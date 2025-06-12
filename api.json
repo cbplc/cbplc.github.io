@@ -3326,7 +3326,8 @@
                     "idNumber",
                     "secondName",
                     "timestamp",
-                    "transactionType"
+                    "transactionType",
+                    "referenceNumber"
                 ],
                 "type": "object",
                 "properties": {
@@ -3346,7 +3347,7 @@
                         "type": "string",
                         "example": "CRB"
                     },
-                    "reference_number": {
+                    "referenceNumber": {
                         "type": "string",
                         "example": "20GY1KKB2CSC"
                     },
