@@ -3327,7 +3327,8 @@
                     "secondName",
                     "timestamp",
                     "transactionType",
-                    "referenceNumber"
+                    "referenceNumber",
+                    "debitAccount"
                 ],
                 "type": "object",
                 "properties": {
@@ -3350,6 +3351,10 @@
                     "referenceNumber": {
                         "type": "string",
                         "example": "20GY1KKB2CSC"
+                    },
+                     "debitAccount": {
+                        "type": "string",
+                        "example": "0021024000038"
                     },
                     "timestamp": {
                         "type": "string",
