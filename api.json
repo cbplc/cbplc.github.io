@@ -2312,7 +2312,7 @@
                     "Recieve Money"
                 ],
                 "summary": "Dynamic Qrcode for Till Payments",
-                "description": "Generates a dynamic M-PESA QR Code.Which enables Safaricom MPESA Customers who have My Safaricom APP and Mpesa APP\n",
+                "description": "Qrcode for making Payments\n",
                 "operationId": "mpesaQrcode",
                 "requestBody": {
                     "description": "Pay using the native Qrcode",
@@ -2384,7 +2384,7 @@
                     "Recieve Money"
                 ],
                 "summary": "Static QRCode Initiated by Safaricom",
-                "description": "Static Qrcode for making Payments\n",
+                "description": "Qrcode for making Payments\n",
                 "operationId": "staticQRcode",
                 "requestBody": {
                     "description": "Pay using the Static Qrcode",
