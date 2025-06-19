@@ -36,19 +36,23 @@
             "description": "Pay your bills from your CBL account"
         },
         {
-            "name": "Other Services",
+            "name": "VAS",
             "description": "Other Service APIs"
         },
         {
             "name": "Recieve Money",
             "description": "Send Money Via Mpesa"
+        },
+              {
+            "name": "Query",
+            "description": "Making Customer Queries"
         }
     ],
     "paths": {
         "/create-standing-order": {
             "post": {
                 "tags": [
-                    "Accounts"
+                    "VAS"
                 ],
                 "summary": "Create a standing order on your CBL account",
                 "description": "Create a standing order on your CBL account\n",
@@ -108,7 +112,7 @@
         "/create-external-standing-order": {
             "post": {
                 "tags": [
-                    "Accounts"
+                    "VAS"
                 ],
                 "summary": "Create a standing order from your CBL account to an account within another bank",
                 "description": "Create a standing order from your CBL account to an account within another bank\n",
@@ -1129,7 +1133,7 @@
         "/iprs": {
             "post": {
                 "tags": [
-                    "Other Services"
+                    "Query"
                 ],
                 "summary": "Query IPRS for details of a kenyan citizen",
                 "description": "Query IPRS for details of a kenyan citizen\n",
@@ -1189,7 +1193,7 @@
         "/crb": {
             "post": {
                 "tags": [
-                    "Other Services"
+                    "Query"
                 ],
                 "summary": "Query CRB for details of a kenyan citizen",
                 "description": "Query CRB for details of a kenyan citizen\n",
@@ -1849,9 +1853,9 @@
         "/b2b": {
             "post": {
                 "tags": [
-                    "Recieve Money"
+                    "Send Money"
                 ],
-                "summary": "Send Money From Business Merchant To Business Merchant",
+                "summary": "Send Money From Business To Business",
                 "description": "Send Money From Business To Business\n",
                 "operationId": "b2bRequestId",
                 "parameters": [
@@ -1909,9 +1913,9 @@
         "/b2b-tills": {
             "post": {
                 "tags": [
-                  "Recieve Money"
+                  "Send Money"
                 ],
-                "summary": "Send Money From Business Tills To Business Tills",
+                "summary": "Send Money From Business To Business",
                 "description": "Send Money From Business To Business\n",
                 "operationId": "b2bTillsRequestId",
                 "parameters": [
@@ -1969,9 +1973,9 @@
         "/b2b-account-top-up": {
             "post": {
                 "tags": [
-                    "Recieve Money"
+                    "Send Money"
                 ],
-                "summary": "Send Money From Business Tills To Business Tills",
+                "summary": "Send Money From Business To Business ",
                 "description": "Send Money From Business To Business\n",
                 "operationId": "b2bAccountTopUpRequestId",
                 "parameters": [
@@ -2269,7 +2273,7 @@
         "/safaricom-callback": {
             "post": {
                 "tags": [
-                    "Other Services"
+                    "VAS"
                 ],
                 "summary": "Call Back from Safaricom",
                 "description": "Callback service\n",
@@ -2413,7 +2417,7 @@
         "/alias-registration": {
             "post": {
                 "tags": [
-                    "Recieve Money"
+                    "VAS"
                 ],
                 "summary": "Create An Alias Account Number With Credit Bank For Easier Payments",
                 "description": "Create An Alias Account Number With Credit Bank For Easier Payments\n",
