@@ -3067,8 +3067,7 @@
                     "receiverPhoneNumber",
                     "timestamp",
                     "transactionReference",
-                    "transactionType",
-                    "initiator"
+                    "transactionType"
                 ],
                 "type": "object",
                 "properties": {
