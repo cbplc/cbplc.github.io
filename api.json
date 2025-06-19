@@ -3114,10 +3114,6 @@
                     "currency": {
                         "type": "string",
                         "example": "KES"
-                    },
-                    "initiator":{
-                        "type":"string",
-                        "example": "John"
                     }
                 }
             },
