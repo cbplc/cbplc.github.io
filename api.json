@@ -472,7 +472,7 @@
         "/forex": {
             "post": {
                 "tags": [
-                    "Accounts"
+                    "Query"
                 ],
                 "summary": "Get Forex Rates",
                 "description": "Get Forex Rates\n",
