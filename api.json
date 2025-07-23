@@ -3849,7 +3849,7 @@
                         "type": "number",
                         "example": 600000
                     },
-                    "receiverPhoneNumber": {
+                    "recieverPhoneNumber": {
                         "type": "string",
                         "example": "254710000000"
                     },
