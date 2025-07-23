@@ -3831,7 +3831,7 @@
                 "required": [
                     "transactionType",
                     "creditAccount",
-                    "receiverPhoneNumber",
+                    "recieverPhoneNumber",
                     "narration",
                     "amount",
                     "timestamp",
