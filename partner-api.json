@@ -558,6 +558,66 @@
           }
         }
       },
+      "/mpesab2c-callback": {
+        "post": {
+          "tags": [
+            "Send Money"
+          ],
+          "summary": "Recieve Transaction Details From Safaricom",
+          "description": "Recieve Transaction Details From Safaricom\n",
+          "operationId": "recieveMpesaB2CTransaction",
+          "parameters": [
+            {
+              "name": "x-app-id",
+              "in": "header",
+              "description": "pass the project id",
+              "required": true,
+              "style": "simple",
+              "explode": false,
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "x-api-key",
+              "in": "header",
+              "description": "api-key",
+              "required": true,
+              "style": "simple",
+              "explode": false,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "requestBody": {
+            "description": "Confirm Payments Request ",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/resultMpesaB2CCallBackRequest"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "Successfully transfered the funds",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/resultMpesaB2CResponse"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "bad input parameter"
+            }
+          }
+        }
+      },
       "/apticRequest": {
         "post": {
           "tags": [
@@ -842,7 +902,11 @@
              }
           }
         },
-        "resultCallBackRequest": {    
+       "resultCallBackRequest": {    
+          "type": "object",
+          "properties": {}
+        },
+       "resultMpesaB2CCallBackRequest": {    
           "type": "object",
           "properties": {}
         },
